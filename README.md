@@ -127,6 +127,7 @@ That's include:
 - [ ] Copy Clipboard button for any code block.
 	- [codecopy](https://github.com/Kikobeats/react-codecopy) – "Copy to clipboard" button for your code snippets.
 - [ ] Show on GitHub button in the corner.
+        – [GiHub Corner](https://github.com/skratchdot/react-github-corner) – Add a Github banner to your project page.
 
 
 ### ⛔️ Iteration 2
