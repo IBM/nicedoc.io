@@ -45,7 +45,6 @@ In case that you desire, you can modify the defaults visual settings to adapt yo
 >- ⛔️ Blocked
 >- ▶️ On Road
 
-
 ### ▶️ Iteration 1
 
 The goal of the first iteration is setup a public website for read any documentation file hosted on GitHub.
@@ -148,7 +147,13 @@ These settings could be also encoded in the url state.
 
 Now we have a functional site, it's time to start bringing up some sugar things in order to improve the user experience.
 
-We can translate the "Clap" button by Medium, but using the GitHub way, this means, the button reflects the ⭐️'s
+We can translate the "Clap" button by Medium, but using the GitHub way, this means, the button reflects the ⭐️'s.
+
+Another things we can add after the star button could be 
+
+- Visit GitHub repository
+- Watch/Unwatch
+- Share
 
 #### 🚧 Comments Threads
 
