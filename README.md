@@ -130,7 +130,6 @@ That's include:
 - [ ] Show on GitHub button in the corner.
         – [GiHub Corner](https://github.com/skratchdot/react-github-corner) – Add a Github banner to your project page.
 
-
 ### ⛔️ Iteration 2
 
 #### 🚧 Load Specific Settings
@@ -140,6 +139,39 @@ In the same README location, make possible load custom settings if `readme.json`
 These settings could be also encoded in the url state.
 
 - [query-state](https://nmotw.in/query-state/) – Application state in query string.
+
+#### 🚧 Stars Button
+
+> Main Inspiration: [Clap Button](https://github.com/Kikobeats/react-clap-button)
+
+![](https://github.com/Kikobeats/react-clap-button/raw/master/demo.gif)
+
+Now we have a functional site, it's time to start bringing up some sugar things in order to improve the user experience.
+
+We can translate the "Clap" button by Medium, but using the GitHub way, this means, the button reflects the ⭐️'s
+
+#### 🚧 Comments Threads
+
+> Main Inspiration: [Twitter Threads](https://business.twitter.com/en/blog/How-Tweet-threads.html)
+
+![](https://i.imgur.com/mhcZDJ8.png)
+
+Add the abbility to add comments. The comments works similar to Twitter Threads, where the started point is a previous sentence writtent in the documentation.
+
+The comment can be created using your GitHub credentials.
+
+Inspiration:
+
+- https://github.com/aroc/side-comments
+- https://github.com/jimpick/lambda-comments
+- https://github.com/skx/e-comments/
+- https://github.com/kevinweber/inline-comments
+- https://github.com/flpvsk/react-commenter/
+- https://www.producthunt.com/posts/ouija
+- https://github.com/netlify/gotell
+- https://github.com/netlify/netlify-comments-starter
+
+### ⛔️ Iteration 3
 
 #### 🚧 Add Analytics
 
@@ -158,7 +190,6 @@ For example: `read.me/drufball/layered-apis+`
 - https://demos.algorithmia.com/github-readme-analyzer/
 - Show the number of concurrent readers. [[1]]( https://github.com/rauchg/blog-views) [[2]](https://github.com/rauchg/blog/blob/master/lib/with-views.js).
 
-### ⛔️ Iteration 3
 
 ### 🚧 Self Hosted
 
