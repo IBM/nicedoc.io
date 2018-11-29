@@ -52,7 +52,7 @@ The goal of the first iteration is setup a public website for read any documenta
 
 #### 🚧 Get a Branding
 
-> Recommended Read: [Naming Things](https://kikobeats.com/naming-things)
+> 📖 [Naming Things](https://kikobeats.com/naming-things)
 
 "Readme Project" is a codename. We need to determinate what is the public name of the project and associate an 
 
@@ -63,6 +63,7 @@ Some ideas are:
 - lee.me
 - lea.me
 - *help me please*
+- re.read
 
 The problem with this kind of name is they are already taken, so need to determinate one enough good that transmit the project message but didn't take yet.
 
