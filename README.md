@@ -52,7 +52,7 @@ The goal of the first iteration is setup a public website for read any documenta
 
 #### 🚧 Get a Branding
 
-> Main Inspiration: [readme.io](https://readme.io/).
+> Recommended Read: [Naming Things](https://kikobeats.com/naming-things)
 
 "Readme Project" is a codename. We need to determinate what is the public name of the project and associate an 
 
