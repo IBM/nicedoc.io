@@ -119,7 +119,7 @@ That's include:
 - [ ]  Choice a paired font to use.
 	- [fontpair](https://fontpair.co)
 - [ ] Choice 
-- [ ] Abbility to switch to Dark mode.
+- [ ] Abbility to switch to Dark mode & remember preferences.
 	- [Building the N26 Dark Mode](https://medium.com/insiden26/building-the-n26-dark-mode-2fc18c2ccdd5)
 	- [Redesigning your product and website for dark mode](https://stuffandnonsense.co.uk/blog/redesigning-your-product-and-website-for-dark-mode)
 	- [How to detect if OS X is in dark mode in browsers?](https://stackoverflow.com/questions/50840168/how-to-detect-if-os-x-is-in-dark-mode-in-browsers/52986538#52986538)
@@ -135,11 +135,11 @@ That's include:
 
 In the same README location, make possible load custom settings if `readme.json` is detected.
 
-These settings could be also encoded in the url state.
+These settings could be also encoded at [query-state](https://nmotw.in/query-state/)
 
-- [query-state](https://nmotw.in/query-state/) – Application state in query string.
+- [ ] Setup theme color
 
-#### 🚧 Stars Button
+#### 🚧 Star Button
 
 > Main Inspiration: [Clap Button](https://github.com/Kikobeats/react-clap-button)
 
