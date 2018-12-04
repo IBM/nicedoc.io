@@ -1,4 +1,4 @@
-# Readme Project
+# nicedoc.io
 
 > Recover any GitHub README.md and well printed it to had a beautiful documentation site.
 
@@ -49,7 +49,7 @@ In case that you desire, you can modify the defaults visual settings to adapt yo
 
 The goal of the first iteration is setup a public website for read any documentation file hosted on GitHub.
 
-#### 🚧 Get a Branding
+#### ✅ Get a Branding
 
 > 📖 [Naming Things](https://kikobeats.com/naming-things)
 
@@ -66,7 +66,12 @@ Some ideas are:
 
 The problem with this kind of name is they are already taken, so need to determinate one enough good that transmit the project message but didn't take yet.
 
-That's also include something minimal in terms of branding: We need to associate a logo an a typography with the site.
+That includes:
+
+- [x] Choose a Name
+- [ ] Choose a Logo
+- [ ] Choose a Claim
+- [ ] Choose a typography
 
 #### 🚧 Recover Any GitHub File
 
