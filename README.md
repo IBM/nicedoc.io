@@ -139,6 +139,14 @@ These settings could be also encoded at [query-state](https://nmotw.in/query-sta
 
 - [ ] Setup theme color
 
+#### 🚧 Link Preview
+
+> Main Inspiration: [Microlink SDK](https://github.com/microlinkhq/sdk/issues/53)
+
+![](https://user-images.githubusercontent.com/2096101/36397262-46e2c95a-15c2-11e8-8ba5-8c7f384383cc.png)
+
+Add the abbility to see a link preview on hover.
+
 #### 🚧 Star Button
 
 > Main Inspiration: [Clap Button](https://github.com/Kikobeats/react-clap-button)
