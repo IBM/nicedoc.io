@@ -68,10 +68,10 @@ The problem with this kind of name is they are already taken, so need to determi
 
 That includes:
 
-- [x] Choose a Name
-- [ ] Choose a Logo
-- [ ] Choose a Claim
-- [ ] Choose a typography
+- [x] Choose a Name – Should be easy to pronun in English.
+- [ ] Choose a Logo – Should be readable as favicon, Name + Logo and Name + Logo + Claim.
+- [ ] Choose a Claim – Should something minimal that resume the project (eg: Pretty README as service). 
+- [ ] Choose a typography.
 
 #### 🚧 Recover Any GitHub File
 
