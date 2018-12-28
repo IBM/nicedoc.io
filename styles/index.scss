@@ -1,0 +1,18 @@
+@import 'superstylin';
+
+::selection {
+  background-color: #ffe079;
+  color: #000;
+}
+
+h1::selection,
+h2::selection,
+h3::selection,
+h4::selection,
+h5::selection,
+h6::selection,
+img::selection,
+b::selection {
+  background-color: #ffc533;
+}
+

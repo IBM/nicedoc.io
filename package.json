@@ -1,14 +1,49 @@
 {
-  "name": "readme-project",
-  "description": "Recover any GitHub README.md and well printed it to had a beautiful documentation site.",
+  "name": "nicedoc.io",
+  "description": "Pretty README as service",
+  "homepage": "https://nicedoc.io",
   "version": "0.0.0",
   "main": "index.js",
-  "author": "",
+  "author": {
+    "email": "josefrancisco.verdu@gmail.com",
+    "name": "Kiko Beats",
+    "url": "https://github.com/Kikobeats"
+  },
   "repository": {
     "type": "git",
-    "url": "git@github.ibm.com:Francisco-Verdu-Gambin/readme-project.git"
+    "url": "git+ssh://git@github.com/Kikobeats/nicedoc.io.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kikobeats/nicedoc.io/issues"
   },
   "keywords": [],
+  "dependencies": {
+    "@rebass/grid": "~6.0.0-7",
+    "algoliasearch": "~3.32.0",
+    "autoprefixer": "~9.4.3",
+    "babel-plugin-inline-dotenv": "~1.2.0",
+    "babel-plugin-module-resolver": "~3.1.1",
+    "babel-plugin-styled-components": "~1.10.0",
+    "babel-plugin-wrap-in-js": "~1.1.1",
+    "cssnano": "~4.1.8",
+    "glob": "~7.1.3",
+    "isomorphic-unfetch": "~3.0.0",
+    "next": "~7.0.2",
+    "next-routes": "~1.4.2",
+    "node-sass": "~4.11.0",
+    "normalize.css": "~8.0.1",
+    "postcss-easy-import": "~3.0.0",
+    "postcss-focus": "~4.0.0",
+    "postcss-loader": "~3.0.0",
+    "raw-loader": "~1.0.0",
+    "react": "~16.7.0",
+    "react-dom": "~16.7.0",
+    "react-feather": "~1.1.5",
+    "react-markdown": "~4.0.4",
+    "sass-loader": "~7.1.0",
+    "styled-components": "~4.1.3",
+    "superstylin": "~1.0.3"
+  },
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
@@ -22,17 +57,26 @@
     "standard-version": "latest"
   },
   "scripts": {
-    "postrelease": "npm run release:tags && npm run release:github && ci-publish",
+    "build": "NODE_ENV=production next build",
+    "clean": "rm -rf node_modules",
+    "deploy": "now -e NODE_ENV=production --public && now alias && now rm changes --safe --yes",
+    "dev": "NODE_ENV=development node server.js",
+    "lint": "standard-markdown && standard",
+    "postrelease": "npm run release:tags && npm run release:github",
+    "precommit": "lint-staged",
     "prerelease": "npm run update:check && git-authors-cli",
+    "pretest": "npm run lint",
+    "pretty": "prettier-standard index.js {core,test,bin}/**/*.js --single-quote",
     "release": "git add package.json && standard-version -a",
     "release:github": "conventional-github-releaser -p angular",
     "release:tags": "git push --follow-tags origin HEAD:master",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=production node server.js",
+    "test": "exit 0",
     "update": "ncu -a",
     "update:check": "ncu -- --error-level 2"
   },
   "private": true,
-  "license": "ISC",
+  "license": "MIT",
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"

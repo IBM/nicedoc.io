@@ -2,14 +2,14 @@ language: node_js
 
 node_js:
   - lts/*
-  - node
 
-after_success: npm run coverage
+after_success:
+  - test $TRAVIS_BRANCH = "master" && npx now-cd --alias "master=changes.now.sh"
 
 stages:
   - Test
   - name: Release
-    if: branch = master AND commit_message !~ /(release|no-release)/
+    if: commit_message !~ /(release|no-release)/
 
 jobs:
   include:
