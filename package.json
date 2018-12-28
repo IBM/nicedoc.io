@@ -57,6 +57,8 @@
     "clean": "rm -rf node_modules",
     "deploy": "now -e NODE_ENV=production --public && now alias && now rm changes --safe --yes",
     "dev": "NODE_ENV=development node server.js",
+    "docker:build": "docker build --tag registry.ng.bluemix.net/nicedoc/nicedoc .",
+    "docker:push": "docker push registry.ng.bluemix.net/nicedoc/nicedoc:latest",
     "lint": "standard-markdown && standard",
     "postrelease": "npm run release:tags && npm run release:github",
     "precommit": "lint-staged",

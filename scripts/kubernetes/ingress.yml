@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nicedoc-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+spec:
+  tls:
+  - hosts:
+    - nicedocio.us-south.containers.appdomain.cloud
+    secretName: nicedocio
+  rules:
+  - host: nicedocio.us-south.containers.appdomain.cloud
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: nicedoc-app
+          servicePort: 3000
