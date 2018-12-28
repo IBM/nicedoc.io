@@ -4,4 +4,5 @@ const routes = require('next-routes')
 
 module.exports = routes()
   .add('/', 'index')
+  .add('/styleguide', 'styleguide')
   .add('/:org/:repo', 'readme')
