@@ -40,3 +40,5 @@ coverage
 # Secrets
 ############################
 scripts/helm/values.yaml
+scripts/travis/kubernetes/kube-conf.pem
+scripts/travis/kubernetes/kube-conf.yml

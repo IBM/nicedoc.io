@@ -1,28 +1,14 @@
-language: node_js
+language: bash
 
-node_js:
-  - lts/*
+services:
+  - docker
 
-after_success:
-  - test $TRAVIS_BRANCH = "master" && npx now-cd --alias "master=changes.now.sh"
+before_script:
+  - echo "$DOCKER_TOKEN" | docker login -u token --password-stdin registry.ng.bluemix.net
 
-stages:
-  - Test
-  - name: Release
-    if: commit_message !~ /(release|no-release)/
+script:
+  - ./scripts/travis/script.sh
 
-jobs:
-  include:
-    - stage: Release
-      node_js: lts/*
-      install: npm install --no-package-lock
-      before_deploy:
-        - git config user.email "travis@travis-ci.org"
-        - git config user.name "Travis CI"
-        - git remote set-url origin https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git
-      deploy:
-        skip_cleanup: true
-        provider: script
-        script: npm run release
-        on:
-          branch: master
+branches:
+  only:
+    - master
