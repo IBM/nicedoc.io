@@ -4,6 +4,12 @@ dir=$(dirname "$0")
 
 if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
     if [ "$TRAVIS_BRANCH" = "master" ]; then
+        # Build docker image
+        docker build --tag registry.ng.bluemix.net/nicedoc/nicedoc .
+
+        # Push to registry
+        docker push registry.ng.bluemix.net/nicedoc/nicedoc:latest
+
         # Decrypt encrypted files
         openssl aes-256-cbc -k "$TRAVIS_ENCRYPT_PASSWORD" -in "${dir}/kubernetes/kube-conf.yml.enc" -out "${dir}/kubernetes/kube-conf.yml" -d
         openssl aes-256-cbc -k "$TRAVIS_ENCRYPT_PASSWORD" -in "${dir}/kubernetes/kube-conf.pem.enc" -out "${dir}/kubernetes/kube-conf.pem" -d
