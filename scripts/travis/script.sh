@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+set -x
+set -e
+
 dir=$(dirname "$0")
 
 if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
