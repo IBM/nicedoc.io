@@ -20,6 +20,7 @@
   "dependencies": {
     "@rebass/grid": "~6.0.0-7",
     "algoliasearch": "~3.32.0",
+    "express": "~4.16.4",
     "next": "~7.0.2",
     "next-routes": "~1.4.2",
     "react": "~16.7.0",

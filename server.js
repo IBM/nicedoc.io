@@ -1,6 +1,6 @@
 'use strict'
 
-const { createServer } = require('http')
+const express = require('express')
 const next = require('next')
 
 const routes = require('./routes')
@@ -12,8 +12,20 @@ const app = next({ dev })
 const handler = routes.getRequestHandler(app)
 
 app.prepare().then(() => {
-  createServer(handler).listen(port, err => {
-    if (err) throw err
-    console.log(`> Ready on http://localhost:${port}`)
+  const server = express()
+
+  server.get('/api/status', (req, res) => {
+    let deployDate = 'n/a';
+    if (process.env.DEPLOY_DATE) {
+      const date = new Date(parseInt(process.env.DEPLOY_DATE, 10) * 1000)
+      deployDate = date.toISOString()
+    }
+    res.json({ deployDate })
   })
+
+  server.get('*', (req, res) => {
+    handler(req, res)
+  })
+
+  server.listen(port, () => console.log(`> Ready on http://localhost:${port}`))
 })
