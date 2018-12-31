@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: nicedoc-ingress
+  name: {{ .Chart.Name }}-{{ .Release.Name }}
   annotations:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
@@ -15,5 +15,5 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: nicedoc-app
+          serviceName: {{ .Chart.Name }}-{{ .Release.Name }}
           servicePort: 3000

@@ -1,10 +1,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: nicedoc-app
+  name: {{ .Chart.Name }}-{{ .Release.Name }}
 spec:
   selector:
-    app: nicedoc
+    app: {{ .Chart.Name }}-{{ .Release.Name }}
     tier: app
   ports:
   - protocol: TCP

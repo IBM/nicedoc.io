@@ -35,3 +35,8 @@ coverage
 .next
 .envrc
 .envrc
+
+############################
+# Secrets
+############################
+scripts/helm/values.yaml

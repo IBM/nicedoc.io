@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}-{{ .Release.Name }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}-{{ .Release.Name }}
+      tier: app
+  replicas: {{ .Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}-{{ .Release.Name }}
+        tier: app
+        date: "{{ .Release.Time.Seconds }}"
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}-{{ .Release.Name }}
+          image: "registry.ng.bluemix.net/nicedoc/nicedoc:latest"
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 3000
+          env:
+            - name: ALGOLIA_APP_ID
+              value: "{{ .Values.env.ALGOLIA_APP_ID }}"
+            - name: ALGOLIA_API_KEY
+              value: "{{ .Values.env.ALGOLIA_API_KEY }}"
+            - name: ALGOLIA_INDEX_NAME
+              value: "{{ .Values.env.ALGOLIA_INDEX_NAME }}"
+      imagePullSecrets:
+        - name: regcred

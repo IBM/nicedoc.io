@@ -55,10 +55,11 @@
   "scripts": {
     "build": "NODE_ENV=production next build",
     "clean": "rm -rf node_modules",
-    "deploy": "now -e NODE_ENV=production --public && now alias && now rm changes --safe --yes",
+    "deploy": "npm run docker:build && npm run docker:push && npm run helm:deploy",
     "dev": "NODE_ENV=development node server.js",
     "docker:build": "docker build --tag registry.ng.bluemix.net/nicedoc/nicedoc .",
     "docker:push": "docker push registry.ng.bluemix.net/nicedoc/nicedoc:latest",
+    "helm:deploy": "helm upgrade production scripts/helm --install",
     "lint": "standard-markdown && standard",
     "postrelease": "npm run release:tags && npm run release:github",
     "precommit": "lint-staged",
