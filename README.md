@@ -123,7 +123,6 @@ That's include:
 	- [Carbon Design System](https://www.carbondesignsystem.com/) (click dark mode on bottom).
 - [ ]  Choice a paired font to use.
 	- [fontpair](https://fontpair.co)
-- [ ] Choice 
 - [ ] Abbility to switch to Dark mode & remember preferences.
 	- [Building the N26 Dark Mode](https://medium.com/insiden26/building-the-n26-dark-mode-2fc18c2ccdd5)
 	- [Redesigning your product and website for dark mode](https://stuffandnonsense.co.uk/blog/redesigning-your-product-and-website-for-dark-mode)
