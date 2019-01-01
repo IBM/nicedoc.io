@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react'
-import algoliasearch from 'algoliasearch'
+import fetch from 'isomorphic-unfetch'
 import pkg from '../package.json'
+
+const { GITHUB_TOKEN } = process.env
 
 const DEFAULT_META = {
   name: pkg.name,
@@ -10,23 +12,40 @@ const DEFAULT_META = {
   logo: '/static/img/banner.png'
 }
 
-const client = algoliasearch(
-  process.env.ALGOLIA_APP_ID,
-  process.env.ALGOLIA_API_KEY
-)
+export const getMeta = async ({ owner, repo }) => {
+  if (repo.includes('@')) [repo] = repo.split('@')
 
-const index = client.initIndex(process.env.ALGOLIA_INDEX_NAME)
+  const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`, {
+    headers: {
+      Authorization: `token ${GITHUB_TOKEN}`
+    }
+  })
 
-export const getPackageInfo = async pkgName => {
-  try {
-    return await index.getObject(pkgName)
-  } catch (err) {
-    return {}
-  }
+  const meta = await res.json()
+  console.log('meta', meta)
+  return meta
 }
 
-export const buildMeta = obj => {
-  const meta = Object.assign({}, DEFAULT_META, obj)
+export const getReadme = async ({ owner, repo }) => {
+  let ref = 'master'
+  if (repo.includes('@')) [repo, ref] = repo.split('@')
+
+  const res = await fetch(
+    `https://api.github.com/repos/${owner}/${repo}/readme?ref=${ref}`,
+    {
+      headers: {
+        Accept: 'application/vnd.github.v3.raw',
+        Authorization: `token ${GITHUB_TOKEN}`
+      }
+    }
+  )
+
+  const body = await res.text()
+  return body
+}
+
+export const buildMeta = opts => {
+  const meta = Object.assign({}, DEFAULT_META, opts)
 
   return (
     <Fragment>
