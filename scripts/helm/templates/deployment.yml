@@ -31,12 +31,8 @@ spec:
               path: /api/status
               port: http
           env:
-            - name: ALGOLIA_APP_ID
-              value: "{{ .Values.env.ALGOLIA_APP_ID }}"
-            - name: ALGOLIA_API_KEY
-              value: "{{ .Values.env.ALGOLIA_API_KEY }}"
-            - name: ALGOLIA_INDEX_NAME
-              value: "{{ .Values.env.ALGOLIA_INDEX_NAME }}"
+            - name: GITHUB_TOKEN
+              value: "{{ .Values.env.GITHUB_TOKEN }}"
             - name: DEPLOY_DATE
               value: "{{ .Release.Time.Seconds }}"
       imagePullSecrets:
