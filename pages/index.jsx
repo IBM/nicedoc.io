@@ -36,15 +36,21 @@ export default class Index extends Component {
             </p>
             <h2>How</h2>
             <p>
-              From the most simple way: Just point the url against{' '}
-              <b>nicedoc.io</b> instead of github.com
+              Just point the url against <b>nicedoc.io</b> instead of github.com
             </p>
 
             <p>
-              E.g:{' '}
+              e.g:{' '}
               <Link
-                href='/substack/stream-handbook'
-                children='nicedoc.io/substack/stream-handbook'
+                href='/rebassjs/rebass'
+                children='nicedoc.io/rebassjs/rebass'
+              />{' '}
+            </p>
+            <p>
+              You can point to any git reference, e.g{' '}
+              <Link
+                href='/rebassjs/rebass'
+                children='nicedoc.io/rebassjs/rebass@v2'
               />{' '}
             </p>
             <p>That's all!</p>

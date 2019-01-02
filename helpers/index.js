@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import fetch from 'isomorphic-unfetch'
+import mem from 'mem'
 import pkg from '../package.json'
 
 const { GITHUB_TOKEN } = process.env
@@ -12,7 +13,15 @@ const DEFAULT_META = {
   logo: '/static/img/banner.png'
 }
 
-export const getMeta = async ({ owner, repo }) => {
+const ONE_MIN_MS = 60 * 1000
+
+const MEM_OPTS = {
+  maxAge: ONE_MIN_MS * 5
+}
+
+const memoize = fn => mem(fn, MEM_OPTS)
+
+export const getMeta = memoize(async ({ owner, repo }) => {
   if (repo.includes('@')) [repo] = repo.split('@')
 
   const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`, {
@@ -22,11 +31,10 @@ export const getMeta = async ({ owner, repo }) => {
   })
 
   const meta = await res.json()
-  console.log('meta', meta)
   return meta
-}
+})
 
-export const getReadme = async ({ owner, repo }) => {
+export const getReadme = memoize(async ({ owner, repo }) => {
   let ref = 'master'
   if (repo.includes('@')) [repo, ref] = repo.split('@')
 
@@ -42,7 +50,7 @@ export const getReadme = async ({ owner, repo }) => {
 
   const body = await res.text()
   return body
-}
+})
 
 export const buildMeta = opts => {
   const meta = Object.assign({}, DEFAULT_META, opts)
