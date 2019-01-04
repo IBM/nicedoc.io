@@ -32,6 +32,8 @@
     "react": "~16.7.0-alpha.2",
     "react-dom": "~16.7.0-alpha.2",
     "react-markdown": "~4.0.4",
+    "remark": "~10.0.1",
+    "remark-html": "~9.0.0",
     "scrollprogress": "~3.0.2",
     "styled-components": "~4.1.3",
     "superstylin": "~1.0.3"

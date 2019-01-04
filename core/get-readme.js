@@ -4,10 +4,18 @@ import fetch from 'isomorphic-unfetch'
 import { TAGS } from 'html-urls'
 import cheerio from 'cheerio'
 import url from 'url'
-
+import remark from 'remark'
+import remarkHtml from 'remark-html'
 import memoize from './memoize'
 
 const { GITHUB_TOKEN } = process.env || {}
+
+const remarkProcessor = remark().use(remarkHtml)
+
+const md2html = async md => {
+  const { contents } = await remarkProcessor.process(md)
+  return contents
+}
 
 const loadHTML = html =>
   cheerio.load(html, {
@@ -36,8 +44,9 @@ export default memoize(async ({ owner, repo }) => {
     }
   )
 
-  const body = await res.text()
-  const $ = loadHTML(body)
+  const markdown = await res.text()
+  const html = await md2html(markdown)
+  const $ = loadHTML(html)
 
   forEach(TAGS, (htmlTags, propName) => {
     $(htmlTags.join(',')).each(function () {
