@@ -2,25 +2,22 @@ import React, { Fragment } from 'react'
 import { Container } from 'components'
 import { getReadme, getMeta, buildMeta } from 'core'
 import ScrollProgress from 'scrollprogress'
-import Markdown from 'react-markdown'
 import NProgress from 'nprogress'
 
 import Head from 'next/head'
 
-export default function Readme(props) {
+export default function Readme (props) {
   useProgressBar()
   const { meta, readme } = props
   return (
     <Fragment>
       <Head>{buildMeta(meta)}</Head>
-      <Container>
-        <Markdown escapeHtml={false} source={readme} />
-      </Container>
+      <Container dangerouslySetInnerHTML={{ __html: readme }} />
     </Fragment>
   )
 }
 
-Readme.getInitialProps = async ({ query}) => {
+Readme.getInitialProps = async ({ query }) => {
   if (query) {
     const [readme, meta] = await Promise.all([
       getReadme(query),
@@ -30,7 +27,7 @@ Readme.getInitialProps = async ({ query}) => {
   }
 }
 
-function useProgressBar() {
+function useProgressBar () {
   React.useEffect(() => {
     NProgress.configure({
       trickle: false,
