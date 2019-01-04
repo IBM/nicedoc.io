@@ -31,9 +31,9 @@
     "nprogress": "~0.2.0",
     "react": "~16.7.0-alpha.2",
     "react-dom": "~16.7.0-alpha.2",
-    "react-markdown": "~4.0.4",
     "remark": "~10.0.1",
     "remark-html": "~9.0.0",
+    "remark-preset-lint-recommended": "~3.0.2",
     "scrollprogress": "~3.0.2",
     "styled-components": "~4.1.3",
     "superstylin": "~1.0.3"
@@ -49,7 +49,6 @@
     "babel-plugin-wrap-in-js": "latest",
     "conventional-github-releaser": "latest",
     "cssnano": "latest",
-    "eslint-plugin-jsx-a11y": "latest",
     "finepack": "latest",
     "git-authors-cli": "latest",
     "glob": "latest",
@@ -109,10 +108,7 @@
     }
   },
   "standard": {
-    "parser": "babel-eslint",
-    "plugins": [
-      "jsx-a11y"
-    ]
+    "parser": "babel-eslint"
   },
   "standard-version": {
     "scripts": {

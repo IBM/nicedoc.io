@@ -13,6 +13,10 @@ img {
   max-width: 100%;
 }
 
+pre>code {
+  display: flex;
+}
+
 ::selection {
   background-color: #ffe079;
   color: #000;
