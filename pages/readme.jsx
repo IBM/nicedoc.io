@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { useEffect, Fragment } from 'react'
 import { Container } from 'components'
 import { getReadme, getMeta, buildMeta } from 'core'
 import ScrollProgress from 'scrollprogress'
@@ -6,7 +6,7 @@ import NProgress from 'nprogress'
 
 import Head from 'next/head'
 
-export default function Readme (props) {
+function Readme (props) {
   useProgressBar()
   const { meta, readme } = props
   return (
@@ -19,19 +19,17 @@ export default function Readme (props) {
 
 Readme.getInitialProps = async ({ query }) => {
   if (query) {
-    const [readme, meta] = await Promise.all([
-      getReadme(query),
-      getMeta(query)
-    ])
+    const [readme, meta] = await Promise.all([getReadme(query), getMeta(query)])
     return { meta, readme }
   }
 }
 
 function useProgressBar () {
-  React.useEffect(() => {
+  useEffect(() => {
     NProgress.configure({
       trickle: false,
       trickleSpeed: 0,
+      minimum: 0.001,
       speed: 0,
       showSpinner: false
     }).start()
@@ -43,3 +41,5 @@ function useProgressBar () {
     return () => progressObserver.destroy()
   }, [])
 }
+
+export default Readme
