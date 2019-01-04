@@ -1,10 +1,10 @@
-import React, { Component, Fragment } from 'react'
-import { Box, Flex, Link } from 'components'
+import React, { Component } from 'react'
+import { Container, Box, Flex, Link } from 'components'
 
 export default class Index extends Component {
   render () {
     return (
-      <Fragment>
+      <Container>
         <Flex flexDirection='column'>
           <Flex
             flexDirection='column'
@@ -56,7 +56,7 @@ export default class Index extends Component {
             <p>That's all!</p>
           </Flex>
         </Flex>
-      </Fragment>
+      </Container>
     )
   }
 }

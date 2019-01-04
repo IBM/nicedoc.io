@@ -1,9 +1,6 @@
-import React, { Fragment } from 'react'
-import fetch from 'isomorphic-unfetch'
-import mem from 'mem'
-import pkg from '../package.json'
+import { Fragment } from 'react'
 
-const { GITHUB_TOKEN } = process.env
+import pkg from '../package.json'
 
 const DEFAULT_META = {
   name: pkg.name,
@@ -13,46 +10,7 @@ const DEFAULT_META = {
   logo: '/static/img/banner.png'
 }
 
-const ONE_MIN_MS = 60 * 1000
-
-const MEM_OPTS = {
-  maxAge: ONE_MIN_MS * 5
-}
-
-const memoize = fn => mem(fn, MEM_OPTS)
-
-export const getMeta = memoize(async ({ owner, repo }) => {
-  if (repo.includes('@')) [repo] = repo.split('@')
-
-  const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`, {
-    headers: {
-      Authorization: `token ${GITHUB_TOKEN}`
-    }
-  })
-
-  const meta = await res.json()
-  return meta
-})
-
-export const getReadme = memoize(async ({ owner, repo }) => {
-  let ref = 'master'
-  if (repo.includes('@')) [repo, ref] = repo.split('@')
-
-  const res = await fetch(
-    `https://api.github.com/repos/${owner}/${repo}/readme?ref=${ref}`,
-    {
-      headers: {
-        Accept: 'application/vnd.github.v3.raw',
-        Authorization: `token ${GITHUB_TOKEN}`
-      }
-    }
-  )
-
-  const body = await res.text()
-  return body
-})
-
-export const buildMeta = opts => {
+export default opts => {
   const meta = Object.assign({}, DEFAULT_META, opts)
 
   return (
@@ -66,7 +24,11 @@ export const buildMeta = opts => {
       <meta name='description' content={meta.description} />
       <meta name='image' content={meta.image} />
       <link rel='canonical' href={meta.url} />
-      <title children={meta.title || `${meta.name} | ${meta.description}`} />
+      <title
+        children={
+          meta.title || `${meta.full_name || meta.name}: ${meta.description}`
+        }
+      />
       <meta name='author' content={meta.author} />
       <meta
         name='viewport'

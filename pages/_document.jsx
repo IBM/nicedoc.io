@@ -1,9 +1,7 @@
-import { Fragment } from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 import stylesheet from 'styles/index.scss'
-
-import { buildMeta } from 'helpers'
+import { buildMeta } from 'core'
 
 export default class MyDocument extends Document {
   static getInitialProps ({ renderPage }) {
@@ -24,11 +22,7 @@ export default class MyDocument extends Document {
           <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
         </Head>
         <body>
-          <Fragment>
-            <article style={{ margin: '0 auto', maxWidth: '700px' }}>
-              <Main />
-            </article>
-          </Fragment>
+          <Main />
           <NextScript />
         </body>
       </html>
