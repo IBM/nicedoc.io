@@ -1,6 +1,6 @@
 import React, { useEffect, Fragment } from 'react'
-import { Container } from 'components'
 import { getReadme, getMeta, buildMeta } from 'core'
+import { Container } from 'components'
 import ScrollProgress from 'scrollprogress'
 import NProgress from 'nprogress'
 import AnchorJS from 'anchor-js'

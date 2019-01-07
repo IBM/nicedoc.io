@@ -1,5 +1,6 @@
 @import 'superstylin';
 @import './nprogress.css';
+@import 'codecopy/umd/codecopy.min.css';
 
 html {
   font-size: calc(1rem + 2px + ((100vw - 600px) / 250));
@@ -17,6 +18,10 @@ a {
 .anchorjs-link {
   color: #d8d8d8;
   font-size: 70%;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 img {
