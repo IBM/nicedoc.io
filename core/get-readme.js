@@ -7,8 +7,11 @@ import url from 'url'
 import remark from 'remark'
 import remarkHtml from 'remark-html'
 import remarkPreset from 'remark-preset-lint-recommended'
+import AnchorJS from 'anchor-js'
 
 import memoize from './memoize'
+
+const anchor = new AnchorJS()
 
 const { GITHUB_TOKEN } = process.env || {}
 
@@ -68,6 +71,7 @@ export default memoize(async ({ owner, repo }) => {
   const html = await md2html(markdown, { owner, repo })
   const $ = loadHTML(html)
 
+  // rewrite relative path into absolute
   forEach(TAGS, (htmlTags, propName) => {
     $(htmlTags.join(',')).each(function () {
       const el = $(this)
@@ -82,6 +86,12 @@ export default memoize(async ({ owner, repo }) => {
         )
       }
     })
+  })
+
+  // add anchor link
+  $('h1, h2, h3, h4, h5, h6').each(function () {
+    const el = $(this)
+    el.attr('id', anchor.urlify(el.text()))
   })
 
   return $.html()

@@ -3,6 +3,8 @@ import Head from 'next/head'
 import NextLink from 'next/link'
 import styled from 'styled-components'
 
+import { constants } from 'styles'
+
 const linkStyle = {
   margin: '0 10px 0 0'
 }
@@ -16,7 +18,7 @@ const Link = ({ style, href, prefetch = false, ...props }) => (
 const Container = styled('div')`
   margin-left: auto;
   margin-right: auto;
-  max-width: 650px;
+  max-width: ${constants.layout}px;
 `
 
 export { Container, Link, Head, Box, Flex }

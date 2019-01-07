@@ -3,11 +3,14 @@ import { Container } from 'components'
 import { getReadme, getMeta, buildMeta } from 'core'
 import ScrollProgress from 'scrollprogress'
 import NProgress from 'nprogress'
+import AnchorJS from 'anchor-js'
 
 import Head from 'next/head'
 
 function Readme (props) {
-  useProgressBar()
+  useReadProgress()
+  useAnchorTitles()
+
   const { meta, readme } = props
   return (
     <Fragment>
@@ -24,7 +27,13 @@ Readme.getInitialProps = async ({ query }) => {
   }
 }
 
-function useProgressBar () {
+function useAnchorTitles () {
+  useEffect(() => {
+    new AnchorJS({ icon: '#' }).add('h2, h3, h4, h5, h6')
+  })
+}
+
+function useReadProgress () {
   useEffect(() => {
     NProgress.configure({
       trickle: false,

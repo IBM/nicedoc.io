@@ -19,6 +19,7 @@
   "keywords": [],
   "dependencies": {
     "@rebass/grid": "~6.0.0-7",
+    "anchor-js": "~4.2.0",
     "cheerio": "~1.0.0-rc.2",
     "express": "~4.16.4",
     "html-urls": "~2.3.1",

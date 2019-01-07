@@ -9,12 +9,26 @@ html {
   text-decoration-skip-ink: 'auto';
 }
 
+a {
+  color: #067df7;
+  text-decoration: none;
+}
+
+.anchorjs-link {
+  color: #d8d8d8;
+  font-size: 70%;
+}
+
 img {
   max-width: 100%;
 }
 
 pre>code {
   display: flex;
+}
+
+small {
+  letter-spacing: 0.005em;
 }
 
 ::selection {
