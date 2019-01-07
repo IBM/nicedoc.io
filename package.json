@@ -38,7 +38,8 @@
     "remark-preset-lint-recommended": "~3.0.2",
     "scrollprogress": "~3.0.2",
     "styled-components": "~4.1.3",
-    "superstylin": "~1.0.3"
+    "superstylin": "~1.0.3",
+    "zoom-vanilla.js": "~2.0.6"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",

@@ -94,5 +94,11 @@ export default memoize(async ({ owner, repo }) => {
     el.attr('id', anchor.urlify(el.text()))
   })
 
+  // zoom on images
+  $('img').each(function () {
+    const el = $(this)
+    el.attr('data-action', 'zoom')
+  })
+
   return $.html()
 })

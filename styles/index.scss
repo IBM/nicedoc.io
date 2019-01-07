@@ -1,6 +1,7 @@
 @import 'superstylin';
 @import './nprogress.css';
 @import 'codecopy/umd/codecopy.min.css';
+@import 'zoom-vanilla.js/dist/zoom.css';
 
 html {
   font-size: calc(1rem + 2px + ((100vw - 600px) / 250));

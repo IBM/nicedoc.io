@@ -1,6 +1,5 @@
 import React from 'react'
 import App, { Container } from 'next/app'
-import codecopy from 'codecopy'
 
 export default class MyApp extends App {
   static async getInitialProps ({ Component, router, ctx }) {
@@ -14,7 +13,12 @@ export default class MyApp extends App {
   }
 
   componentDidMount () {
-    codecopy('pre')
+    const { navigator } = global.window
+    const isSlowConnection = navigator.connection.effectiveType.includes('2g')
+    if (!isSlowConnection) {
+      require('zoom-vanilla.js')
+      require('codecopy')('pre')
+    }
   }
 
   render () {
