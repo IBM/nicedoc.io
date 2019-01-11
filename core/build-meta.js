@@ -6,8 +6,8 @@ const DEFAULT_META = {
   name: pkg.name,
   description: pkg.description,
   url: pkg.homepage,
-  image: '/static/img/logo.png',
-  logo: '/static/img/banner.png'
+  image: '/static/img/banner.png',
+  logo: '/static/img/logo.png'
 }
 
 export default opts => {
@@ -22,7 +22,8 @@ export default opts => {
       {/* <!-- Basic --> */}
       <meta charSet='utf-8' />
       <meta httpEquiv='X-UA-Compatible' content='IE=edge,chrome=1' />
-      <link rel='icon' href='/static/favicon.ico' type='image/x-icon' />
+      <link rel='icon' type='image/png' href={meta.logo} />
+
       {/* <!-- Search Engine --> */}
       <meta name='date' content={meta.updatedAt} />
       <meta name='description' content={meta.description} />
