@@ -25,6 +25,7 @@ export default opts => {
       <link rel='icon' type='image/png' href={meta.logo} />
 
       {/* <!-- Search Engine --> */}
+      <meta name='application-name' content='nicedoc.io' />
       <meta name='date' content={meta.updatedAt} />
       <meta name='description' content={meta.description} />
       <meta name='image' content={meta.image} />
@@ -41,6 +42,7 @@ export default opts => {
       <meta name='twitter:description' content={meta.description} />
       <meta name='twitter:image' content={meta.image} />
       {/* <!-- Open Graph general (Facebook, Pinterest & Google+) --> */}
+      <meta property='og:site_name' content='nicedoc.io' />
       <meta property='og:title' content={name} />
       <meta property='og:logo' content={meta.logo} />
       <meta property='og:description' content={meta.description} />
