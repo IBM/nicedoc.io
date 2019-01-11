@@ -22,6 +22,7 @@
     "anchor-js": "~4.2.0",
     "cheerio": "~1.0.0-rc.2",
     "codecopy": "~1.0.2",
+    "emojilib": "~2.4.0",
     "express": "~4.16.4",
     "html-urls": "~2.3.1",
     "is-relative-url": "~2.0.0",

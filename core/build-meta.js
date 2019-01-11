@@ -12,6 +12,8 @@ const DEFAULT_META = {
 
 export default opts => {
   const meta = Object.assign({}, DEFAULT_META, opts)
+  const name =
+    meta.owner && meta.repo ? `${meta.owner}/${meta.repo}` : meta.name
 
   return (
     <Fragment>
@@ -24,11 +26,7 @@ export default opts => {
       <meta name='description' content={meta.description} />
       <meta name='image' content={meta.image} />
       <link rel='canonical' href={meta.url} />
-      <title
-        children={
-          meta.title || `${meta.full_name || meta.name}: ${meta.description}`
-        }
-      />
+      <title children={`${name}: ${meta.description}`} />
       <meta name='author' content={meta.author} />
       <meta
         name='viewport'
