@@ -16,8 +16,8 @@ export default class MyDocument extends Document {
   render () {
     return (
       <html>
+        {buildMeta()}
         <Head>
-          {buildMeta()}
           {this.props.styleTags}
           <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
         </Head>

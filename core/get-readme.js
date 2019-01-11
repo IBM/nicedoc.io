@@ -100,5 +100,9 @@ export default memoize(async ({ owner, repo }) => {
     el.attr('data-action', 'zoom')
   })
 
-  return $.html()
+  const meta = {
+    image: $('img').attr('src')
+  }
+
+  return { meta, html: $.html() }
 })

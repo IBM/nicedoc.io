@@ -14,7 +14,7 @@ function Readme (props) {
   const { meta, readme } = props
   return (
     <Fragment>
-      <Head>{buildMeta(meta)}</Head>
+      {buildMeta(meta)}
       <Container dangerouslySetInnerHTML={{ __html: readme }} />
     </Fragment>
   )
@@ -22,8 +22,17 @@ function Readme (props) {
 
 Readme.getInitialProps = async ({ query }) => {
   if (query) {
-    const [readme, meta] = await Promise.all([getReadme(query), getMeta(query)])
-    return { meta, readme }
+    const [readme, metaProps] = await Promise.all([
+      getReadme(query),
+      getMeta(query)
+    ])
+
+    const { meta, html } = readme
+
+    return {
+      meta: { ...meta, ...metaProps },
+      readme: html
+    }
   }
 }
 
