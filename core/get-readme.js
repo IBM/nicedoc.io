@@ -1,3 +1,4 @@
+import ReactDOMServer from 'react-dom/server'
 import isRelativeUrl from 'is-relative-url'
 import { isEmpty, forEach } from 'lodash'
 import fetch from 'isomorphic-unfetch'
@@ -8,6 +9,8 @@ import remark from 'remark'
 import remarkHtml from 'remark-html'
 import remarkPreset from 'remark-preset-lint-recommended'
 import AnchorJS from 'anchor-js'
+
+import ExternalIcon from 'components/link/external-icon'
 
 import memoize from './memoize'
 
@@ -98,6 +101,14 @@ export default memoize(async ({ owner, repo }) => {
   $('img').each(function () {
     const el = $(this)
     el.attr('data-action', 'zoom')
+  })
+
+  // add external icon for non internal urls
+  $('a:not(a:has(img))').each(function () {
+    const el = $(this)
+    el.attr('rel', 'noopener noreferrer')
+    el.attr('target', '_blank')
+    el.append(ReactDOMServer.renderToString(<ExternalIcon />))
   })
 
   const meta = {
