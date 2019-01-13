@@ -13,6 +13,7 @@ import AnchorJS from 'anchor-js'
 import ExternalIcon from 'components/link/external-icon'
 
 import memoize from './memoize'
+import { getTableOfContents } from './get-table-of-contents'
 
 const anchor = new AnchorJS()
 
@@ -115,5 +116,7 @@ export default memoize(async ({ owner, repo }) => {
     image: $('img').attr('src')
   }
 
-  return { meta, html: $.html() }
+  const toc = await md2html(await getTableOfContents(markdown));
+
+  return { meta, html: $.html(), toc }
 })
