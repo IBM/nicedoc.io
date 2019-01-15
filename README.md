@@ -12,29 +12,29 @@ We can't write your project documentation, but we can help creating a bridge to 
 
 Nowadays is very common use git to control version over text. For example, take a look at [RFC spec for the next web API](https://github.com/drufball/layered-apis), or any of the [TC39 Proposals](https://prop-tc39.now.sh/).
 
-That's a great thing, but you are limited to see the documentation based on how GitHub decide to render the markdown frontend layer.
+That's a great thing, but you are limited to see the documentation based on how GitHub decides to render the markdown frontend layer.
 
-In addition, you need to enter into GitHub portal every time, adding a lot of noise that are not related with what you want to do: read the spec.
+In addition, you need to browse GitHub each time, adding a lot of noise that is not related with what you want to do: read the spec.
 
-Normally, when a project tends to growth, they decide create their own documentation portal using tools like [Docsify](https://docsify.js.org/#/) or [Docusaurus](https://docusaurus.io/).
+Normally, when a project tends to growth, they decide to create their own documentation portal using tools like [Docsify](https://docsify.js.org/#/) or [Docusaurus](https://docusaurus.io/).
 
 The problem with these tools is that they are in the other point of friction: They add an extra layer of maintenance that could be unaffordable for many projects. 
 
-Just you want to read docs, and you want that people spend more time writing that by keeping the documentation portal.
+You just want to read docs, and you want people to spend more time writing than by keeping the documentation portal.
 
 ## How
 
-We want to create a **zero configuration** documentation portal for any project. This means it doesn't exist friction to have your own documentation online. 
+We want to create a **zero configuration** documentation portal for any project. This means there's no friction on publishing your own documentation online. 
 
-For do that, we are going to use **GitHub as backend**.
+For doing that, we are going to use **GitHub as backend**.
 
 That's a limitation, but also an advantage: If your documentation file is on GitHub, we can recover it.
 
-After that, we wan to render the markdown file alone in a portal. Just documentation, no more.
+After that, we want to render the markdown file alone in a portal. Just documentation, no more.
 
 The zero configuration means you need to do nothing additional: The site portal will be minimal with good defaults to render any document. That means a lot related to visual text rhythm, space between lines, typographies, etc.
 
-In case that you desire, you can modify the defaults visual settings to adapt your documentation and feeling it a bit different from the rest.
+If you wish you can modify the defaults visual settings to adapt your documentation and feeling it a bit different from the rest.
 
 ## Roadmap
 
@@ -47,7 +47,7 @@ In case that you desire, you can modify the defaults visual settings to adapt yo
 
 ### ▶️ Iteration 1
 
-The goal of the first iteration is setup a public website for read any documentation file hosted on GitHub.
+The goal of the first iteration is to set up a public website for reading any documentation file hosted on GitHub.
 
 #### ✅ Get a Branding
 
