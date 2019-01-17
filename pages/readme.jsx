@@ -5,8 +5,6 @@ import ScrollProgress from 'scrollprogress'
 import NProgress from 'nprogress'
 import AnchorJS from 'anchor-js'
 
-import Head from 'next/head'
-
 function Readme (props) {
   useReadProgress()
   useAnchorTitles()

@@ -1,17 +1,17 @@
+import remarkPreset from 'remark-preset-lint-recommended'
 import ReactDOMServer from 'react-dom/server'
 import isRelativeUrl from 'is-relative-url'
 import { isEmpty, forEach } from 'lodash'
 import fetch from 'isomorphic-unfetch'
-import { TAGS } from 'html-urls'
-import cheerio from 'cheerio'
-import url from 'url'
-import remark from 'remark'
 import remarkHtml from 'remark-html'
-import remarkPreset from 'remark-preset-lint-recommended'
+import { TAGS } from 'html-urls'
 import AnchorJS from 'anchor-js'
+import cheerio from 'cheerio'
+import remark from 'remark'
+import utilPath from 'path'
+import url from 'url'
 
 import ExternalIcon from 'components/link/external-icon'
-
 import memoize from './memoize'
 
 const anchor = new AnchorJS()
@@ -56,19 +56,24 @@ const resolveUrl = (from, to) => {
   return url.resolve(from, to)
 }
 
-export default memoize(async ({ owner, repo }) => {
+const normalizeQueryParams = ({ owner, repo, path = '' }) => {
   let ref = 'master'
   if (repo.includes('@')) [repo, ref] = repo.split('@')
+  if (!path.endsWith('.md')) path = utilPath.join(path, 'README.md')
+  return { owner, repo, path, ref }
+}
 
-  const res = await fetch(
-    `https://api.github.com/repos/${owner}/${repo}/readme?ref=${ref}`,
-    {
-      headers: {
-        Accept: 'application/vnd.github.v3.raw',
-        Authorization: `token ${GITHUB_TOKEN}`
-      }
+export default memoize(async query => {
+  const { owner, repo, path, ref } = normalizeQueryParams(query)
+
+  const apiEndpoint = `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${ref}`
+
+  const res = await fetch(apiEndpoint, {
+    headers: {
+      Accept: 'application/vnd.github.v3.raw',
+      Authorization: `token ${GITHUB_TOKEN}`
     }
-  )
+  })
 
   const markdown = await res.text()
   const html = await md2html(markdown, { owner, repo })
