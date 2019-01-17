@@ -97,18 +97,23 @@ export default memoize(async ({ owner, repo }) => {
     el.attr('id', anchor.urlify(el.text()))
   })
 
+  const externalLink = (el, { appendIcon = true } = {}) => {
+    el.attr('rel', 'noopener noreferrer')
+    el.attr('target', '_blank')
+    if (appendIcon) el.append(ReactDOMServer.renderToString(<ExternalIcon />))
+  }
+
   // zoom on images
   $('img').each(function () {
     const el = $(this)
-    el.attr('data-action', 'zoom')
+    const parentLink = el.closest('a')[0]
+    if (!parentLink) el.attr('data-action', 'zoom')
+    else externalLink($(parentLink), { appendIcon: false })
   })
 
   // add external icon for non internal urls
   $('a:not(a:has(img))').each(function () {
-    const el = $(this)
-    el.attr('rel', 'noopener noreferrer')
-    el.attr('target', '_blank')
-    el.append(ReactDOMServer.renderToString(<ExternalIcon />))
+    externalLink($(this))
   })
 
   const meta = {
