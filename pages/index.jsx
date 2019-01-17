@@ -12,7 +12,10 @@ export default class Index extends Component {
             alignItems='center'
             as='header'
           >
-            <h1 style={{ marginTop: 0 }}>nicedoc.io</h1>
+            <img
+              style={{ marginTop: 0, maxWidth: '12rem' }}
+              src='/static/logo.svg'
+            />
             <Box style={{ textAlign: 'center' }}>
               <p style={{ marginBottom: '4px' }}>Pretty README as service</p>
               <code>nicedoc.io/:org/:repo</code>
