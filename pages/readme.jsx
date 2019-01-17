@@ -38,7 +38,7 @@ Readme.getInitialProps = async ({ query }) => {
 
 function useAnchorTitles () {
   useEffect(() => {
-    new AnchorJS({ icon: '#' }).add('h2, h3, h4, h5, h6')
+    new AnchorJS({ icon: '#' }).add('h1, h2, h3, h4, h5, h6')
   })
 }
 

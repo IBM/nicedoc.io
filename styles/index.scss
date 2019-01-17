@@ -2,6 +2,34 @@
 @import './nprogress.css';
 @import 'codecopy/umd/codecopy.min.css';
 @import 'zoom-vanilla.js/dist/zoom.css';
+:root {
+  --white1: #fcfcfc;
+  --white2: #f9f9f9;
+  --white3: #f6f6f6;
+  --white4: #f3f3f3;
+  --blue1: #C0E6FF;
+  --blue2: #7CC7FF;
+  --blue3: #5AAAFA;
+  --blue4: #5596E6;
+  --blue5: #4178BE;
+  --blue6: #325C80;
+  --blue7: #264A60;
+  --blue8: #1D3649;
+  --blue9: #152935;
+  --blue10: #010205;
+  --gray1: #eaeaea;
+  --gray2: #d8d8d8;
+  --gray3: #c0bfc0;
+  --gray4: #a6a5a6;
+  --gray5: #949394;
+  --gray6: #777677;
+  --gray7: #595859;
+  --gray8: #464646;
+  --gray9: #343334;
+  --gray10: #272727;
+  --sans: -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial, sans-serif;
+  --code: Consolas, monaco, monospace;
+}
 
 html {
   font-size: calc(1rem + 2px + ((100vw - 600px) / 250));
@@ -11,8 +39,29 @@ html {
   text-decoration-skip-ink: 'auto';
 }
 
+body {
+  background-color: var(--white3);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  display: flex;
+  align-items: center;
+}
+
+code {
+  font-family: var(--code);
+  border-radius: 5px;
+  background-color: rgba(27, 31, 35, .05);
+  padding: 4px 8px;
+}
+
 a {
-  color: #00b5ff;
+  color: #008fff; // #0064ff;
   text-decoration: none;
 }
 
@@ -53,4 +102,3 @@ code::selection,
 b::selection {
   background-color: #ffc533;
 }
-

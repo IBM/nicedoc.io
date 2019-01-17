@@ -25,5 +25,5 @@ export const media = Object.keys(sizes).reduce(
 )
 
 export const constants = {
-  layout: 650
+  layout: 550
 }
