@@ -12,7 +12,6 @@ const DEFAULT_META = {
 
 export default opts => {
   const meta = Object.assign({}, DEFAULT_META, opts)
-
   const name = meta.repo || meta.name
   const fullName =
     meta.owner && meta.repo ? `${meta.owner}/${meta.repo}` : meta.name
@@ -30,7 +29,7 @@ export default opts => {
       <meta name='description' content={meta.description} />
       <meta name='image' content={meta.image} />
       <link rel='canonical' href={meta.url} />
-      <title children={`${fullName}: ${meta.description}`} />
+      <title children={meta.title || `${fullName}: ${meta.description}`} />
       <meta name='author' content={meta.owner} />
       <meta
         name='viewport'
