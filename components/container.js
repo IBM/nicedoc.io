@@ -11,6 +11,7 @@ Container.propTypes = {
 }
 
 Container.defaultProps = {
+  as: 'article',
   m: 'auto',
   maxWidth: layout
 }
