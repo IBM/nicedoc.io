@@ -1,8 +1,5 @@
 import { lib as emojiLib } from 'emojilib'
-import fetch from 'isomorphic-unfetch'
 import { get } from 'lodash'
-
-import memoize from './memoize'
 
 const RE_EMOJI_KEYWORD = /:\S*:/g
 
@@ -15,39 +12,37 @@ const emojiKeyword = str => {
   }, str)
 }
 
-const { GITHUB_TOKEN } = process.env || {}
-
-const mapMeta = async payload => {
+const mapMeta = async (payload, { ref }) => {
   const owner = get(payload, 'owner.login')
   const repo = get(payload, 'name')
+  const repoUrl = get(payload, 'html_url')
 
   return {
     url: `https://nicedoc.io/${owner}/${repo}`,
-    originalUrl: get(payload, 'html_url'),
+    githubUrl: `${repoUrl}/tree/${ref}`,
     description: emojiKeyword(get(payload, 'description')),
     owner: get(payload, 'owner.login'),
     repo: get(payload, 'name'),
     logo: get(payload, 'owner.avatar_url'),
     license: get(payload, 'license.name'),
+    licenseUrl: get(payload, 'license.url', '').replace(
+      'https://api.github.com',
+      'https://choosealicense.com'
+    ),
     homepage: get(payload, 'homepage'),
     stars: get(payload, 'stargazers_count'),
     watchers: get(payload, 'watchers_count'),
     forks: get(payload, 'forks_count'),
     createdAt: get(payload, 'created_at'),
-    updatedAt: get(payload, 'updated_at')
+    updatedAt: get(payload, 'updated_at'),
+    activityUrl: `${repoUrl}/commits/${ref}`
   }
 }
 
-export default memoize(async ({ owner, repo }) => {
-  if (repo.includes('@')) [repo] = repo.split('@')
-
-  const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`, {
-    headers: {
-      Authorization: `token ${GITHUB_TOKEN}`
-    }
-  })
-
+export default ({ normalizeParams, fetchRepo }) => async query => {
+  const { owner, ref, repo } = normalizeParams(query)
+  const res = await fetchRepo({ owner, repo })
   const payload = await res.json()
-  const meta = await mapMeta(payload)
+  const meta = await mapMeta(payload, { ref })
   return meta
-})
+}

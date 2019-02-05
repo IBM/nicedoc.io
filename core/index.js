@@ -1,5 +1,6 @@
-import getReadme from './get-readme'
-import getMeta from './get-meta'
-import buildMeta from './build-meta'
+import createBuildReadme from './build-readme'
+import memoize from './memoize'
+import { normalizeParams, fetchReadme } from './github'
 
-export { getReadme, getMeta, buildMeta }
+const buildReadme = memoize(createBuildReadme({ normalizeParams, fetchReadme }))
+export { buildReadme }
