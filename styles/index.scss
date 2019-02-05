@@ -3,6 +3,14 @@
 @import 'codecopy/umd/codecopy.min.css';
 @import 'zoom-vanilla.js/dist/zoom.css';
 :root {
+  --font-size-h1: 2rem;
+  --font-size-h2: 1.5rem;
+  --font-size-h3: 1.25rem;
+  --font-size-h4: 1rem;
+  --font-size-h5: .875rem;
+  --font-size-h6: .85rem;
+  --font-size-small: .75rem;
+  --letter-spacing-ratio: -40;
   --white1: #fcfcfc;
   --white2: #f9f9f9;
   --white3: #f6f6f6;
@@ -41,6 +49,36 @@ html {
 
 body {
   background-color: var(--white3);
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  letter-spacing: calc(var(--font-size-h1) / var(--letter-spacing-ratio));
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  letter-spacing: calc(var(--font-size-h2) / var(--letter-spacing-ratio));
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+  letter-spacing: calc(var(--font-size-h3) / var(--letter-spacing-ratio));
+}
+
+h4 {
+  font-size: var(--font-size-h4);
+  letter-spacing: calc(var(--font-size-h4) / var(--letter-spacing-ratio));
+}
+
+h5 {
+  font-size: var(--font-size-h5);
+  letter-spacing: calc(var(--font-size-h5) / var(--letter-spacing-ratio));
+}
+
+h6 {
+  font-size: var(--font-size-h6);
+  letter-spacing: calc(var(--font-size-h5) / var(--letter-spacing-ratio));
 }
 
 h1,
@@ -83,7 +121,9 @@ pre>code {
 }
 
 small {
+  font-size: var(--font-size-small);
   letter-spacing: 0.005em;
+  line-height: 1;
 }
 
 ::selection {
