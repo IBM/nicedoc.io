@@ -21,7 +21,7 @@ export default () => (
         </header>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium
-          sed odio facilis dignissimos laborum ut soluta <a href>lorem</a>{' '}
+          sed odio facilis dignissimos laborum ut soluta <a href='#'>lorem</a>{' '}
           rerum! Corrupti quibusdam, quas error natus labore libero ducimus
           distinctio obcaecati nobis maxime neque.
         </p>
@@ -144,6 +144,8 @@ export default () => (
         <h6 className='typography__color u-separator' id='typography'>
           <a href='#typography'>typography</a>
         </h6>
+
+
         <h1>Heading 1</h1>
         <h2>Heading 2</h2>
         <h3>Heading 3</h3>
@@ -162,6 +164,12 @@ export default () => (
           consequuntur excepturi quos! Repellat unde excepturi vitae aut
           voluptas fugiat voluptatum iusto, quaerat.
         </p>
+        <small>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse
+          adipisci quisquam veniam, odio illum sed maiores aspernatur
+          consequuntur excepturi quos! Repellat unde excepturi vitae aut
+          voluptas fugiat voluptatum iusto, quaerat.
+        </small>
       </div>
     </section>
     <section className='section-buttons'>

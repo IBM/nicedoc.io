@@ -1,6 +1,7 @@
 import React, { useEffect, Fragment } from 'react'
-import { getReadme, getMeta, buildMeta } from 'core'
-import { Container } from 'components'
+import { fetchMeta } from 'core/github'
+import { buildReadme } from 'core'
+import { DocBar, Container, Head } from 'components'
 import ScrollProgress from 'scrollprogress'
 import NProgress from 'nprogress'
 import AnchorJS from 'anchor-js'
@@ -12,8 +13,9 @@ function Readme (props) {
   const { meta, readme } = props
   return (
     <Fragment>
-      {buildMeta(meta)}
-      <Container dangerouslySetInnerHTML={{ __html: readme }} />
+      <Head {...meta} />
+      <DocBar meta={meta} />
+      <Container pt={'30px'} dangerouslySetInnerHTML={{ __html: readme }} />
     </Fragment>
   )
 }
@@ -21,8 +23,8 @@ function Readme (props) {
 Readme.getInitialProps = async ({ query }) => {
   if (query) {
     const [readme, metaProps] = await Promise.all([
-      getReadme(query),
-      getMeta(query)
+      buildReadme(query),
+      fetchMeta(query)
     ])
 
     const { meta, html } = readme

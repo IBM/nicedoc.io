@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
-import { buildMeta } from 'core'
-import { Flex } from '@rebass/grid'
+import { Head, Flex } from 'components'
 
 export default class Error extends React.Component {
   static getInitialProps ({ res, err }) {
@@ -12,7 +11,7 @@ export default class Error extends React.Component {
     const { statusCode = 500 } = this.props
     return (
       <Fragment>
-        {buildMeta({ title: 'Page Not Found' })}
+        <Head title='Page Not Found' />
         <Flex
           flexDirection='column'
           alignItems='center'

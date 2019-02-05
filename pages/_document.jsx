@@ -1,7 +1,7 @@
-import Document, { Head, Main, NextScript } from 'next/document'
+import Document, { Head as HeadDocument, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 import stylesheet from 'styles/index.scss'
-import { buildMeta } from 'core'
+import { Head } from 'components'
 
 export default class MyDocument extends Document {
   static getInitialProps ({ renderPage }) {
@@ -16,11 +16,11 @@ export default class MyDocument extends Document {
   render () {
     return (
       <html>
-        {buildMeta()}
-        <Head>
+        <HeadDocument>
           {this.props.styleTags}
           <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
-        </Head>
+        </HeadDocument>
+        <Head />
         <body>
           <Main />
           <NextScript />
