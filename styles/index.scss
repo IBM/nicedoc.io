@@ -116,6 +116,15 @@ img {
   max-width: 100%;
 }
 
+blockquote {
+  border-left-color: var(--gray2);
+}
+
+pre,
+code {
+  border-radius: 3px;
+}
+
 pre>code {
   display: flex;
 }

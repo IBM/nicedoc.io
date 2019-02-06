@@ -63,7 +63,8 @@ export default ({ normalizeParams, fetchReadme }) => async query => {
   // add anchor link
   $('h1, h2, h3, h4, h5, h6').each(function () {
     const el = $(this)
-    el.attr('id', anchor.urlify(el.text()))
+    const text = el.text()
+    if (text) el.attr('id', anchor.urlify(text))
   })
 
   const externalLink = (el, { appendIcon = true } = {}) => {
