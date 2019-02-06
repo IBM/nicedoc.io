@@ -49,7 +49,7 @@ NavLink.defaultProps = {
 
 export default ({ meta }) => {
   return (
-    <DocBar as='nav' justifyContent={['space-around', 'center']} px={3} py={0}>
+    <DocBar as='nav' justifyContent={['space-evenly', 'center']} px={3} py={0}>
       <NavLink href={meta.githubUrl}>
         <GitHub size={16} mr={1} />
         <Hide breakpoints={[0]}>
