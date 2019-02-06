@@ -1,5 +1,7 @@
 import React from 'react'
 import App, { Container } from 'next/app'
+import { ThemeProvider } from 'styled-components'
+import theme from 'styles'
 
 export default class MyApp extends App {
   static async getInitialProps ({ Component, router, ctx }) {
@@ -24,9 +26,11 @@ export default class MyApp extends App {
   render () {
     const { Component, pageProps } = this.props
     return (
-      <Container>
-        <Component {...pageProps} />
-      </Container>
+      <ThemeProvider theme={theme}>
+        <Container>
+          <Component {...pageProps} />
+        </Container>
+      </ThemeProvider>
     )
   }
 }
