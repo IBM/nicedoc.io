@@ -1,7 +1,19 @@
+import differenceInCalendarDays from 'date-fns/difference_in_calendar_days'
 import { lib as emojiLib } from 'emojilib'
 import { get } from 'lodash'
 
 const RE_EMOJI_KEYWORD = /:\S*:/g
+
+const RATIO = 0.05
+
+const score = ({ updatedAt = Date.now(), stars, issues }) => {
+  const maxIssues = Math.max(issues, 1)
+  const maxStars = Math.max(stars, 1)
+  const days = Math.max(differenceInCalendarDays(updatedAt, Date.now()), 1)
+  if (issues === 0 && stars === 0) return 1
+  const result = (maxStars - maxIssues * RATIO * days) / maxStars
+  return result.toFixed(2)
+}
 
 const emojiKeyword = str => {
   const keywords = str.match(RE_EMOJI_KEYWORD) || []
@@ -16,6 +28,9 @@ const mapMeta = async (payload, { ref }) => {
   const owner = get(payload, 'owner.login')
   const repo = get(payload, 'name')
   const repoUrl = get(payload, 'html_url')
+  const issues = get(payload, 'open_issues')
+  const stars = get(payload, 'stargazers_count')
+  const updatedAt = get(payload, 'updated_at')
 
   return {
     url: `https://nicedoc.io/${owner}/${repo}`,
@@ -30,12 +45,15 @@ const mapMeta = async (payload, { ref }) => {
       'https://choosealicense.com'
     ),
     homepage: get(payload, 'homepage'),
-    stars: get(payload, 'stargazers_count'),
+    stars,
+    issues,
+    starsUrl: `${repoUrl}/stargazers`,
     watchers: get(payload, 'watchers_count'),
     forks: get(payload, 'forks_count'),
     createdAt: get(payload, 'created_at'),
     updatedAt: get(payload, 'updated_at'),
-    activityUrl: `${repoUrl}/commits/${ref}`
+    activityUrl: `${repoUrl}/commits/${ref}`,
+    score: score({ stars, issues, updatedAt })
   }
 }
 

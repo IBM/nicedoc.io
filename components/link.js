@@ -1,5 +1,6 @@
 import NextLink from 'next/link'
 import { ExternalLink } from './icons'
+import { isNil } from 'lodash'
 import styled from 'styled-components'
 import {
   justifyContent,
@@ -32,12 +33,13 @@ export default ({
   href,
   prefetch = false,
   children,
-  icon = true,
+  icon,
   ...props
 }) => {
   const isInternal = isInternalLink(href)
   const rel = isInternal ? null : 'noopener noreferrer'
   const target = isInternal ? '_self' : '_blank'
+  const hasIcon = !isNil(isNil) ? icon : isInternal
 
   return (
     <NextLink prefetch={prefetch} href={href}>
@@ -45,7 +47,7 @@ export default ({
         href={href}
         rel={rel}
         target={target}
-        style={icon ? { ...linkStyle, ...style } : style}
+        style={hasIcon ? { ...linkStyle, ...style } : style}
         {...props}
       >
         {children}
