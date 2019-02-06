@@ -6,6 +6,8 @@ import ScrollProgress from 'scrollprogress'
 import NProgress from 'nprogress'
 import AnchorJS from 'anchor-js'
 
+import { navbar } from 'styles'
+
 function Readme (props) {
   useReadProgress()
   useAnchorTitles()
@@ -15,7 +17,10 @@ function Readme (props) {
     <Fragment>
       <Head {...meta} />
       <DocBar meta={meta} />
-      <Container pt={'30px'} dangerouslySetInnerHTML={{ __html: readme }} />
+      <Container
+        pt={`${navbar}px`}
+        dangerouslySetInnerHTML={{ __html: readme }}
+      />
     </Fragment>
   )
 }

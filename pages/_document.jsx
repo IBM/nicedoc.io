@@ -1,7 +1,8 @@
 import Document, { Head as HeadDocument, Main, NextScript } from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
+import { ThemeProvider, ServerStyleSheet } from 'styled-components'
 import stylesheet from 'styles/index.scss'
 import { Head } from 'components'
+import theme from 'styles'
 
 export default class MyDocument extends Document {
   static getInitialProps ({ renderPage }) {
@@ -22,7 +23,9 @@ export default class MyDocument extends Document {
         </HeadDocument>
         <Head />
         <body>
-          <Main />
+          <ThemeProvider theme={theme}>
+            <Main />
+          </ThemeProvider>
           <NextScript />
         </body>
       </html>

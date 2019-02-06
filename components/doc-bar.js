@@ -1,22 +1,27 @@
-import { Pulse, License, GitHub } from 'components/icons'
+import { License, GitHub } from 'components/icons'
 import styled from 'styled-components'
-import TimeAgo from 'react-timeago'
 import Text from './text'
 import Flex from './flex'
 import Hide from './hide'
 import Link from './link'
+
+import { navbar } from 'styles'
 
 const DocBar = styled(Flex)`
   line-height: 100%;
   background-color: #fff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   content: '';
-  height: 65px;
+  height: ${navbar}px;
   left: 0;
   position: fixed;
   right: 0;
   top: 0;
   z-index: 2;
+
+  > a:last-child {
+    padding: 0;
+  }
 `
 
 const Small = styled(Text)`
@@ -46,7 +51,7 @@ export default ({ meta }) => {
   return (
     <DocBar as='nav' justifyContent={['space-around', 'center']} px={3} py={0}>
       <NavLink href={meta.githubUrl}>
-        <GitHub size={16} mr={2} />
+        <GitHub size={16} mr={1} />
         <Hide breakpoints={[0]}>
           <Small>
             <span>{meta.owner}</span>
@@ -63,16 +68,13 @@ export default ({ meta }) => {
 
       {meta.license && (
         <NavLink href={meta.licenseUrl}>
-          <License size={16} mr={2} />
+          <License size={16} mr={1} />
           <Small>{meta.license}</Small>
         </NavLink>
       )}
 
-      <NavLink href={meta.activityUrl}>
-        <Pulse size={16} mr={2} />
-        <Small>
-          <TimeAgo date={meta.updatedAt} />
-        </Small>
+      <NavLink href={meta.starsUrl}>
+        <Small>{meta.score}</Small>
       </NavLink>
     </DocBar>
   )

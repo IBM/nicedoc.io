@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { defaultBreakpoints as breakpoints } from 'styled-system'
+import { breakpoints } from 'styles'
 
 const lastIndex = breakpoints.length - 1
 
