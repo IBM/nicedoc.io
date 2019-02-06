@@ -5,7 +5,7 @@ import createFetchRepo from './fetch-repo'
 import createFetchReadme from './fetch-readme'
 
 const { GITHUB_TOKEN } = process.env || {}
-const ALTERNATIVE_README_NAMES = ['README.md', 'readme.md']
+const ALTERNATIVE_README_NAMES = ['README.md', 'readme.md', 'Readme.md']
 
 const fetchRepo = memoize(createFetchRepo({ GITHUB_TOKEN }))
 const normalizeParams = memoize(

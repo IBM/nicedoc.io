@@ -4,12 +4,12 @@ import { get } from 'lodash'
 
 const RE_EMOJI_KEYWORD = /:\S*:/g
 
-const RATIO = 0.05
+const RATIO = 0.2
 
-const score = ({ updatedAt = Date.now(), stars, issues }) => {
+const score = ({ updatedAt, stars, issues }) => {
   const maxIssues = Math.max(issues, 1)
   const maxStars = Math.max(stars, 1)
-  const days = Math.max(differenceInCalendarDays(updatedAt, Date.now()), 1)
+  const days = Math.abs(differenceInCalendarDays(updatedAt, Date.now()))
   if (issues === 0 && stars === 0) return 1
   const result = (maxStars - maxIssues * RATIO * days) / maxStars
   return result.toFixed(2)
@@ -30,7 +30,7 @@ const mapMeta = async (payload, { ref }) => {
   const repoUrl = get(payload, 'html_url')
   const issues = get(payload, 'open_issues')
   const stars = get(payload, 'stargazers_count')
-  const updatedAt = get(payload, 'updated_at')
+  const updatedAt = new Date(get(payload, 'pushed_at', 'updated_at'))
 
   return {
     url: `https://nicedoc.io/${owner}/${repo}`,
@@ -51,7 +51,7 @@ const mapMeta = async (payload, { ref }) => {
     watchers: get(payload, 'watchers_count'),
     forks: get(payload, 'forks_count'),
     createdAt: get(payload, 'created_at'),
-    updatedAt: get(payload, 'updated_at'),
+    updatedAt,
     activityUrl: `${repoUrl}/commits/${ref}`,
     score: score({ stars, issues, updatedAt })
   }
