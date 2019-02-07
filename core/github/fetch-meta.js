@@ -2,6 +2,8 @@ import differenceInCalendarDays from 'date-fns/difference_in_calendar_days'
 import { lib as emojiLib } from 'emojilib'
 import { get } from 'lodash'
 
+const { SITE_URL } = process.env
+
 const RE_EMOJI_KEYWORD = /:\S*:/g
 
 const RATIO = 0.2
@@ -34,7 +36,7 @@ const mapMeta = async (payload, { ref }) => {
   const homepage = get(payload, 'homepage')
 
   return {
-    url: `https://nicedoc.io/${owner}/${repo}`,
+    url: `${SITE_URL}/${owner}/${repo}`,
     githubUrl: `${repoUrl}/tree/${ref}`,
     description: emojiKeyword(get(payload, 'description')),
     owner: get(payload, 'owner.login'),

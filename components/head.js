@@ -1,13 +1,22 @@
 import Head from 'next/head'
+import url from 'url'
 
 import pkg from '../package.json'
+
+const { SITE_URL } = process.env
 
 const DEFAULT_META = {
   name: pkg.name,
   description: pkg.description,
-  url: pkg.homepage,
-  image: '/static/banner.jpg',
-  logo: '/static/logo.png'
+  url: SITE_URL,
+  image: url.resolve(SITE_URL, '/static/banner.jpg'),
+  logo: url.resolve(SITE_URL, '/static/logo.png')
+}
+
+const FAVICON = {
+  ico: url.resolve(SITE_URL, '/static/favicon.ico'),
+  medium: url.resolve(SITE_URL, '/static/favicon-32x32.png'),
+  small: url.resolve(SITE_URL, '/static/favicon-16x16.png')
 }
 
 export default ({ children, ...opts }) => {
@@ -21,21 +30,11 @@ export default ({ children, ...opts }) => {
       {/* <!-- Basic --> */}
       <meta charSet='utf-8' />
       <meta httpEquiv='X-UA-Compatible' content='IE=edge,chrome=1' />
-      <link rel='icon' href='/static/favicon.ico' type='image/x-icon' />
+      <link rel='icon' href={FAVICON.ico} type='image/x-icon' />
 
-      <link
-        rel='icon'
-        type='image/png'
-        href='/static/favicon-32x32.png'
-        sizes='32x32'
-      />
+      <link rel='icon' type='image/png' href={FAVICON.medium} sizes='32x32' />
 
-      <link
-        rel='icon'
-        type='image/png'
-        href='/static/favicon-16x16.png'
-        sizes='16x16'
-      />
+      <link rel='icon' type='image/png' href={FAVICON.small} sizes='16x16' />
 
       {/* <!-- Search Engine --> */}
       <meta name='application-name' content='nicedoc.io' />
