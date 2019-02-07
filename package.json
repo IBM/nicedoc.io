@@ -2,7 +2,7 @@
   "name": "nicedoc.io",
   "description": "Pretty README as service",
   "homepage": "https://nicedoc.io",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": "index.js",
   "author": {
     "email": "josefrancisco.verdu@gmail.com",
@@ -139,5 +139,9 @@
     "scripts": {
       "prechangelog": "git-authors-cli"
     }
-  }
+  },
+  "contributors": [
+    "Axel Hernández Ferrera <axelhzf@gmail.com>",
+    "Francisco Verdu Gambin <Francisco.Verdu.Gambin@ibm.com>"
+  ]
 }
