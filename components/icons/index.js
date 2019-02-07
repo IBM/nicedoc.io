@@ -6,5 +6,18 @@ import Forks from './forks'
 import Eye from './eye'
 import Star from './star'
 import Ruby from './ruby'
+import Nicedoc from './nicedoc'
+import Home from './home'
 
-export { Ruby, ExternalLink, Star, Eye, Forks, GitHub, License, Pulse }
+export {
+  Home,
+  Nicedoc,
+  Ruby,
+  ExternalLink,
+  Star,
+  Eye,
+  Forks,
+  GitHub,
+  License,
+  Pulse
+}

@@ -12,7 +12,7 @@ const score = ({ updatedAt, stars, issues }) => {
   const days = Math.abs(differenceInCalendarDays(updatedAt, Date.now()))
   if (issues === 0 && stars === 0) return 1
   const result = (maxStars - maxIssues * RATIO * days) / maxStars
-  return result.toFixed(2)
+  return result < 0 ? 0 : result.toFixed(2)
 }
 
 const emojiKeyword = str => {
@@ -31,6 +31,7 @@ const mapMeta = async (payload, { ref }) => {
   const issues = get(payload, 'open_issues')
   const stars = get(payload, 'stargazers_count')
   const updatedAt = new Date(get(payload, 'pushed_at', 'updated_at'))
+  const homepage = get(payload, 'homepage')
 
   return {
     url: `https://nicedoc.io/${owner}/${repo}`,
@@ -44,7 +45,6 @@ const mapMeta = async (payload, { ref }) => {
       'https://api.github.com',
       'https://choosealicense.com'
     ),
-    homepage: get(payload, 'homepage'),
     stars,
     issues,
     starsUrl: `${repoUrl}/stargazers`,
@@ -52,6 +52,7 @@ const mapMeta = async (payload, { ref }) => {
     forks: get(payload, 'forks_count'),
     createdAt: get(payload, 'created_at'),
     updatedAt,
+    homepage,
     activityUrl: `${repoUrl}/commits/${ref}`,
     score: score({ stars, issues, updatedAt })
   }

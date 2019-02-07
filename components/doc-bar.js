@@ -1,4 +1,4 @@
-import { License, GitHub } from 'components/icons'
+import { Home, Nicedoc, Star, License, GitHub } from 'components/icons'
 import styled from 'styled-components'
 import Text from './text'
 import Flex from './flex'
@@ -6,6 +6,18 @@ import Hide from './hide'
 import Link from './link'
 
 import { navbar } from 'styles'
+import urlib from 'url'
+
+let URL
+if (global.document) URL = window.URL
+else URL = urlib.URL
+
+const REGEX_STRIP_WWW = /^www\./
+
+const getHostname = href => {
+  const { hostname } = new URL(href)
+  return hostname.replace(REGEX_STRIP_WWW, '')
+}
 
 const DocBar = styled(Flex)`
   line-height: 100%;
@@ -50,6 +62,10 @@ NavLink.defaultProps = {
 export default ({ meta }) => {
   return (
     <DocBar as='nav' justifyContent={['space-evenly', 'center']} px={3} py={0}>
+      <NavLink href={'/'}>
+        <Nicedoc size={16} mr={1} />
+      </NavLink>
+
       <NavLink href={meta.githubUrl}>
         <GitHub size={16} mr={1} />
         <Hide breakpoints={[0]}>
@@ -66,12 +82,24 @@ export default ({ meta }) => {
         </Hide>
       </NavLink>
 
+      {meta.homepage && (
+        <NavLink href={meta.homepage}>
+          <Home size={16} mr={1} />
+          <Small>{getHostname(meta.homepage)}</Small>
+        </NavLink>
+      )}
+
       {meta.license && (
         <NavLink href={meta.licenseUrl}>
           <License size={16} mr={1} />
           <Small>{meta.license}</Small>
         </NavLink>
       )}
+
+      <NavLink href={meta.starsUrl}>
+        <Star size={16} mr={1} />
+        <Small>{meta.stars}</Small>
+      </NavLink>
 
       <NavLink href={meta.starsUrl}>
         <Small>{meta.score}</Small>
