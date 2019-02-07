@@ -9,6 +9,16 @@
     "name": "Kiko Beats",
     "url": "https://github.com/Kikobeats"
   },
+  "contributors": [
+    {
+      "name": "Axel Hernández Ferrera",
+      "email": "axelhzf@gmail.com"
+    },
+    {
+      "name": "Francisco Verdu Gambin",
+      "email": "Francisco.Verdu.Gambin@ibm.com"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/Kikobeats/nicedoc.io.git"
@@ -68,6 +78,7 @@
     "postcss-easy-import": "latest",
     "postcss-focus": "latest",
     "postcss-loader": "latest",
+    "prettier-standard": "latest",
     "raw-loader": "latest",
     "sass-loader": "latest",
     "standard": "latest",
@@ -139,9 +150,5 @@
     "scripts": {
       "prechangelog": "git-authors-cli"
     }
-  },
-  "contributors": [
-    "Axel Hernández Ferrera <axelhzf@gmail.com>",
-    "Francisco Verdu Gambin <Francisco.Verdu.Gambin@ibm.com>"
-  ]
+  }
 }

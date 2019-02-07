@@ -1,11 +1,4 @@
-import {
-  IssueOpen,
-  Home,
-  Nicedoc,
-  Star,
-  License,
-  GitHub
-} from 'components/icons'
+import { IssueOpen, Home, Nicedoc, Star, License, GitHub } from 'components/icons'
 import styled from 'styled-components'
 import Text from './text'
 import Flex from './flex'
@@ -86,7 +79,6 @@ export default ({ meta }) => {
       <NavLink href={'/'}>
         <Nicedoc size={16} mr={1} />
       </NavLink>
-
       <NavLink href={meta.githubUrl}>
         <GitHub size={16} mr={1} />
         <Hide breakpoints={[0]}>
@@ -102,50 +94,43 @@ export default ({ meta }) => {
           </Small>
         </Hide>
       </NavLink>
-
       {meta.homepage && (
         <NavLink href={meta.homepage}>
           <Home size={16} mr={1} />
           <Small>{getHostname(meta.homepage)}</Small>
         </NavLink>
       )}
-
       {meta.license && (
         <NavLink href={meta.licenseUrl}>
           <License size={16} mr={1} />
           <Small>{meta.license}</Small>
         </NavLink>
       )}
+      <NavLink href={meta.starsUrl}>
+        <Star size={16} mr={1} />
+        <Small
+          style={{
+            // TODO: bug https://github.com/piecioshka/react-bounty/issues/1
+            position: 'relative',
+            top: '3px'
+          }}
+        >
+          <CustomBounty initialDelay={0} value={meta.stars} />
+        </Small>
+      </NavLink>
 
-      {meta.stars && (
-        <NavLink href={meta.starsUrl}>
-          <Star size={16} mr={1} />
-          <Small
-            style={{
-              // TODO: bug https://github.com/piecioshka/react-bounty/issues/1
-              position: 'relative',
-              top: '3px'
-            }}
-          >
-            <CustomBounty initialDelay={0} value={meta.stars} />
-          </Small>
-        </NavLink>
-      )}
-
-      {meta.issues && (
-        <NavLink href={meta.issuesUrl}>
-          <IssueOpen size={16} mr={1} />
-          <Small
-            style={{
-              // TODO: bug https://github.com/piecioshka/react-bounty/issues/1
-              position: 'relative',
-              top: '3px'
-            }}
-          >
-            <CustomBounty initialDelay={0} value={meta.issues} />
-          </Small>
-        </NavLink>
-      )}
+      <NavLink href={meta.issuesUrl}>
+        <IssueOpen size={16} mr={1} />
+        <Small
+          style={{
+            // TODO: bug https://github.com/piecioshka/react-bounty/issues/1
+            position: 'relative',
+            top: '3px'
+          }}
+        >
+          <CustomBounty initialDelay={0} value={meta.issues} />
+        </Small>
+      </NavLink>
 
       <NavLink href={meta.starsUrl}>
         <CountUp start={0} delay={0} duration={3} end={meta.score} decimals={2}>
