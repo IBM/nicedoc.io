@@ -52,6 +52,7 @@ const mapMeta = async (payload, { ref }) => {
     stars,
     issues,
     starsUrl: `${repoUrl}/stargazers`,
+    issuesUrl: `${repoUrl}/issues`,
     watchers: get(payload, 'watchers_count'),
     forks: get(payload, 'forks_count'),
     createdAt: get(payload, 'created_at'),

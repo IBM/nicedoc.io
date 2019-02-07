@@ -8,9 +8,11 @@ import Star from './star'
 import Ruby from './ruby'
 import Nicedoc from './nicedoc'
 import Home from './home'
+import IssueOpen from './issue-open'
 
 export {
   Home,
+  IssueOpen,
   Nicedoc,
   Ruby,
   ExternalLink,

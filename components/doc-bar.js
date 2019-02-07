@@ -1,4 +1,11 @@
-import { Home, Nicedoc, Star, License, GitHub } from 'components/icons'
+import {
+  IssueOpen,
+  Home,
+  Nicedoc,
+  Star,
+  License,
+  GitHub
+} from 'components/icons'
 import styled from 'styled-components'
 import Text from './text'
 import Flex from './flex'
@@ -121,6 +128,21 @@ export default ({ meta }) => {
             }}
           >
             <CustomBounty initialDelay={0} value={meta.stars} />
+          </Small>
+        </NavLink>
+      )}
+
+      {meta.issues && (
+        <NavLink href={meta.issuesUrl}>
+          <IssueOpen size={16} mr={1} />
+          <Small
+            style={{
+              // TODO: bug https://github.com/piecioshka/react-bounty/issues/1
+              position: 'relative',
+              top: '3px'
+            }}
+          >
+            <CustomBounty initialDelay={0} value={meta.issues} />
           </Small>
         </NavLink>
       )}
