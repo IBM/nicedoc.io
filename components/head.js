@@ -6,8 +6,8 @@ const DEFAULT_META = {
   name: pkg.name,
   description: pkg.description,
   url: pkg.homepage,
-  image: '/static/img/banner.png',
-  logo: '/static/img/logo.png'
+  image: '/static/banner.jpg',
+  logo: '/static/logo.png'
 }
 
 export default ({ children, ...opts }) => {
@@ -21,7 +21,21 @@ export default ({ children, ...opts }) => {
       {/* <!-- Basic --> */}
       <meta charSet='utf-8' />
       <meta httpEquiv='X-UA-Compatible' content='IE=edge,chrome=1' />
-      <link rel='icon' type='image/png' href={meta.logo} />
+      <link rel='icon' href='/static/favicon.ico' type='image/x-icon' />
+
+      <link
+        rel='icon'
+        type='image/png'
+        href='/static/favicon-32x32.png'
+        sizes='32x32'
+      />
+
+      <link
+        rel='icon'
+        type='image/png'
+        href='/static/favicon-16x16.png'
+        sizes='16x16'
+      />
 
       {/* <!-- Search Engine --> */}
       <meta name='application-name' content='nicedoc.io' />
