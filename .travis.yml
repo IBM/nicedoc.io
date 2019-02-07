@@ -3,25 +3,9 @@ language: node_js
 node_js:
   - node
 
-stages:
-  - Test
-  - name: Release
-    if: commit_message !~ /(release|no-release)/
+services:
+  - docker
 
-jobs:
-  include:
-    - stage: Release
-      node_js: node
-      install: npm install --no-package-lock
-      before_deploy:
-        - git config user.email "travis@travis-ci.org"
-        - git config user.name "Travis CI"
-        - git remote set-url origin https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git
-      deploy:
-        skip_cleanup: true
-        provider: script
-        script:
-          - echo "$DOCKER_TOKEN" | docker login -u token --password-stdin registry.ng.bluemix.net
-          - ./scripts/travis/script.sh
-        on:
-          branch: master
+after_success:
+  - ./scripts/travis/docker-login.sh
+  - ./scripts/travis/docker-build.sh
