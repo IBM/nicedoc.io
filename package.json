@@ -87,7 +87,6 @@
     "precommit": "lint-staged",
     "prerelease": "npm run update:check && git-authors-cli",
     "pretest": "npm run lint",
-    "pretty": "prettier-standard index.js {core,test,bin}/**/*.js --single-quote",
     "release": "git add package.json && standard-version -a",
     "release:github": "conventional-github-releaser -p angular",
     "release:tags": "git push --follow-tags origin HEAD:master",
@@ -113,6 +112,14 @@
     "linters": {
       "package.json": [
         "finepack",
+        "git add"
+      ],
+      "*.js": [
+        "prettier-standard",
+        "git add"
+      ],
+      "*.md": [
+        "standard-markdown",
         "git add"
       ]
     }
