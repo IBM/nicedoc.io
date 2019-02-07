@@ -34,8 +34,8 @@
     "next-routes": "~1.4.2",
     "nprogress": "~0.2.0",
     "react": "16.8.1",
-    "react-countup": "~4.0.0",
     "react-bounty": "~1.0.3",
+    "react-countup": "~4.0.0",
     "react-dom": "16.8.1",
     "remark": "~10.0.1",
     "remark-html": "~9.0.0",
@@ -74,6 +74,9 @@
     "standard-markdown": "latest",
     "standard-version": "latest"
   },
+  "engines": {
+    "node": ">= 10"
+  },
   "scripts": {
     "build": "NODE_ENV=production next build",
     "clean": "rm -rf node_modules && rm -rf .next",
@@ -97,6 +100,11 @@
   },
   "private": true,
   "license": "MIT",
+  "ava": {
+    "require": [
+      "esm"
+    ]
+  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
@@ -131,10 +139,5 @@
     "scripts": {
       "prechangelog": "git-authors-cli"
     }
-  },
-  "ava": {
-    "require": [
-      "esm"
-    ]
   }
 }
