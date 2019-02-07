@@ -14,7 +14,9 @@ const score = ({ updatedAt, stars, issues }) => {
   const days = Math.abs(differenceInCalendarDays(updatedAt, Date.now()))
   if (issues === 0 && stars === 0) return 1
   const result = (maxStars - maxIssues * RATIO * days) / maxStars
-  return result < 0 ? 0 : result.toFixed(2)
+  if (result < 0) return 0
+  const roundResult = result.toFixed(2)
+  return roundResult === '1.00' ? 1 : roundResult
 }
 
 const emojiKeyword = str => {

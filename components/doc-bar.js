@@ -7,10 +7,20 @@ import Link from './link'
 
 import { navbar } from 'styles'
 import urlib from 'url'
+import Bounty from 'react-bounty'
+import CountUp from 'react-countup'
+import ColourMeLife from 'colour-me-life'
 
 let URL
 if (global.document) URL = window.URL
 else URL = urlib.URL
+
+const CustomBounty = styled(Bounty)`
+  div {
+    position: relative;
+    top: 3px;
+  }
+`
 
 const REGEX_STRIP_WWW = /^www\./
 
@@ -18,6 +28,10 @@ const getHostname = href => {
   const { hostname } = new URL(href)
   return hostname.replace(REGEX_STRIP_WWW, '')
 }
+
+const scoreColors = new ColourMeLife()
+  .setSpectrum('#FF5050', '#FF5003', '#BE9B00', '#00B4A0')
+  .setNumberRange(0, 1)
 
 const DocBar = styled(Flex)`
   line-height: 100%;
@@ -96,13 +110,29 @@ export default ({ meta }) => {
         </NavLink>
       )}
 
-      <NavLink href={meta.starsUrl}>
-        <Star size={16} mr={1} />
-        <Small>{meta.stars}</Small>
-      </NavLink>
+      {meta.stars && (
+        <NavLink href={meta.starsUrl}>
+          <Star size={16} mr={1} />
+          <Small
+            style={{
+              // TODO: bug https://github.com/piecioshka/react-bounty/issues/1
+              position: 'relative',
+              top: '3px'
+            }}
+          >
+            <CustomBounty initialDelay={0} value={meta.stars} />
+          </Small>
+        </NavLink>
+      )}
 
       <NavLink href={meta.starsUrl}>
-        <Small>{meta.score}</Small>
+        <CountUp start={0} delay={0} duration={3} end={meta.score} decimals={2}>
+          {({ countUpRef }) => (
+            <Small style={{ color: `#${scoreColors.colourAt(meta.score)}` }}>
+              <strong ref={countUpRef} />
+            </Small>
+          )}
+        </CountUp>
       </NavLink>
     </DocBar>
   )
