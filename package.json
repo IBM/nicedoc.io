@@ -91,7 +91,7 @@
     "release:github": "conventional-github-releaser -p angular",
     "release:tags": "git push --follow-tags origin HEAD:master",
     "start": "NODE_ENV=production node server.js",
-    "test": "exit 0",
+    "test": "NODE_ENV=test ava",
     "update": "ncu -a",
     "update:check": "ncu -- --error-level 2"
   },
