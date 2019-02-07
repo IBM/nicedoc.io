@@ -8,7 +8,7 @@ import { TAGS } from 'html-urls'
 import AnchorJS from 'anchor-js'
 import cheerio from 'cheerio'
 import remark from 'remark'
-import url from 'url'
+import urlResolve from 'url-resolve'
 
 const anchor = new AnchorJS()
 
@@ -31,7 +31,7 @@ const loadHTML = html =>
 
 const resolveUrl = (from, to) => {
   if (to[0] === '/') to = to.substr(1)
-  return url.resolve(from, to)
+  return urlResolve(from, to)
 }
 
 export default ({ normalizeParams, fetchReadme }) => async query => {
@@ -51,10 +51,7 @@ export default ({ normalizeParams, fetchReadme }) => async query => {
       if (!isEmpty(attr) && isRelativeUrl(attr)) {
         el.attr(
           propName,
-          resolveUrl(
-            `https://raw.githubusercontent.com/${owner}/${repo}/${ref}/`,
-            attr
-          )
+          resolveUrl(`https://raw.githubusercontent.com/${owner}/${repo}/${ref}/`, attr)
         )
       }
     })

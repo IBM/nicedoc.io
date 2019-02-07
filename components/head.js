@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import url from 'url'
+import urlResolve from 'url-resolve'
 
 import pkg from '../package.json'
 
@@ -9,21 +9,20 @@ const DEFAULT_META = {
   name: pkg.name,
   description: pkg.description,
   url: SITE_URL,
-  image: url.resolve(SITE_URL, '/static/banner.jpg'),
-  logo: url.resolve(SITE_URL, '/static/logo.png')
+  image: urlResolve(SITE_URL, '/static/banner.jpg'),
+  logo: urlResolve(SITE_URL, '/static/logo.png')
 }
 
 const FAVICON = {
-  ico: url.resolve(SITE_URL, '/static/favicon.ico'),
-  medium: url.resolve(SITE_URL, '/static/favicon-32x32.png'),
-  small: url.resolve(SITE_URL, '/static/favicon-16x16.png')
+  ico: urlResolve(SITE_URL, '/static/favicon.ico'),
+  medium: urlResolve(SITE_URL, '/static/favicon-32x32.png'),
+  small: urlResolve(SITE_URL, '/static/favicon-16x16.png')
 }
 
 export default ({ children, ...opts }) => {
   const meta = Object.assign({}, DEFAULT_META, opts)
   const name = meta.repo || meta.name
-  const fullName =
-    meta.owner && meta.repo ? `${meta.owner}/${meta.repo}` : meta.name
+  const fullName = meta.owner && meta.repo ? `${meta.owner}/${meta.repo}` : meta.name
 
   return (
     <Head>
