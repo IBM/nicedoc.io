@@ -8,4 +8,4 @@ const MEM_OPTS = {
 
 const { NODE_ENV = 'development' } = process.env || {}
 
-export default fn => (NODE_ENV === 'development' ? fn : mem(fn, MEM_OPTS))
+export default fn => (NODE_ENV === 'production' ? mem(fn, MEM_OPTS) : fn)

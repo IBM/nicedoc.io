@@ -34,70 +34,63 @@ const resolveUrl = (from, to) => {
   return url.resolve(from, to)
 }
 
-export default ({ normalizeParams, fetchReadme }) => {
-  const resolveReadme = async ({ owner, repo, ref, paths }) => {
-    for (const path of paths) {
-      const res = await fetchReadme({ owner, repo, path, ref })
-      if (res.status === 200) return res
-    }
-  }
+export default ({ normalizeParams, fetchReadme }) => async query => {
+  const { owner, repo, paths, ref } = normalizeParams(query)
+  const response = await fetchReadme({ owner, repo, paths, ref })
+  if (!response) throw new Error('Readme Not Found')
 
-  return async query => {
-    const { owner, repo, paths, ref } = normalizeParams(query)
-    const response = await resolveReadme({ owner, repo, paths, ref })
-    const markdown = await response.text()
-    const html = await md2html(markdown, { owner, repo })
-    const $ = loadHTML(html)
+  const markdown = await response.text()
+  const html = await md2html(markdown, { owner, repo })
+  const $ = loadHTML(html)
 
-    // rewrite relative path into absolute
-    forEach(TAGS, (htmlTags, propName) => {
-      $(htmlTags.join(',')).each(function () {
-        const el = $(this)
-        const attr = el.attr(propName)
-        if (!isEmpty(attr) && isRelativeUrl(attr)) {
-          el.attr(
-            propName,
-            resolveUrl(
-              `https://raw.githubusercontent.com/${owner}/${repo}/${ref}/`,
-              attr
-            )
+  // rewrite relative path into absolute
+  forEach(TAGS, (htmlTags, propName) => {
+    $(htmlTags.join(',')).each(function () {
+      const el = $(this)
+      const attr = el.attr(propName)
+      if (!isEmpty(attr) && isRelativeUrl(attr)) {
+        el.attr(
+          propName,
+          resolveUrl(
+            `https://raw.githubusercontent.com/${owner}/${repo}/${ref}/`,
+            attr
           )
-        }
-      })
-    })
-
-    // add anchor link
-    $('h1, h2, h3, h4, h5, h6').each(function () {
-      const el = $(this)
-      const text = el.text()
-      if (text) el.attr('id', anchor.urlify(text))
-    })
-
-    const externalLink = (el, { appendIcon = true } = {}) => {
-      el.attr('rel', 'noopener noreferrer')
-      el.attr('target', '_blank')
-      if (appendIcon) {
-        el.append(ReactDOMServer.renderToString(<ExternalLink />))
+        )
       }
-    }
-
-    // zoom on images
-    $('img').each(function () {
-      const el = $(this)
-      const parentLink = el.closest('a')[0]
-      if (!parentLink) el.attr('data-action', 'zoom')
-      else externalLink($(parentLink), { appendIcon: false })
     })
+  })
 
-    // add external icon for non internal urls
-    $('a:not(a:has(img))').each(function () {
-      externalLink($(this))
-    })
+  // add anchor link
+  $('h1, h2, h3, h4, h5, h6').each(function () {
+    const el = $(this)
+    const text = el.text()
+    if (text) el.attr('id', anchor.urlify(text))
+  })
 
-    const meta = {
-      image: $('img').attr('src')
+  const externalLink = (el, { appendIcon = true } = {}) => {
+    el.attr('rel', 'noopener noreferrer')
+    el.attr('target', '_blank')
+    if (appendIcon) {
+      el.append(ReactDOMServer.renderToString(<ExternalLink />))
     }
-
-    return { meta, html: $.html() }
   }
+
+  // zoom on images
+  $('img').each(function () {
+    const el = $(this)
+    const parentLink = el.closest('a')[0]
+    if (!parentLink) el.attr('data-action', 'zoom')
+    else externalLink($(parentLink), { appendIcon: false })
+  })
+
+  // add external icon for non internal urls
+  $('a:not(a:has(img))').each(function () {
+    externalLink($(this))
+  })
+
+  const meta = {
+    image: $('img').attr('src')
+  }
+
+  return { meta, html: $.html() }
 }

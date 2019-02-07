@@ -19,7 +19,7 @@ const score = ({ updatedAt, stars, issues }) => {
   return roundResult === '1.00' ? 1 : roundResult
 }
 
-const emojiKeyword = str => {
+const emojiKeyword = (str = '') => {
   const keywords = str.match(RE_EMOJI_KEYWORD) || []
   return keywords.reduce((acc, keyword) => {
     const key = keyword.split(':')[1]

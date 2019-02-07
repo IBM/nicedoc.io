@@ -35,6 +35,7 @@
     "nprogress": "~0.2.0",
     "react": "16.8.1",
     "react-countup": "~4.0.0",
+    "react-bounty": "~1.0.3",
     "react-dom": "16.8.1",
     "remark": "~10.0.1",
     "remark-html": "~9.0.0",
@@ -49,6 +50,7 @@
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
     "autoprefixer": "latest",
+    "ava": "latest",
     "babel-eslint": "latest",
     "babel-plugin-inline-dotenv": "latest",
     "babel-plugin-module-resolver": "latest",
@@ -67,9 +69,9 @@
     "postcss-focus": "latest",
     "postcss-loader": "latest",
     "raw-loader": "latest",
-    "react-bounty": "~1.0.3",
     "sass-loader": "latest",
     "standard": "latest",
+    "standard-markdown": "latest",
     "standard-version": "latest"
   },
   "scripts": {
@@ -122,5 +124,10 @@
     "scripts": {
       "prechangelog": "git-authors-cli"
     }
+  },
+  "ava": {
+    "require": [
+      "esm"
+    ]
   }
 }
