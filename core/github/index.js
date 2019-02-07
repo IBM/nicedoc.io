@@ -4,8 +4,24 @@ import createNormalizeParams from './normalize-params'
 import createFetchRepo from './fetch-repo'
 import createFetchReadme from './fetch-readme'
 
+import { concat } from 'lodash'
+
+const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
+
+const cases = (name, ext) => [
+  `${name.toUpperCase()}.${ext}`,
+  `${name}.${ext}`,
+  `${capitalize(name)}.${ext}`
+]
+
 const { GITHUB_TOKEN } = process.env || {}
-const ALTERNATIVE_README_NAMES = ['README.md', 'readme.md', 'Readme.md']
+
+// based on https://github.com/github/markup#markups
+const ALTERNATIVE_README_NAMES = concat(
+  cases('readme', 'md'),
+  cases('readme', 'rst'),
+  cases('readme', 'txt')
+)
 
 const fetchRepo = memoize(createFetchRepo({ GITHUB_TOKEN }))
 const normalizeParams = memoize(
