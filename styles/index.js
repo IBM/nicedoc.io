@@ -1,4 +1,4 @@
-export const layout = [550, 550, 978]
+export const layout = [700, 700, 700]
 export const navbar = 65
 
 export const breakpoints = ['40em', '52em', '64em']

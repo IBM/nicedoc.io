@@ -1,10 +1,10 @@
 import { IssueOpen, Home, Nicedoc, Star, License, GitHub } from 'components/icons'
 import styled from 'styled-components'
-import Text from './text'
 import Flex from './flex'
 import Hide from './hide'
 import Link from './link'
 import Toggle from './toggle'
+import Small from './small'
 
 import { navbar } from 'styles'
 import Bounty from 'react-bounty'
@@ -50,17 +50,6 @@ const Nav = styled(Flex)`
   top: 0;
   z-index: 2;
 `
-
-const Small = styled(Text)`
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  display: block;
-`
-
-Small.defaultProps = {
-  ...Text.defaultProps,
-  as: 'small'
-}
 
 const NavLink = styled(Link)`
   color: black;

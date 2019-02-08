@@ -8,7 +8,7 @@ export default ({ MARKDOWN_EXTENSIONS, ALTERNATIVE_README_NAMES }) => ({
   let ref = 'master'
   if (repo.includes('@')) [repo, ref] = repo.split('@')
 
-  const paths = MARKDOWN_EXTENSIONS.includesS(extname(path))
+  const paths = MARKDOWN_EXTENSIONS.includes(extname(path))
     ? [path]
     : ALTERNATIVE_README_NAMES.map(readmeName => pathJoin(path, readmeName))
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Box, Flex, Link } from 'components'
+import { Li, Text, Container, Box, Flex, Link } from 'components'
 
 export default class Index extends Component {
   render () {
@@ -12,52 +12,83 @@ export default class Index extends Component {
             alignItems='center'
             as='header'
           >
-            <img
-              style={{ marginTop: 0, maxWidth: '12rem' }}
-              src='/static/caption.svg'
-            />
-            <Box style={{ textAlign: 'center' }}>
-              <p style={{ margin: '8px 0' }}>Pretty README as service</p>
-              <code>nicedoc.io/:org/:repo</code>
-            </Box>
+            <img src='/static/caption.svg' />
           </Flex>
 
-          <Flex flexDirection='column'>
+          <Box style={{ textAlign: 'center' }}>
+            <Text style={{ margin: 'auto' }} maxWidth={'24em'} pt={3}>
+              Prettify any README file
+            </Text>
+            <Box py={3}>
+              <code>nicedoc.io/:org/:repo[@:ref]</code>
+            </Box>
+          </Box>
+          <Box>
+            <h2>Features</h2>
+            <ul>
+              <Li>
+                Automatically generated documentation sites for your markdown
+                files.
+              </Li>
+              <Li>Compatible with any doc file hosted on GitHub.</Li>
+              <Li>You can point to any git hash reference</Li>
+              <Li>
+                Support for multiple{' '}
+                <Link href='https://github.com/github/markup#markups'>
+                  markup
+                </Link>{' '}
+                formats.
+              </Li>
+            </ul>
             <h2>Why</h2>
-            <p>
+            <Text>
               Software documentation is a lie: nobody wants to do it but
               everyone wants to have it.
-            </p>
-            <p>
-              We can't write your project documentation, but we can help
-              creating a bridge to reduce the quantity of time you need to setup
-              a beautiful documentation portal.
-            </p>
-            <p>
-              <b>nicedoc.io</b> is a simple way for automagically generate
-              pretty README for any GitHub repository.
-            </p>
-            <h2>How</h2>
-            <p>
-              Just point the url against <b>nicedoc.io</b> instead of github.com
-            </p>
-
-            <p>
-              e.g:{' '}
-              <Link
-                href='/rebassjs/rebass'
-                children='nicedoc.io/rebassjs/rebass'
-              />{' '}
-            </p>
-            <p>
-              You can point to any git reference, e.g{' '}
-              <Link
-                href='/rebassjs/rebass'
-                children='nicedoc.io/rebassjs/rebass@v2'
-              />{' '}
-            </p>
-            <p>That's all!</p>
-          </Flex>
+            </Text>
+            <Text>
+              We can't write your project documentation for you, but we can help
+              you have an instant documentation site ready for your users.
+            </Text>
+            <h2>Examples</h2>
+            <ul>
+              <Li>
+                <Link href='/jamiebuilds/react-loadable'>
+                  jamiebuilds/react-loadable
+                </Link>
+              </Li>
+              <Li>
+                <Link href='/substack/stream-handbook'>
+                  substack/stream-handbook
+                </Link>
+              </Li>
+              <Li>
+                <Link href='/jsdom/jsdom'>jsdom/jsdom</Link>
+              </Li>
+              <Li>
+                <Link href='/cheeriojs/cheerio'>cheeriojs/cheerio</Link>
+              </Li>
+              <Li>
+                <Link href='/jamiebuilds/babel-handbook'>
+                  jamiebuilds/babel-handbook
+                </Link>
+              </Li>
+              <Li>
+                <Link href='/GoogleChromeLabs/quicklink'>
+                  GoogleChromeLabs/quicklink
+                </Link>
+              </Li>
+              <Li>
+                <Link href='/anubhavsrivastava/awesome-ui-component-library'>
+                  awesome-ui-component-library
+                </Link>
+              </Li>
+              <Li>
+                <Link href='/cyrilwanner/next-optimized-images'>
+                  cyrilwanner/next-optimized-images
+                </Link>
+              </Li>
+            </ul>
+          </Box>
         </Flex>
       </Container>
     )
