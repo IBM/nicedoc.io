@@ -3,6 +3,11 @@ import App, { Container } from 'next/app'
 import { ThemeProvider } from 'styled-components'
 import theme from 'styles'
 
+import codecopy from 'codecopy'
+
+const isSlowConnection = () =>
+  global.window ? navigator.connection.effectiveType.includes('2g') : false
+
 export default class MyApp extends App {
   static async getInitialProps ({ Component, router, ctx }) {
     let pageProps = {}
@@ -15,11 +20,10 @@ export default class MyApp extends App {
   }
 
   componentDidMount () {
-    const { navigator } = global.window
-    const isSlowConnection = navigator.connection.effectiveType.includes('2g')
-    if (!isSlowConnection) {
-      require('zoom-vanilla.js')
-      require('codecopy')('pre')
+    const isSlow = isSlowConnection()
+    if (!isSlow) {
+      codecopy('pre')
+      import('zoom-vanilla.js')
     }
   }
 
