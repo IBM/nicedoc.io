@@ -61,7 +61,10 @@ function useReadProgress () {
       y >= 0.999 ? NProgress.set(0.999) : NProgress.set(y)
     })
 
-    return () => progressObserver.destroy()
+    return () => {
+      NProgress.done()
+      progressObserver.destroy()
+    }
   }, [])
 }
 

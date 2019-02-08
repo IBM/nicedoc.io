@@ -1,15 +1,19 @@
-import { IssueOpen, Home, Nicedoc, Star, License, GitHub } from 'components/icons'
+import { IssueOpen, Pulse, Home, Nicedoc, Star, License, GitHub } from 'components/icons'
 import styled from 'styled-components'
 import Flex from './flex'
 import Hide from './hide'
 import Link from './link'
 import Toggle from './toggle'
 import Small from './small'
+import Text from './text'
+import Box from './box'
+import Tooltip from './tooltip'
 
 import { navbar } from 'styles'
 import Bounty from 'react-bounty'
 import CountUp from 'react-countup'
 import ColourMeLife from 'colour-me-life'
+import TimeAgo from 'react-timeago'
 import React, { useState, useEffect } from 'react'
 
 const URLParser = typeof URL === 'undefined' ? require('url').URL : URL
@@ -82,11 +86,7 @@ export default function DocBar ({ meta }) {
       <NavLink href={meta.githubUrl}>
         <GitHub size={16} mr={1} />
         <Hide breakpoints={[0]}>
-          <Small>
-            <span>{meta.owner}</span>
-            <span>/</span>
-            <strong>{meta.repo}</strong>
-          </Small>
+          <Small>{meta.repo}</Small>
         </Hide>
         <Hide breakpoints={[1, 2, 3]}>
           <Small>
@@ -94,18 +94,28 @@ export default function DocBar ({ meta }) {
           </Small>
         </Hide>
       </NavLink>
+
       {meta.homepage && (
         <NavLink href={meta.homepage}>
           <Home size={16} mr={1} />
           <Small>{getHostname(meta.homepage)}</Small>
         </NavLink>
       )}
+
       {meta.license && (
         <NavLink href={meta.licenseUrl}>
           <License size={16} mr={1} />
           <Small>{meta.license}</Small>
         </NavLink>
       )}
+
+      <NavLink href={meta.commitsUrl}>
+        <Pulse size={16} mr={1} />
+        <Small>
+          <TimeAgo date={meta.updatedAt} />
+        </Small>
+      </NavLink>
+
       <NavLink href={meta.starsUrl}>
         <Star size={16} mr={1} />
         <Small
@@ -132,15 +142,26 @@ export default function DocBar ({ meta }) {
         </Small>
       </NavLink>
 
-      <NavLink href={meta.starsUrl}>
+      <Flex justifyContent='center' alignItems='center' pr={[0, 4]}>
         <CountUp start={0} delay={0} duration={3} end={meta.score} decimals={2}>
           {({ countUpRef }) => (
-            <Small style={{ color: `#${scoreColors.colourAt(meta.score)}` }}>
-              <strong ref={countUpRef} />
-            </Small>
+            <Tooltip
+              title={
+                <Box width={'128px'}>
+                  <Text fontSize={0} mb={0}>
+                    Score index is calculated in proportion of issues and compensating with the
+                    stars.
+                  </Text>
+                </Box>
+              }
+            >
+              <Small style={{ color: `#${scoreColors.colourAt(meta.score)}` }}>
+                <strong ref={countUpRef} />
+              </Small>
+            </Tooltip>
           )}
         </CountUp>
-      </NavLink>
+      </Flex>
 
       <Flex justifyContent='center' alignItems='center'>
         <Toggle

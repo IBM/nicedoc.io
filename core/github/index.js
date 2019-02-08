@@ -17,7 +17,11 @@ const cases = (name, ext) => [
 const { GITHUB_TOKEN } = process.env || {}
 
 // based on https://github.com/github/markup#markups
-const ALTERNATIVE_README_NAMES = concat(cases('readme', 'md'), cases('readme', 'rst'))
+const ALTERNATIVE_README_NAMES = concat(
+  cases('readme', 'md'),
+  cases('readme', 'markdown'),
+  cases('readme', 'rst')
+)
 
 const MARKDOWN_EXTENSIONS = [
   '.markdown',
