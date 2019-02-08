@@ -1,28 +1,16 @@
 import Head from 'next/head'
-import urlResolve from 'url-resolve'
-
-import pkg from '../package.json'
-
-console.log('process.env', process.env)
-const { SITE_URL, FOO_BAR } = process.env
-
-console.log('urlResolve', urlResolve)
-console.log('SITE_URL', SITE_URL)
-console.log('FOO_BAR', FOO_BAR)
-console.log('image', urlResolve(SITE_URL, '/static/banner.jpg'))
 
 const DEFAULT_META = {
-  name: pkg.name,
-  description: pkg.description,
-  url: SITE_URL,
-  image: urlResolve(SITE_URL, '/static/banner.jpg'),
-  logo: urlResolve(SITE_URL, '/static/logo.png')
-}
-
-const FAVICON = {
-  ico: urlResolve(SITE_URL, '/static/favicon.ico'),
-  medium: urlResolve(SITE_URL, '/static/favicon-32x32.png'),
-  small: urlResolve(SITE_URL, '/static/favicon-16x16.png')
+  name: process.env.APP.name,
+  description: process.env.APP.description,
+  url: process.env.APP.url,
+  image: process.env.APP.image,
+  logo: process.env.APP.logo,
+  favicon: {
+    ico: process.env.APP.favicon.ico,
+    medium: process.env.APP.favicon.medium,
+    small: process.env.APP.favicon.small
+  }
 }
 
 export default ({ children, ...opts }) => {
@@ -35,11 +23,11 @@ export default ({ children, ...opts }) => {
       {/* <!-- Basic --> */}
       <meta charSet='utf-8' />
       <meta httpEquiv='X-UA-Compatible' content='IE=edge,chrome=1' />
-      <link rel='icon' href={FAVICON.ico} type='image/x-icon' />
+      <link rel='icon' href={meta.favicon.ico} type='image/x-icon' />
 
-      <link rel='icon' type='image/png' href={FAVICON.medium} sizes='32x32' />
+      <link rel='icon' type='image/png' href={meta.favicon.medium} sizes='32x32' />
 
-      <link rel='icon' type='image/png' href={FAVICON.small} sizes='16x16' />
+      <link rel='icon' type='image/png' href={meta.favicon.small} sizes='16x16' />
 
       {/* <!-- Search Engine --> */}
       <meta name='application-name' content='nicedoc.io' />

@@ -2,13 +2,13 @@ import remarkPreset from 'remark-preset-lint-recommended'
 import { ExternalLink } from 'components/icons'
 import ReactDOMServer from 'react-dom/server'
 import isRelativeUrl from 'is-relative-url'
+import { resolve as urlResolve } from 'url'
 import { isEmpty, forEach } from 'lodash'
 import remarkHtml from 'remark-html'
 import { TAGS } from 'html-urls'
 import AnchorJS from 'anchor-js'
 import cheerio from 'cheerio'
 import remark from 'remark'
-import urlResolve from 'url-resolve'
 
 const anchor = new AnchorJS()
 
