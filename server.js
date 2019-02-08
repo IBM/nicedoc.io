@@ -5,7 +5,7 @@ const next = require('next')
 
 const routes = require('./routes')
 
-const { NODE_ENV = 'development', PORT = '3000', DEPLOY_DATE } = process.env
+const { NODE_ENV = 'development', PORT = '1337', DEPLOY_DATE } = process.env
 
 const deployDate = DEPLOY_DATE
   ? new Date(parseInt(process.env.DEPLOY_DATE, 10) * 1000).toISOString()

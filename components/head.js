@@ -3,10 +3,12 @@ import urlResolve from 'url-resolve'
 
 import pkg from '../package.json'
 
-const { SITE_URL } = process.env
+console.log('process.env', process.env)
+const { SITE_URL, FOO_BAR } = process.env
 
 console.log('urlResolve', urlResolve)
 console.log('SITE_URL', SITE_URL)
+console.log('FOO_BAR', FOO_BAR)
 console.log('image', urlResolve(SITE_URL, '/static/banner.jpg'))
 
 const DEFAULT_META = {

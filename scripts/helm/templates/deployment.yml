@@ -37,5 +37,7 @@ spec:
               value: "{{ .Release.Time.Seconds }}"
             - name: SITE_URL
               value: "https://nicedoc.io"
+            - name: FOO_BAR
+              value: "HELLO WORLD"
       imagePullSecrets:
         - name: regcred

@@ -90,7 +90,7 @@
     "node": ">= 10"
   },
   "scripts": {
-    "build": "rm .next node_modules/.cache && NODE_ENV=production next build",
+    "build": "NODE_ENV=production next build",
     "clean": "rm -rf node_modules && rm -rf .next",
     "deploy": "npm run docker:build && npm run docker:push && npm run helm:deploy",
     "dev": "NODE_ENV=development node server.js",

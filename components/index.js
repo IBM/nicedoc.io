@@ -6,5 +6,6 @@ import Box from './box'
 import Flex from './flex'
 import Text from './text'
 import Hide from './hide'
+import Toggle from './toggle'
 
-export { Hide, Text, DocBar, Container, Link, Head, Box, Flex }
+export { Toggle, Hide, Text, DocBar, Container, Link, Head, Box, Flex }
