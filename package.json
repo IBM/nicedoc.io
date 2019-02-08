@@ -94,7 +94,7 @@
     "clean": "rm -rf node_modules && rm -rf .next",
     "deploy": "npm run docker:build && npm run docker:push && npm run helm:deploy",
     "dev": "NODE_ENV=development node server.js",
-    "docker:build": "docker build --tag registry.ng.bluemix.net/nicedoc/nicedoc .",
+    "docker:build": "docker build --build-arg SITE_URL=${SITE_URL} --tag registry.ng.bluemix.net/nicedoc/nicedoc .",
     "docker:push": "docker push registry.ng.bluemix.net/nicedoc/nicedoc:latest",
     "helm:deploy": "helm upgrade production scripts/helm --install",
     "lint": "standard-markdown && standard",
