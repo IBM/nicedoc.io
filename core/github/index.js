@@ -17,14 +17,30 @@ const cases = (name, ext) => [
 const { GITHUB_TOKEN } = process.env || {}
 
 // based on https://github.com/github/markup#markups
-const ALTERNATIVE_README_NAMES = concat(
-  cases('readme', 'md'),
-  cases('readme', 'rst')
-)
+const ALTERNATIVE_README_NAMES = concat(cases('readme', 'md'), cases('readme', 'rst'))
+
+const MARKDOWN_EXTENSIONS = [
+  '.markdown',
+  '.mdown',
+  '.mkdn',
+  '.md',
+  '.textile',
+  '.rdoc',
+  '.org',
+  '.creole',
+  '.mediawiki',
+  '.wiki',
+  '.rst',
+  '.asciidoc',
+  '.adoc',
+  '.asc',
+  '.pod',
+  '.pod6'
+]
 
 const fetchRepo = memoize(createFetchRepo({ GITHUB_TOKEN }))
 const normalizeParams = memoize(
-  createNormalizeParams({ ALTERNATIVE_README_NAMES })
+  createNormalizeParams({ MARKDOWN_EXTENSIONS, ALTERNATIVE_README_NAMES })
 )
 const fetchMeta = memoize(createFetchMeta({ normalizeParams, fetchRepo }))
 const fetchReadme = memoize(createFetchReadme({ GITHUB_TOKEN }))

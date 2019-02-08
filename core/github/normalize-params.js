@@ -1,6 +1,6 @@
-import utilPath from 'path'
+import { join as pathJoin, extname } from 'path'
 
-export default ({ ALTERNATIVE_README_NAMES }) => ({
+export default ({ MARKDOWN_EXTENSIONS, ALTERNATIVE_README_NAMES }) => ({
   owner,
   repo,
   path = ''
@@ -8,11 +8,9 @@ export default ({ ALTERNATIVE_README_NAMES }) => ({
   let ref = 'master'
   if (repo.includes('@')) [repo, ref] = repo.split('@')
 
-  const paths = !path.endsWith('.md')
-    ? ALTERNATIVE_README_NAMES.map(readmeName =>
-      utilPath.join(path, readmeName)
-    )
-    : [path]
+  const paths = MARKDOWN_EXTENSIONS.includesS(extname(path))
+    ? [path]
+    : ALTERNATIVE_README_NAMES.map(readmeName => pathJoin(path, readmeName))
 
   return { owner, repo, paths, ref }
 }
