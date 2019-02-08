@@ -1,4 +1,3 @@
-import memoize from '../memoize'
 import createFetchMeta from './fetch-meta'
 import createNormalizeParams from './normalize-params'
 import createFetchRepo from './fetch-repo'
@@ -42,11 +41,12 @@ const MARKDOWN_EXTENSIONS = [
   '.pod6'
 ]
 
-const fetchRepo = memoize(createFetchRepo({ GITHUB_TOKEN }))
-const normalizeParams = memoize(
-  createNormalizeParams({ MARKDOWN_EXTENSIONS, ALTERNATIVE_README_NAMES })
-)
-const fetchMeta = memoize(createFetchMeta({ normalizeParams, fetchRepo }))
-const fetchReadme = memoize(createFetchReadme({ GITHUB_TOKEN }))
+const fetchRepo = createFetchRepo({ GITHUB_TOKEN })
+const normalizeParams = createNormalizeParams({
+  MARKDOWN_EXTENSIONS,
+  ALTERNATIVE_README_NAMES
+})
+const fetchMeta = createFetchMeta({ normalizeParams, fetchRepo })
+const fetchReadme = createFetchReadme({ GITHUB_TOKEN })
 
 export { fetchMeta, normalizeParams, fetchRepo, fetchReadme }

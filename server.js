@@ -18,8 +18,8 @@ const app = next({ dev })
 const handler = routes.getRequestHandler(app)
 
 app.prepare().then(() => {
-  const server = express()
-  server.get('/api/status', (req, res) => res.json({ deployDate }))
-  server.get('*', (req, res) => handler(req, res))
-  server.listen(port, () => console.log(`> Ready on http://localhost:${port}`))
+  const app = express()
+  app.get('/api/status', (req, res) => res.json({ deployDate }))
+  app.get('*', (req, res) => handler(req, res))
+  app.listen(port, () => console.log(`> Ready on http://localhost:${port}`))
 })
