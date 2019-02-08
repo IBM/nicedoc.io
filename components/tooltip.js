@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { Tooltip as BaseTooltip } from 'react-tippy'
-import Small from './small'
 
 const defaultProps = {
   position: 'bottom',
