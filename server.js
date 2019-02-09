@@ -11,15 +11,20 @@ const { URL } = require('url')
 const next = require('next')
 
 const routes = require('./routes')
+const pkg = require('./package.json')
 
-const nextPaths = ['/_next', '/_webpack/', '/__webpack_hmr', '/static/']
-const TTL = 1000 * 60 * 60 // 1hour
+const {
+  SITE_URL = pkg.homepage,
+  NODE_ENV = 'development',
+  PORT = '3000',
+  DEPLOY_DATE
+} = process.env
+
+const INTERNAL_NEXT_PATHS = ['/_next', '/_webpack/', '/__webpack_hmr', '/static/']
+const TTL = 1000 * 60 * 60 * 2 // 2 hours
 const CACHE_NAMESPACE = 'ssr'
-const { SITE_URL } = process.env
 
-const isNextPath = ({ url }) => nextPaths.some(path => url.startsWith(path))
-
-const { NODE_ENV = 'development', PORT = '3000', DEPLOY_DATE } = process.env
+const isNextPath = ({ url }) => INTERNAL_NEXT_PATHS.some(path => url.startsWith(path))
 
 const isProduction = NODE_ENV === 'production'
 const isStaging = NODE_ENV === 'staging'

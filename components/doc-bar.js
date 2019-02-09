@@ -12,7 +12,6 @@ import Tooltip from './tooltip'
 import { navbar } from 'styles'
 import Bounty from 'react-bounty'
 import CountUp from 'react-countup'
-import ColourMeLife from 'colour-me-life'
 import TimeAgo from 'react-timeago'
 import React, { useState, useEffect } from 'react'
 
@@ -38,13 +37,14 @@ const getHostname = href => {
   return hostname.replace(REGEX_STRIP_WWW, '')
 }
 
-const scoreColors = new ColourMeLife()
-  .setSpectrum('#FF5050', '#FF5003', '#BE9B00', '#00B4A0')
-  .setNumberRange(0, 1)
+const getScoreClassName = score => {
+  if (score >= 0.85) return 'green'
+  if (score <= 0.35) return 'red'
+  return 'orange'
+}
 
 const Nav = styled(Flex)`
   line-height: 100%;
-  background-color: #fff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   content: '';
   height: ${navbar}px;
@@ -55,9 +55,7 @@ const Nav = styled(Flex)`
   z-index: 2;
 `
 
-const NavLink = styled(Link)`
-  color: black;
-`
+const NavLink = styled(Link)([])
 
 NavLink.defaultProps = {
   ...Link.defaultProps,
@@ -155,7 +153,7 @@ export default function DocBar ({ meta }) {
                 </Box>
               }
             >
-              <Small style={{ color: `#${scoreColors.colourAt(meta.score)}` }}>
+              <Small className={getScoreClassName(meta.score)}>
                 <strong ref={countUpRef} />
               </Small>
             </Tooltip>

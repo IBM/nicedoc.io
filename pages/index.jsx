@@ -31,14 +31,14 @@ export default class Index extends Component {
                 files.
               </Li>
               <Li>Compatible with any doc file hosted on GitHub.</Li>
-              <Li>You can point to any git hash reference</Li>
               <Li>
-                Support for multiple{' '}
+                Point to a git hash reference in any{' '}
                 <Link href='https://github.com/github/markup#markups'>
                   markup
                 </Link>{' '}
-                formats.
+                format.
               </Li>
+              <Li>Light & Dark mode support.</Li>
             </ul>
             <h2>Why</h2>
             <Text>

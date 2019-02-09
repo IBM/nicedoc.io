@@ -44,7 +44,10 @@ const mapMeta = async (payload, { ref }) => {
     license: license && licenseUrl ? license : undefined,
     licenseUrl:
       license && licenseUrl
-        ? licenseUrl.replace('https://api.github.com', 'https://choosealicense.com')
+        ? licenseUrl.replace(
+          'https://api.github.com',
+          'https://choosealicense.com'
+        )
         : undefined,
     stars,
     issues,
