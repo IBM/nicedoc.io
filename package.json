@@ -32,7 +32,6 @@
     "anchor-js": "~4.2.0",
     "cheerio": "~1.0.0-rc.2",
     "codecopy": "~1.0.2",
-    "colour-me-life": "~2.0.0",
     "date-fns": "~1.30.1",
     "emojilib": "~2.4.0",
     "express": "~4.16.4",

@@ -5,13 +5,13 @@
 }
 
 #nprogress .bar {
-  background: #000;
+  background: var(--progressBg);
   position: fixed;
   z-index: 1031;
-  top: 64px;
+  top: 65px;
   left: 0;
   width: 100%;
-  height: 2px;
+  height: 3px;
   transition: unset !important;
 }
 
