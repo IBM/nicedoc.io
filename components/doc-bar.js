@@ -86,9 +86,15 @@ export default function DocBar ({ meta }) {
         <Hide breakpoints={[0]}>
           <Small>{meta.repo}</Small>
         </Hide>
-        <Hide breakpoints={[1, 2, 3]}>
-          <Small>
-            <span>{meta.repo}</span>
+        <Hide breakpoints={[1, 2]}>
+          <Small
+            style={{
+              maxWidth: '5rem',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis'
+            }}
+          >
+            {meta.repo}
           </Small>
         </Hide>
       </NavLink>
@@ -107,38 +113,40 @@ export default function DocBar ({ meta }) {
         </NavLink>
       )}
 
-      <NavLink href={meta.commitsUrl}>
-        <Pulse size={16} mr={1} />
-        <Small>
-          <TimeAgo date={meta.updatedAt} />
-        </Small>
-      </NavLink>
+      <Hide breakpoints={[0]}>
+        <NavLink href={meta.commitsUrl}>
+          <Pulse size={16} mr={1} />
+          <Small>
+            <TimeAgo date={meta.updatedAt} />
+          </Small>
+        </NavLink>
 
-      <NavLink href={meta.starsUrl}>
-        <Star size={16} mr={1} />
-        <Small
-          style={{
-            // TODO: bug https://github.com/piecioshka/react-bounty/issues/1
-            position: 'relative',
-            top: '3px'
-          }}
-        >
-          <CustomBounty animationDelay={0} value={meta.stars} />
-        </Small>
-      </NavLink>
+        <NavLink href={meta.starsUrl}>
+          <Star size={16} mr={1} />
+          <Small
+            style={{
+              // TODO: bug https://github.com/piecioshka/react-bounty/issues/1
+              position: 'relative',
+              top: '3px'
+            }}
+          >
+            <CustomBounty animationDelay={0} value={meta.stars} />
+          </Small>
+        </NavLink>
 
-      <NavLink href={meta.issuesUrl}>
-        <IssueOpen size={16} mr={1} />
-        <Small
-          style={{
-            // TODO: bug https://github.com/piecioshka/react-bounty/issues/1
-            position: 'relative',
-            top: '3px'
-          }}
-        >
-          <CustomBounty initialDelay={0} value={meta.issues} />
-        </Small>
-      </NavLink>
+        <NavLink href={meta.issuesUrl}>
+          <IssueOpen size={16} mr={1} />
+          <Small
+            style={{
+              // TODO: bug https://github.com/piecioshka/react-bounty/issues/1
+              position: 'relative',
+              top: '3px'
+            }}
+          >
+            <CustomBounty initialDelay={0} value={meta.issues} />
+          </Small>
+        </NavLink>
+      </Hide>
 
       <Flex justifyContent='center' alignItems='center' pr={[0, 4]}>
         <CountUp start={0} delay={0} duration={3} end={meta.score} decimals={2}>

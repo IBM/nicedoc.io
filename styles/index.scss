@@ -35,8 +35,9 @@
   --codeFamily: Consolas, monaco, monospace;
   --bg: #f3f3f3;
   --textNormal: #343334;
-  --textTitle: #343334;
+  --textTitle: #333;
   --navText: black;
+  --navIcon: black;
   --navBg: white;
   --link: var(--blue);
   --codeBg: rgba(27, 31, 35, .05);
@@ -56,7 +57,8 @@ body.dark {
   --yellow: rgb(255, 224, 20);
   --bg: #202020;
   --navBg: #2D2D2D;
-  --navText: white;
+  --navText: #c0bfc0;
+  --navIcon: #c0bfc0;
   --textNormal: #e0e0e0;
   --textTitle: #fff;
   --codeBg: #3D3D3D;
@@ -96,11 +98,11 @@ nav a {
 }
 
 nav svg {
-  color: var(--navText);
+  color: var(--navIcon);
 }
 
 nav svg svg {
-  fill: var(--navText);
+  fill: var(--navIcon);
 }
 
 h1 {
