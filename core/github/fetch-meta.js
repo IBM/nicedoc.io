@@ -1,4 +1,4 @@
-import differenceInCalendarDays from 'date-fns/difference_in_calendar_days'
+import { differenceInCalendarDays } from 'date-fns'
 import { lib as emojiLib } from 'emojilib'
 import { get } from 'lodash'
 
@@ -29,7 +29,7 @@ const mapMeta = async (payload, { ref }) => {
   const issues = get(payload, 'open_issues')
   const stars = get(payload, 'stargazers_count')
   const updatedAt = new Date(get(payload, 'pushed_at', 'updated_at'))
-  const homepage = get(payload, 'homepage')
+  const homepage = get(payload, 'homepage', undefined)
   const license = get(payload, 'license.spdx_id')
   const licenseUrl = get(payload, 'license.url')
 
@@ -52,7 +52,6 @@ const mapMeta = async (payload, { ref }) => {
     issuesUrl: `${repoUrl}/issues`,
     watchers: get(payload, 'watchers_count'),
     forks: get(payload, 'forks_count'),
-    createdAt: get(payload, 'created_at'),
     updatedAt,
     homepage,
     activityUrl: `${repoUrl}/commits/${ref}`,
@@ -65,6 +64,5 @@ export default ({ normalizeParams, fetchRepo }) => async query => {
   const res = await fetchRepo({ owner, repo })
   const payload = await res.json()
   const meta = await mapMeta(payload, { ref })
-  console.log('meta', meta)
   return meta
 }
