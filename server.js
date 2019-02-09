@@ -100,7 +100,7 @@ const renderAndCache = ssrCache => async (req, res) => {
 
 const app = next({ dev })
 
-const handle = isProduction ? app.getRequestHandler() : routes.getRequestHandler(app)
+const handle = routes.getRequestHandler(app)
 
 const middleware = (() => {
   if (!isProduction && !isStaging) return (req, res) => handle(req, res)
