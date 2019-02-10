@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { breakpoints } from 'styles'
+import { display } from 'styled-system'
 
 const lastIndex = breakpoints.length - 1
 
@@ -21,16 +22,13 @@ const hidden = key => props => {
   const breakpoints = [].concat(props.breakpoints)
   return breakpoints.includes(key)
     ? {
-      [mediaBreakpoints[key]]: {
-        display: 'none'
+        [mediaBreakpoints[key]]: {
+          display: 'none'
+        }
       }
-    }
     : null
 }
 
-const Hide = styled.div(
-  [],
-  ...Object.keys(mediaBreakpoints).map(i => hidden(Number(i)))
-)
+const Hide = styled.div([], display, ...Object.keys(mediaBreakpoints).map(i => hidden(Number(i))))
 
 export default Hide

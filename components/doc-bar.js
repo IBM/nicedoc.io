@@ -113,7 +113,7 @@ export default function DocBar ({ meta }) {
         </NavLink>
       )}
 
-      <Hide breakpoints={[0]}>
+      <Hide breakpoints={[0]} display='flex'>
         <NavLink href={meta.commitsUrl}>
           <Pulse size={16} mr={1} />
           <Small>
