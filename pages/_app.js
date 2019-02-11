@@ -5,8 +5,11 @@ import theme from 'styles'
 
 import codecopy from 'codecopy'
 
-const isSlowConnection = () =>
-  global.window ? navigator.connection.effectiveType !== '4g' : false
+const isSlowConnection = () => {
+  if (!global.window) return false
+  if (navigator.connection.effectiveType.includes('2g')) return true
+  if (navigator.connection.saveData) return true
+}
 
 export default class MyApp extends App {
   static async getInitialProps ({ Component, router, ctx }) {
