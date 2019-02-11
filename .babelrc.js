@@ -1,5 +1,3 @@
-const env = require('./config.js')
-
 module.exports = {
   presets: ['next/babel'],
   plugins: [
@@ -30,7 +28,6 @@ module.exports = {
       {
         extensions: ['css$', 'scss$']
       }
-    ],
-    ['transform-define', env]
+    ]
   ]
 }
