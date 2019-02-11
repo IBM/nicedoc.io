@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/Kikobeats/nicedoc.io/compare/v1.0.0...v1.1.0) (2019-02-11)
+
+
+### Bug Fixes
+
+* add copy clipboard dark theme ([0e70463](https://github.com/Kikobeats/nicedoc.io/commit/0e70463))
+* adjust docbar for mobile ([b77f6b2](https://github.com/Kikobeats/nicedoc.io/commit/b77f6b2))
+* better font-family fallbacks ([93e78c0](https://github.com/Kikobeats/nicedoc.io/commit/93e78c0))
+* linter ([f6f9d13](https://github.com/Kikobeats/nicedoc.io/commit/f6f9d13))
+* remove ward ([71056d1](https://github.com/Kikobeats/nicedoc.io/commit/71056d1))
+* responsive nav links ([8b49aa9](https://github.com/Kikobeats/nicedoc.io/commit/8b49aa9))
+* routes ([9a432f0](https://github.com/Kikobeats/nicedoc.io/commit/9a432f0))
+* use url-resolve instead of url.resolve ([da37077](https://github.com/Kikobeats/nicedoc.io/commit/da37077))
+
+
+### Features
+
+* add dark mode ([ebffccd](https://github.com/Kikobeats/nicedoc.io/commit/ebffccd)), closes [#2](https://github.com/Kikobeats/nicedoc.io/issues/2)
+* add ssr cache ([45820cf](https://github.com/Kikobeats/nicedoc.io/commit/45820cf))
+
+
+
 <a name="1.0.0"></a>
 # 1.0.0 (2019-02-07)
 
