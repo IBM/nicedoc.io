@@ -8,11 +8,6 @@
 */
 
 @import 'superstylin';
-@import './nprogress.css';
-@import './toggle.css';
-@import 'codecopy/umd/codecopy.min.css';
-@import 'zoom-vanilla.js/dist/zoom.css';
-@import 'react-tippy/dist/tippy.css';
 :root {
   --blue: rgb(0, 112, 245);
   --brown: rgb(152, 122, 84);
@@ -208,3 +203,10 @@ code::selection,
 b::selection {
   background-color: #ffc533;
 }
+
+@import './nprogress.css';
+@import 'codecopy/umd/codecopy.min.css';
+@import './codecopy.css';
+@import './toggle.css';
+@import 'zoom-vanilla.js/dist/zoom.css';
+@import 'react-tippy/dist/tippy.css';
