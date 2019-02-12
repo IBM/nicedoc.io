@@ -6,7 +6,7 @@ import theme from 'styles'
 import codecopy from 'codecopy'
 
 const isSlowConnection = () => {
-  if (!global.window) return false
+  if (!global.window || !navigator || !navigator.connection) return false
   if (navigator.connection.effectiveType.includes('2g')) return true
   if (navigator.connection.saveData) return true
 }
