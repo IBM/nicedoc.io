@@ -30,7 +30,7 @@ export default class Index extends Component {
                 Automatically generated documentation sites for your markdown
                 files.
               </Li>
-              <Li>Compatible with any doc file hosted on GitHub.</Li>
+              <Li>Compatible with any doc file hosted on github.com.</Li>
               <Li>
                 Point to a git hash reference in any{' '}
                 <Link href='https://github.com/github/markup#markups'>
