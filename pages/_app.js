@@ -1,14 +1,15 @@
 import React from 'react'
-import App, { Container } from 'next/app'
 import { ThemeProvider } from 'styled-components'
+import App, { Container } from 'next/app'
+import { get } from 'lodash'
 import theme from 'styles'
 
 import codecopy from 'codecopy'
 
 const isSlowConnection = () => {
-  if (!global.window || !navigator || !navigator.connection) return false
-  if (navigator.connection.effectiveType.includes('2g')) return true
-  if (navigator.connection.saveData) return true
+  const saveData = get(global, 'navigator.connection.saveData', false)
+  const effectiveType = get(global, 'window.navigator.connection.effectiveType', '')
+  return saveData || effectiveType.includes('2g')
 }
 
 export default class MyApp extends App {
