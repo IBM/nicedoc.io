@@ -17,7 +17,7 @@ export default class Index extends Component {
 
           <Box style={{ textAlign: 'center' }}>
             <Text style={{ margin: 'auto' }} maxWidth={'24em'} pt={3}>
-              Prettify any README file
+              pretty README as service.
             </Text>
             <Box py={3}>
               <code>nicedoc.io/:org/:repo[@:ref]</code>
@@ -52,9 +52,7 @@ export default class Index extends Component {
             <h2>Examples</h2>
             <ul>
               <Li>
-                <Link href='/jamiebuilds/react-loadable'>
-                  jamiebuilds/react-loadable
-                </Link>
+                <Link href='/sindresorhus/got'>sindresorhus/got</Link>
               </Li>
               <Li>
                 <Link href='/substack/stream-handbook'>

@@ -2,13 +2,22 @@ import remarkPreset from 'remark-preset-lint-recommended'
 import { ExternalLink } from 'components/icons'
 import ReactDOMServer from 'react-dom/server'
 import isRelativeUrl from 'is-relative-url'
-import { resolve as urlResolve } from 'url'
+import fileExtension from 'file-extension'
 import { isEmpty, forEach } from 'lodash'
 import remarkHtml from 'remark-html'
 import { TAGS } from 'html-urls'
 import AnchorJS from 'anchor-js'
 import cheerio from 'cheerio'
 import remark from 'remark'
+import url from 'url'
+import qsm from 'qsm'
+
+const extension = (str = '') => {
+  const urlObj = url.parse(str)
+  urlObj.hash = ''
+  urlObj.search = ''
+  return fileExtension(url.format(urlObj))
+}
 
 const anchor = new AnchorJS()
 
@@ -31,7 +40,7 @@ const loadHTML = html =>
 
 const resolveUrl = (from, to) => {
   if (to[0] === '/') to = to.substr(1)
-  return urlResolve(from, to)
+  return url.resolve(from, to)
 }
 
 export default ({ normalizeParams, fetchReadme }) => async query => {
@@ -76,8 +85,15 @@ export default ({ normalizeParams, fetchReadme }) => async query => {
   $('img').each(function () {
     const el = $(this)
     const parentLink = el.closest('a')[0]
-    if (!parentLink) el.attr('data-action', 'zoom')
-    else externalLink($(parentLink), { appendIcon: false })
+    if (!parentLink) {
+      const src = el.attr('src')
+      if (extension(src) === 'svg') {
+        el.attr('src', qsm.add(src, { sanitize: true }))
+      }
+      el.attr('data-action', 'zoom')
+    } else {
+      externalLink($(parentLink), { appendIcon: false })
+    }
   })
 
   // add external icon for non internal urls

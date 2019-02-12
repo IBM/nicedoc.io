@@ -1,6 +1,6 @@
 {
   "name": "nicedoc.io",
-  "description": "Pretty README as service",
+  "description": "pretty README as service",
   "homepage": "https://nicedoc.io",
   "version": "1.1.0",
   "main": "index.js",
@@ -35,6 +35,7 @@
     "date-fns": "~1.30.1",
     "emojilib": "~2.4.0",
     "express": "~4.16.4",
+    "file-extension": "~4.0.5",
     "html-urls": "~2.3.1",
     "is-relative-url": "~2.0.0",
     "isomorphic-unfetch": "~3.0.0",
@@ -45,6 +46,7 @@
     "normalize-url": "~4.1.0",
     "nprogress": "~0.2.0",
     "pretty-ms": "~4.0.0",
+    "qsm": "~2.1.0",
     "react": "16.8.1",
     "react-bounty": "~1.0.3",
     "react-countup": "~4.0.0",
