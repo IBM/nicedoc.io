@@ -69,9 +69,9 @@ The problem with this kind of name is they are already taken, so need to determi
 That includes:
 
 - [x] Choose a Name – Should be easy to pronun in English.
-- [ ] Choose a Logo – Should be readable as favicon, Name + Logo and Name + Logo + Claim.
-- [ ] Choose a Claim – Should something minimal that resume the project (eg: Pretty README as service). 
-- [ ] Choose a typography.
+- [x] Choose a Logo – Should be readable as favicon, Name + Logo and Name + Logo + Claim.
+- [x] Choose a Claim – Should something minimal that resume the project (eg: Pretty README as service). 
+- [x] Choose a typography.
 
 #### 🚧 Recover Any GitHub File
 
@@ -117,18 +117,18 @@ Why is it so popular even exists other blogging platform more powerful? Sensible
 
 That's include:
 
-- [ ] Choice a white color palette as base.
+- [x] Choice a white color palette as base.
 	- [Open Colors Scheme](https://yeun.github.io/open-color/gray-color.html).
 	- [Dark Palette](https://command.now.sh/).
 	- [Carbon Design System](https://www.carbondesignsystem.com/) (click dark mode on bottom).
-- [ ]  Choice a paired font to use.
+- [x]  Choice a paired font to use.
 	- [fontpair](https://fontpair.co)
-- [ ] Abbility to switch to Dark mode & remember preferences.
+- [x] Abbility to switch to Dark mode & remember preferences ([#2](https://github.com/Kikobeats/nicedoc.io/issues/2)).
 	- [Building the N26 Dark Mode](https://medium.com/insiden26/building-the-n26-dark-mode-2fc18c2ccdd5)
 	- [Redesigning your product and website for dark mode](https://stuffandnonsense.co.uk/blog/redesigning-your-product-and-website-for-dark-mode)
 	- [How to detect if OS X is in dark mode in browsers?](https://stackoverflow.com/questions/50840168/how-to-detect-if-os-x-is-in-dark-mode-in-browsers/52986538#52986538)
 	- [Using dark mode in CSS with MacOS Mojave](https://paulmillr.com/posts/using-dark-mode-in-css/).
-- [ ] Copy Clipboard button for any code block.
+- [x] Copy Clipboard button for any code block ([#2](https://github.com/Kikobeats/nicedoc.io/issues/8)).
 	- [codecopy](https://github.com/Kikobeats/react-codecopy) – "Copy to clipboard" button for your code snippets.
 - [ ] Show on GitHub button in the corner.
         – [GiHub Corner](https://github.com/skratchdot/react-github-corner) – Add a Github banner to your project page.
