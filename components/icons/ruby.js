@@ -1,6 +1,6 @@
 import Svg from '../svg'
 
-export default ({ ...props }) => (
+export default props => (
   <Svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' {...props}>
     <path
       fillRule='evenodd'
