@@ -2,7 +2,7 @@ import { IssueOpen, Pulse, Home, Nicedoc, Star, License, GitHub } from 'componen
 import styled from 'styled-components'
 import Flex from './flex'
 import Hide from './hide'
-import Link from './link'
+import { Link } from './link'
 import Toggle from './toggle'
 import Small from './small'
 import Text from './text'

@@ -1,4 +1,4 @@
-import Link from './link'
+import { Link, ExternalLink, InternalLink } from './link'
 import DocBar from './doc-bar'
 import Container from './container'
 import Head from './head'
@@ -10,4 +10,18 @@ import Toggle from './toggle'
 import Li from './li'
 import Small from './small'
 
-export { Small, Toggle, Li, Hide, Text, DocBar, Container, Link, Head, Box, Flex }
+export {
+  Box,
+  Container,
+  DocBar,
+  ExternalLink,
+  Flex,
+  Head,
+  Hide,
+  InternalLink,
+  Li,
+  Link,
+  Small,
+  Text,
+  Toggle
+}
