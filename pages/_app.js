@@ -1,16 +1,8 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import App, { Container } from 'next/app'
-import { get } from 'lodash'
-import theme from 'styles'
-
 import codecopy from 'codecopy'
-
-const isSlowConnection = () => {
-  const saveData = get(global, 'navigator.connection.saveData', false)
-  const effectiveType = get(global, 'window.navigator.connection.effectiveType', '')
-  return saveData || effectiveType.includes('2g')
-}
+import theme from 'styles'
 
 export default class MyApp extends App {
   static async getInitialProps ({ Component, router, ctx }) {
@@ -24,11 +16,8 @@ export default class MyApp extends App {
   }
 
   componentDidMount () {
-    const isSlow = isSlowConnection()
-    if (!isSlow) {
-      codecopy('pre')
-      import('zoom-vanilla.js')
-    }
+    codecopy('pre')
+    import('zoom-vanilla.js')
   }
 
   render () {
