@@ -138,9 +138,17 @@ h3,
 h4,
 h5,
 h6 {
-  display: flex;
-  align-items: center;
   color: var(--textTitle);
+  a {
+    color: inherit;
+    &:hover {
+      text-decoration: none;
+      border-bottom: 1px var(--navIcon) dotted;
+      &~.permalink {
+        visibility: visible;
+      }
+    }
+  }
 }
 
 code {
@@ -155,13 +163,13 @@ a {
   text-decoration: none;
 }
 
-.anchorjs-link {
-  color: #d8d8d8;
-  font-size: 70%;
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
+hr {
+  border: 0;
+  height: .15em;
+  margin: 24px 0;
+  padding: 0;
+  width: 100%;
+  background-color: #eaeaea;
 }
 
 img {
@@ -185,6 +193,25 @@ small {
   font-size: var(--font-size-small);
   letter-spacing: 0.005em;
   line-height: 1;
+}
+
+.permalink {
+  visibility: hidden;
+  g {
+    fill: var(--navIcon);
+    stroke: var(--navIcon);
+  }
+  path:nth-child(2) {
+    stroke: var(--navIcon);
+  }
+}
+
+.permalink-target {
+  display: block;
+  margin-top: -128px;
+  padding-top: 128px;
+  visibility: hidden;
+  position: absolute;
 }
 
 ::selection {

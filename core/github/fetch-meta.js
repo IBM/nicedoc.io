@@ -1,25 +1,14 @@
 import { differenceInCalendarDays } from 'date-fns'
-import { lib as emojiLib } from 'emojilib'
+import { shortnameToUnicode } from 'emojione'
 import { get } from 'lodash'
 
 const { SITE_URL } = process.env
-
-const RE_EMOJI_KEYWORD = /:\S*:/g
 
 const SCORE_RATIO = 0.2
 
 const score = ({ updatedAt, stars, issues }) => {
   const days = Math.abs(differenceInCalendarDays(updatedAt, Date.now()))
   return (stars + 1) / (stars + 1 + SCORE_RATIO * days * issues)
-}
-
-const emojiKeyword = (str = '') => {
-  const keywords = str.match(RE_EMOJI_KEYWORD) || []
-  return keywords.reduce((acc, keyword) => {
-    const key = keyword.split(':')[1]
-    const { char } = emojiLib[key]
-    return char ? acc.replace(keyword, char) : acc
-  }, str)
 }
 
 const mapMeta = async (payload, { ref }) => {
@@ -36,7 +25,7 @@ const mapMeta = async (payload, { ref }) => {
   return {
     url: `${SITE_URL}/${owner}/${repo}`,
     githubUrl: `${repoUrl}/tree/${ref}`,
-    description: emojiKeyword(get(payload, 'description')),
+    description: shortnameToUnicode(get(payload, 'description')),
     owner: get(payload, 'owner.login'),
     repo: get(payload, 'name'),
     logo: get(payload, 'owner.avatar_url'),
@@ -44,10 +33,7 @@ const mapMeta = async (payload, { ref }) => {
     license: license && licenseUrl ? license : undefined,
     licenseUrl:
       license && licenseUrl
-        ? licenseUrl.replace(
-          'https://api.github.com',
-          'https://choosealicense.com'
-        )
+        ? licenseUrl.replace('https://api.github.com', 'https://choosealicense.com')
         : undefined,
     stars,
     issues,

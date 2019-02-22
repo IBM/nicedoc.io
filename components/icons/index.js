@@ -9,17 +9,19 @@ import Ruby from './ruby'
 import Nicedoc from './nicedoc'
 import Home from './home'
 import IssueOpen from './issue-open'
+import Permalink from './permalink'
 
 export {
-  Home,
-  IssueOpen,
-  Nicedoc,
-  Ruby,
   ExternalLink,
-  Star,
   Eye,
   Forks,
   GitHub,
+  Home,
+  IssueOpen,
   License,
-  Pulse
+  Nicedoc,
+  Permalink,
+  Pulse,
+  Ruby,
+  Star
 }
