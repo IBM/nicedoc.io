@@ -1,12 +1,12 @@
+import { createElement } from 'react'
 import NextLink from 'next/link'
-import { ExternalLink } from './icons'
-import { isNil } from 'lodash'
+import { ExternalLink as ExternalLinkIcon } from './icons'
 import styled from 'styled-components'
 import { justifyContent, flexWrap, display, alignItems, flexDirection, space } from 'styled-system'
 
 const isInternalLink = to => /^\/(?!\/)/.test(to)
 
-const Link = styled('a')(
+const CustomLink = styled('a')(
   display,
   alignItems,
   flexDirection,
@@ -17,18 +17,31 @@ const Link = styled('a')(
   space
 )
 
-export default ({ href, prefetch = false, children, icon, ...props }) => {
-  const isInternal = isInternalLink(href)
-  const rel = isInternal ? null : 'noopener noreferrer'
-  const target = isInternal ? '_self' : '_blank'
-  const hasIcon = isNil(icon) ? !isInternal : icon
+export const InternalLink = ({ href, prefetch, ...props }) => <CustomLink href={href} {...props} />
 
-  return (
-    <NextLink prefetch={prefetch} href={href}>
-      <Link href={href} rel={rel} target={target} {...props}>
-        {children}
-        {hasIcon && <ExternalLink />}
-      </Link>
-    </NextLink>
-  )
+InternalLink.defaultProps = {
+  prefetch: false,
+  target: '_self'
+}
+
+export const ExternalLink = ({ children, icon: hasIcon, href, prefetch, ...props }) => (
+  <NextLink prefetch={prefetch} href={href}>
+    <CustomLink href={href} {...props}>
+      {children}
+      {hasIcon && <ExternalLinkIcon />}
+    </CustomLink>
+  </NextLink>
+)
+
+ExternalLink.defaultProps = {
+  icon: true,
+  prefect: false,
+  rel: 'noopener noreferrer',
+  target: '_blank'
+}
+
+export const Link = props => {
+  const isInternal = props.href.startsWith('#') || isInternalLink(props.href)
+  const LinkComponent = isInternal ? InternalLink : ExternalLink
+  return createElement(LinkComponent, props)
 }

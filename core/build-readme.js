@@ -1,12 +1,15 @@
 import remarkPreset from 'remark-preset-lint-recommended'
-import { ExternalLink } from 'components/icons'
+import { Permalink, ExternalLink } from 'components/icons'
 import ReactDOMServer from 'react-dom/server'
+import { shortnameToUnicode } from 'emojione'
 import isRelativeUrl from 'is-relative-url'
+import GitHubSlugger from 'github-slugger'
 import fileExtension from 'file-extension'
 import { isEmpty, forEach } from 'lodash'
+import { InternalLink } from 'components'
 import remarkHtml from 'remark-html'
 import { TAGS } from 'html-urls'
-import AnchorJS from 'anchor-js'
+import { Fragment } from 'react'
 import cheerio from 'cheerio'
 import remark from 'remark'
 import url from 'url'
@@ -18,8 +21,6 @@ const extension = (str = '') => {
   urlObj.search = ''
   return fileExtension(url.format(urlObj))
 }
-
-const anchor = new AnchorJS()
 
 const remarkProcessor = remark()
   .use(remarkPreset)
@@ -51,6 +52,7 @@ export default ({ normalizeParams, fetchReadme }) => async query => {
   const markdown = await response.text()
   const html = await md2html(markdown, { owner, repo })
   const $ = loadHTML(html)
+  const slugger = new GitHubSlugger()
 
   // rewrite relative path into absolute
   forEach(TAGS, (htmlTags, propName) => {
@@ -66,11 +68,22 @@ export default ({ normalizeParams, fetchReadme }) => async query => {
     })
   })
 
-  // add anchor link
+  // add anchor links
   $('h1, h2, h3, h4, h5, h6').each(function () {
     const el = $(this)
     const text = el.text()
-    if (text) el.attr('id', anchor.urlify(text))
+    const slug = `${slugger.slug(text)}`
+    el.html(
+      ReactDOMServer.renderToString(
+        <Fragment>
+          <span className='permalink-target' id={slug} />
+          <InternalLink href={`#${slug}`} children={text} />
+          <span className='permalink'>
+            <Permalink width={16} ml={2} />
+          </span>
+        </Fragment>
+      )
+    )
   })
 
   const externalLink = (el, { appendIcon = true } = {}) => {
@@ -98,12 +111,14 @@ export default ({ normalizeParams, fetchReadme }) => async query => {
 
   // add external icon for non internal urls
   $('a:not(a:has(img))').each(function () {
-    externalLink($(this))
+    const el = $(this)
+    const href = el.attr('href') || ''
+    if (!href.startsWith('#')) externalLink($(this))
   })
 
   const meta = {
     image: $('img').attr('src')
   }
 
-  return { meta, html: $.html() }
+  return { meta, html: shortnameToUnicode($.html()) }
 }

@@ -4,13 +4,11 @@ import { buildReadme } from 'core'
 import { DocBar, Container, Head } from 'components'
 import ScrollProgress from 'scrollprogress'
 import NProgress from 'nprogress'
-import AnchorJS from 'anchor-js'
 
 import { navbar } from 'styles'
 
 function Readme (props) {
   useReadProgress()
-  useAnchorTitles()
 
   const { meta, readme } = props
   return (
@@ -39,12 +37,6 @@ Readme.getInitialProps = async ({ query }) => {
       readme: html
     }
   }
-}
-
-function useAnchorTitles () {
-  useEffect(() => {
-    new AnchorJS({ icon: '#' }).add('h1, h2, h3, h4, h5, h6')
-  })
 }
 
 function useReadProgress () {
