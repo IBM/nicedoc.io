@@ -42,7 +42,8 @@ const mapMeta = async (payload, { ref }) => {
     watchers: get(payload, 'watchers_count'),
     forks: get(payload, 'forks_count'),
     updatedAt,
-    homepage,
+    homepage:
+      homepage && new URL(SITE_URL).origin !== new URL(homepage).origin ? homepage : undefined,
     activityUrl: `${repoUrl}/commits/${ref}`,
     score: score({ stars, issues, updatedAt })
   }
