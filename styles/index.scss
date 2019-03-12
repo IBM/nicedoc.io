@@ -176,6 +176,12 @@ img {
   max-width: 100%;
 }
 
+body.dark {
+  img {
+    mix-blend-mode: multiply;
+  }
+}
+
 blockquote {
   border-left-color: var(--gray2);
 }
