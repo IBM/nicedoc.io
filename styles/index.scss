@@ -8,6 +8,7 @@
 */
 
 @import 'superstylin';
+
 :root {
   --blue: rgb(0, 112, 245);
   --brown: rgb(152, 122, 84);
@@ -139,11 +140,14 @@ h4,
 h5,
 h6 {
   color: var(--textTitle);
+
   a {
     color: inherit;
+
     &:hover {
       text-decoration: none;
       border-bottom: 1px var(--navIcon) dotted;
+
       &~.permalink {
         visibility: visible;
       }
@@ -161,6 +165,11 @@ code {
 a {
   color: var(--link);
   text-decoration: none;
+  border-radius: 0;
+
+  &:focus {
+    box-shadow: none;
+  }
 }
 
 hr {
@@ -203,10 +212,12 @@ small {
 
 .permalink {
   visibility: hidden;
+
   g {
     fill: var(--navIcon);
     stroke: var(--navIcon);
   }
+
   path:nth-child(2) {
     stroke: var(--navIcon);
   }
