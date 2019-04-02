@@ -1,19 +1,24 @@
-import remarkPreset from 'remark-preset-lint-recommended'
 import { Permalink, ExternalLink } from 'components/icons'
 import ReactDOMServer from 'react-dom/server'
-import { shortnameToUnicode } from 'emojione'
 import isRelativeUrl from 'is-relative-url'
-import GitHubSlugger from 'github-slugger'
 import fileExtension from 'file-extension'
 import { isEmpty, forEach } from 'lodash'
 import { InternalLink } from 'components'
-import remarkHtml from 'remark-html'
+import { promisify } from 'util'
 import { TAGS } from 'html-urls'
 import { Fragment } from 'react'
 import cheerio from 'cheerio'
-import remark from 'remark'
 import url from 'url'
 import qsm from 'qsm'
+
+import remarkPreset from 'remark-preset-lint-recommended'
+import remarkHtml from 'remark-html'
+import remarkEmoji from 'remark-emoji'
+
+import remark from 'remark'
+
+import rehype from 'rehype'
+import rehypeSlug from 'rehype-slug'
 
 const extension = (str = '') => {
   const urlObj = url.parse(str)
@@ -22,13 +27,19 @@ const extension = (str = '') => {
   return fileExtension(url.format(urlObj))
 }
 
-const remarkProcessor = remark()
-  .use(remarkPreset)
-  .use(remarkHtml)
+const htmlBuilder = rehype().use(rehypeSlug)
 
-const md2html = async md => {
-  const { contents } = await remarkProcessor.process(md)
-  return contents
+const toHTML = promisify(htmlBuilder.process)
+
+const build = async markdown => {
+  const { contents: normalizedHtmlFromMarkdown } = await remark()
+    .use(remarkPreset)
+    .use(remarkEmoji)
+    .use(remarkHtml)
+    .process(markdown)
+
+  const file = await toHTML(normalizedHtmlFromMarkdown)
+  return String(file)
 }
 
 const loadHTML = html =>
@@ -44,35 +55,12 @@ const resolveUrl = (from, to) => {
   return url.resolve(from, to)
 }
 
-export default ({ normalizeParams, fetchReadme }) => async query => {
-  const { owner, repo, paths, ref } = normalizeParams(query)
-  const response = await fetchReadme({ owner, repo, paths, ref })
-  if (!response) throw new Error('Readme Not Found')
-
-  const markdown = await response.text()
-  const html = await md2html(markdown, { owner, repo })
-  const $ = loadHTML(html)
-  const slugger = new GitHubSlugger()
-
-  // rewrite relative path into absolute
-  forEach(TAGS, (htmlTags, propName) => {
-    $(htmlTags.join(',')).each(function () {
-      const el = $(this)
-      const attr = el.attr(propName)
-      if (!isEmpty(attr) && isRelativeUrl(attr)) {
-        el.attr(
-          propName,
-          resolveUrl(`https://raw.githubusercontent.com/${owner}/${repo}/${ref}/`, attr)
-        )
-      }
-    })
-  })
-
-  // add anchor links
+const withAnchorLinks = $ => {
   $('h1, h2, h3, h4, h5, h6').each(function () {
     const el = $(this)
     const text = el.text()
-    const slug = `${slugger.slug(text)}`
+    const slug = el.attr('id')
+    el.removeAttr('id')
     el.html(
       ReactDOMServer.renderToString(
         <Fragment>
@@ -85,16 +73,40 @@ export default ({ normalizeParams, fetchReadme }) => async query => {
       )
     )
   })
+}
 
-  const externalLink = (el, { appendIcon = true } = {}) => {
-    el.attr('rel', 'noopener noreferrer')
-    el.attr('target', '_blank')
-    if (appendIcon) {
-      el.append(ReactDOMServer.renderToString(<ExternalLink />))
-    }
+const withExternalIcon = $ => {
+  $('a:not(a:has(img))').each(function () {
+    const el = $(this)
+    const href = el.attr('href') || ''
+    if (!href.startsWith('#')) externalLink($(this))
+  })
+}
+
+const withRelativeLinks = ($, { owner, repo, ref }) => {
+  forEach(TAGS, (htmlTags, propName) => {
+    $(htmlTags.join(',')).each(function () {
+      const el = $(this)
+      const attr = el.attr(propName)
+      if (!isEmpty(attr) && isRelativeUrl(attr)) {
+        el.attr(
+          propName,
+          resolveUrl(`https://raw.githubusercontent.com/${owner}/${repo}/${ref}/`, attr)
+        )
+      }
+    })
+  })
+}
+
+const externalLink = (el, { appendIcon = true } = {}) => {
+  el.attr('rel', 'noopener noreferrer')
+  el.attr('target', '_blank')
+  if (appendIcon) {
+    el.append(ReactDOMServer.renderToString(<ExternalLink />))
   }
+}
 
-  // zoom on images
+const withZoomImages = $ => {
   $('img').each(function () {
     const el = $(this)
     const parentLink = el.closest('a')[0]
@@ -108,17 +120,22 @@ export default ({ normalizeParams, fetchReadme }) => async query => {
       externalLink($(parentLink), { appendIcon: false })
     }
   })
+}
 
-  // add external icon for non internal urls
-  $('a:not(a:has(img))').each(function () {
-    const el = $(this)
-    const href = el.attr('href') || ''
-    if (!href.startsWith('#')) externalLink($(this))
-  })
+export default ({ normalizeParams, fetchReadme }) => async query => {
+  const { owner, repo, paths, ref } = normalizeParams(query)
+  const response = await fetchReadme({ owner, repo, paths, ref })
+  if (!response) throw new Error('Readme Not Found')
 
-  const meta = {
-    image: $('img').attr('src')
-  }
+  const markdown = await response.text()
+  const html = await build(markdown)
+  const $ = loadHTML(html)
 
-  return { meta, html: shortnameToUnicode($.html()) }
+  withRelativeLinks($, { owner, repo, ref })
+  withAnchorLinks($)
+  withZoomImages($)
+  withExternalIcon($)
+
+  const meta = { image: $('img').attr('src') }
+  return { meta, html: $.html() }
 }
