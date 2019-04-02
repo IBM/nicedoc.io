@@ -1,6 +1,5 @@
 import Document, { Head as HeadDocument, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-import stylesheet from 'styles/index.scss'
 import { Head } from 'components'
 
 export default class MyDocument extends Document {
@@ -16,10 +15,7 @@ export default class MyDocument extends Document {
   render () {
     return (
       <html>
-        <HeadDocument>
-          {this.props.styleTags}
-          <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
-        </HeadDocument>
+        <HeadDocument>{this.props.styleTags}</HeadDocument>
         <Head />
         <body>
           <script

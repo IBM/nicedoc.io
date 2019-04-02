@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = () => ({
+module.exports = {
   plugins: [
     require('postcss-easy-import'),
     require('postcss-focus'),
@@ -12,4 +12,4 @@ module.exports = () => ({
       discardUnused: true
     })
   ]
-})
+}
