@@ -13,6 +13,7 @@ export default ({ style, ...props }) => (
     strokeLinecap='round'
     strokeLinejoin='round'
     style={{ marginLeft: '2px', ...style }}
+    className='external-link-icon'
     {...props}
   >
     <path d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6' />

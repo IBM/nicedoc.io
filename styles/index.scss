@@ -37,6 +37,7 @@
   --textTitle: #333;
   --navText: var(--black);
   --navIcon: var(--black);
+  --externalIcon: #c0bfc0;
   --navBg: white;
   --codeBg: rgba(27, 31, 35, .05);
   --progressBg: var(--black);
@@ -57,6 +58,7 @@ body.dark {
   --navBg: #272727;
   --navText: #c0bfc0;
   --navIcon: #c0bfc0;
+  --externalIcon: #404040;
   --textNormal: #e0e0e0;
   --textTitle: #fff;
   --codeBg: #2d2d2d;
@@ -101,6 +103,14 @@ nav svg {
 
 nav svg svg {
   fill: var(--navIcon);
+}
+
+th {
+  border-bottom: 2px solid var(--externalIcon);
+}
+
+td {
+  border: 0;
 }
 
 li {
@@ -231,6 +241,10 @@ small {
   font-size: var(--font-size-small);
   letter-spacing: 0.005em;
   line-height: 1;
+}
+
+.external-link-icon {
+  stroke: var(--externalIcon);
 }
 
 .permalink {
