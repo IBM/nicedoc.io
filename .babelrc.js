@@ -22,7 +22,6 @@ module.exports = {
         cwd: 'babelrc'
       }
     ],
-    'inline-dotenv',
     [
       'wrap-in-js',
       {
