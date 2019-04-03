@@ -47,6 +47,7 @@
   line-height: 0;
   opacity: 0;
   transition: opacity 0.25s ease;
+  z-index: 1;
 }
 
 .react-toggle--checked .react-toggle-track-check {
