@@ -115,6 +115,7 @@ pre[class*="language-"] {
   height: 800px !important;
 }
 
+.token.punctuation,
 .token.comment {
   color: #787878;
 }
@@ -148,7 +149,7 @@ pre[class*="language-"] {
 }
 
 .token.property {
-  color: rgba(255, 184, 108, 1);
+  color: var(--orange);
 }
 
 .token.important {
@@ -156,16 +157,12 @@ pre[class*="language-"] {
   font-weight: bold;
 }
 
-.token.punctuation {
-  color: rgba(230, 219, 116, 1);
-}
-
 .token.number {
   color: rgba(189, 147, 249, 1);
 }
 
 .token.function {
-  color: rgba(80, 250, 123, 1);
+  color: rgba(102, 217, 239, 1);
 }
 
 .token.class-name {
@@ -177,7 +174,7 @@ pre[class*="language-"] {
 }
 
 .token.boolean {
-  color: rgba(255, 184, 108, 1);
+  color: var(--orange);
 }
 
 .token.operator {
@@ -245,7 +242,7 @@ pre[class*="language-"] {
 }
 
 .language-css .token.property {
-  color: rgba(255, 184, 108, 1);
+  color: var(--orange);
 }
 
 .language-java span.token.class-name {
@@ -376,7 +373,7 @@ div.code-toolbar>.toolbar button {
 div.code-toolbar>.toolbar a,
 div.code-toolbar>.toolbar button,
 div.code-toolbar>.toolbar span {
-  color: #ccc;
+  color: rgba(207, 207, 194, 1);
   font-size: 0.8em;
   padding: 0.5em;
   background: rgba(98, 114, 164, 1);
