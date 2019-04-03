@@ -14,18 +14,20 @@ if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
     docker push registry.ng.bluemix.net/nicedoc/nicedoc:latest
 
     # Decrypt encrypted files
-    openssl aes-256-cbc -k "$TRAVIS_ENCRYPT_PASSWORD" -in "${dir}/kubernetes/kube-conf.yml.enc" -out "${dir}/kubernetes/kube-conf.yml" -d
-    openssl aes-256-cbc -k "$TRAVIS_ENCRYPT_PASSWORD" -in "${dir}/kubernetes/kube-conf.pem.enc" -out "${dir}/kubernetes/kube-conf.pem" -d
     openssl aes-256-cbc -k "$TRAVIS_ENCRYPT_PASSWORD" -in "${dir}/../helm/values.yaml.enc" -out "${dir}/../helm/values.yaml" -d
-    export KUBECONFIG=${dir}/kubernetes/kube-conf.yml
 
-    # Install k8scli
-    K8SCLI_DIR=$HOME/k8scli
-    mkdir -p $K8SCLI_DIR
-    curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-    chmod +x ./kubectl
-    mv kubectl $K8SCLI_DIR/kubectl
-    export PATH=${K8SCLI_DIR}:${PATH}
+    # Installing ibmcloud-cli
+    curl -sL https://ibm.biz/idt-installer | bash
+
+    # Stop version validation
+    ibmcloud config --check-version=false
+
+    # Log in into IBM Cloud Container Service
+    ibmcloud login --apikey ${IBMCLOUD_API_KEY} -g 'IBM RESEARCH PRO' -r 'us-south'
+
+    # Set Kubernetes cluster
+    STORE_KUBECONFIG=$(ibmcloud ks cluster-config nicedoc.io | grep KUBECONFIG)
+    eval $STORE_KUBECONFIG
 
     # Install helm
     HELM_URL=https://storage.googleapis.com/kubernetes-helm
