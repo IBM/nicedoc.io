@@ -39,7 +39,8 @@
   --navIcon: var(--black);
   --externalIcon: #c0bfc0;
   --navBg: white;
-  --codeBg: rgba(27, 31, 35, .05);
+  --codeBg: #272727;
+  --codeInlineBg: #2727270d;
   --progressBg: var(--black);
 }
 
@@ -62,6 +63,7 @@ body.dark {
   --textNormal: #e0e0e0;
   --textTitle: #fff;
   --codeBg: #2d2d2d;
+  --codeInlineBg: #2d2d2d;
 }
 
 .green {
@@ -175,7 +177,7 @@ code {
   border-radius: 3px;
   font-family: var(--codeFamily);
   font-size: var(--font-size-code);
-  background-color: var(--codeBg);
+  background-color: var(--codeInlineBg);
   padding: 3px 8px;
   color: var(--textNormal)
 }
@@ -227,7 +229,6 @@ code {
 }
 
 pre>code {
-  background: #282936;
   color: rgba(207, 207, 194, 1);
   padding: calc(var(--base-unit) * 1);
 
