@@ -38,7 +38,7 @@
   --navText: var(--black);
   --navIcon: var(--black);
   --navBg: white;
-  --codeBg: #2e2e2e;
+  --codeBg: rgba(27, 31, 35, .05);
   --progressBg: var(--black);
 }
 
@@ -165,7 +165,7 @@ code {
   border-radius: 3px;
   font-family: var(--codeFamily);
   font-size: var(--font-size-code);
-  background-color: rgba(27, 31, 35, .05);
+  background-color: var(--codeBg);
   padding: 3px 8px;
   color: var(--textNormal)
 }
