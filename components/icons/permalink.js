@@ -1,7 +1,7 @@
 import Svg from '../svg'
 
 export default props => (
-  <Svg viewBox='0 0 16 16' width={16} {...props}>
+  <Svg viewBox='0 0 16 16' {...props}>
     <g strokeWidth='1' fill='#000000' stroke='#000000'>
       <path
         fill='none'

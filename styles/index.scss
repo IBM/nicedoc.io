@@ -19,6 +19,8 @@
   --purple: rgb(159, 75, 201);
   --red: rgb(245, 49, 38);
   --yellow: rgb(245, 194, 0);
+  --black: black;
+  --base-unit: 18px;
   --font-size-h1: 2rem;
   --font-size-h2: 1.5rem;
   --font-size-h3: 1.25rem;
@@ -26,18 +28,18 @@
   --font-size-h5: .875rem;
   --font-size-h6: .85rem;
   --font-size-small: .75rem;
+  --font-size-code: 75%;
   --letter-spacing-ratio: -40;
   --sansFamily: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-  --codeFamily: Consolas, monaco, monospace;
+  --codeFamily: PT Mono, Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   --bg: #f3f3f3;
   --textNormal: #343334;
   --textTitle: #333;
-  --navText: black;
-  --navIcon: black;
+  --navText: var(--black);
+  --navIcon: var(--black);
   --navBg: white;
-  --link: var(--blue);
-  --codeBg: rgba(27, 31, 35, .05);
-  --progressBg: black;
+  --codeBg: #2e2e2e;
+  --progressBg: var(--black);
 }
 
 body.dark {
@@ -52,12 +54,12 @@ body.dark {
   --red: rgb(255, 79, 68);
   --yellow: rgb(255, 224, 20);
   --bg: #202020;
-  --navBg: #2D2D2D;
+  --navBg: #272727;
   --navText: #c0bfc0;
   --navIcon: #c0bfc0;
   --textNormal: #e0e0e0;
   --textTitle: #fff;
-  --codeBg: #3D3D3D;
+  --codeBg: #2d2d2d;
 }
 
 .green {
@@ -73,7 +75,7 @@ body.dark {
 }
 
 html {
-  font-size: calc(1rem + 2px + ((100vw - 550px) / 250));
+  font-size: var(--base-unit);
   font-family: var(--sansFamily);
   margin: 0;
   padding: 0;
@@ -99,6 +101,10 @@ nav svg {
 
 nav svg svg {
   fill: var(--navIcon);
+}
+
+li {
+  margin-bottom: .32rem;
 }
 
 h1 {
@@ -156,16 +162,22 @@ h6 {
 }
 
 code {
-  border-radius: 5px;
+  border-radius: 3px;
   font-family: var(--codeFamily);
-  background-color: var(--codeBg);
-  padding: 4px 8px;
+  font-size: var(--font-size-code);
+  background-color: rgba(27, 31, 35, .05);
+  padding: 3px 8px;
+  color: var(--textNormal)
 }
 
 a {
-  color: var(--link);
+  color: var(--blue);
   text-decoration: none;
   border-radius: 0;
+
+  code {
+    color: var(--blue);
+  }
 
   &:focus {
     box-shadow: none;
@@ -195,13 +207,24 @@ blockquote {
   border-left-color: var(--gray2);
 }
 
+pre {
+  margin-bottom: 1.563rem !important;
+}
+
 pre,
 code {
   border-radius: 3px;
 }
 
 pre>code {
-  display: flex;
+  color: #f1fa8c;
+  padding: calc(var(--base-unit) * 1);
+
+  tab-size: 2;
+
+  &::after {
+    content: none;
+  }
 }
 
 small {
@@ -252,5 +275,7 @@ b::selection {
 @import 'codecopy/umd/codecopy.min.css';
 @import './codecopy.css';
 @import './toggle.css';
+@import './prism.css';
 @import 'zoom-vanilla.js/dist/zoom.css';
 @import 'react-tippy/dist/tippy.css';
+;

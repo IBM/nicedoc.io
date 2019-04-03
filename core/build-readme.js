@@ -18,6 +18,7 @@ import remarkEmoji from 'remark-emoji'
 import remark from 'remark'
 
 import rehype from 'rehype'
+import rehypePrism from '@mapbox/rehype-prism'
 import rehypeSlug from 'rehype-slug'
 
 const extension = (str = '') => {
@@ -27,7 +28,9 @@ const extension = (str = '') => {
   return fileExtension(url.format(urlObj))
 }
 
-const htmlBuilder = rehype().use(rehypeSlug)
+const htmlBuilder = rehype()
+  .use(rehypeSlug)
+  .use(rehypePrism, { preLangClass: false })
 
 const toHTML = promisify(htmlBuilder.process)
 
@@ -36,6 +39,7 @@ const build = async markdown => {
     .use(remarkPreset)
     .use(remarkEmoji)
     .use(remarkHtml)
+
     .process(markdown)
 
   const file = await toHTML(normalizedHtmlFromMarkdown)
@@ -67,7 +71,7 @@ const withAnchorLinks = $ => {
           <span className='permalink-target' id={slug} />
           <InternalLink href={`#${slug}`} children={text} />
           <span className='permalink'>
-            <Permalink width={16} ml={2} />
+            <Permalink width={12} ml={2} />
           </span>
         </Fragment>
       )

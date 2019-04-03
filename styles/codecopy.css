@@ -1,22 +1,7 @@
 :root {
-  --codecopy-color: #24292e;
-  --codecopy-bg: #eff3f6;
-  --codecopy-bgImage: linear-gradient(-180deg, #fafbfc 0%, #eff3f6 90%);
-  --codecopy-border: rgba(27, 31, 35, 0.2);
-  --codecopy-hover-bg: #e6ebf1;
-  --codecopy-hover-bgImage: linear-gradient(-180deg, rgb(240, 243, 246) 0%, rgb(230, 235, 241) 90%);
-  --codecopy-hover-border: rgba(27, 31, 35, 0.35);
-  --codecopy-icon-color: black;
-  --codecopy-active-bg: #e9ecef;
-  --codecopy-active-bgImage: none;
-  --codecopy-active-border: rgba(27, 31, 35, 0.35);
-  --codecopy-active-boxShadow: rgba(27, 31, 35, 0.15) 0px 0.15em 0.3em inset;
-}
-
-body.dark {
   --codecopy-color: #fff;
   --codecopy-bg: #24292e;
-  --codecopy-bgImage: linear-gradient(-180deg, #3b424a 0%, #24292e 90%);
+  --codecopy-bgImage: linear-gradient(-180deg, #363d44 0%, #24292e 90%);
   --codecopy-border: rgba(27, 31, 35, 0.2);
   --codecopy-hover-bg: #1f2428;
   --codecopy-hover-bgImage: linear-gradient(-180deg, #333b42 0%, #1f2428 90%);
