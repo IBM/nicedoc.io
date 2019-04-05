@@ -117,7 +117,7 @@
     "update:check": "ncu -- --error-level 2"
   },
   "private": true,
-  "license": "MIT",
+  "license": "Apache-2.0",
   "ava": {
     "require": [
       "esm"
