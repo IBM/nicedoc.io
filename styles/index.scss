@@ -39,7 +39,7 @@
   --navIcon: var(--black);
   --externalIcon: #c0bfc0;
   --navBg: white;
-  --codeBg: #272727;
+  --codeBg: #ebebeb;
   --codeInlineBg: #2727270d;
   --progressBg: var(--black);
 }
@@ -55,15 +55,15 @@ body.dark {
   --purple: rgb(204, 101, 255);
   --red: rgb(255, 79, 68);
   --yellow: rgb(255, 224, 20);
-  --bg: #202020;
-  --navBg: #272727;
+  --bg: #0f1117;
+  --navBg: #24292e;
   --navText: #c0bfc0;
   --navIcon: #c0bfc0;
   --externalIcon: #404040;
   --textNormal: #e0e0e0;
   --textTitle: #fff;
-  --codeBg: #2d2d2d;
-  --codeInlineBg: #2d2d2d;
+  --codeBg: #171d23;
+  --codeInlineBg: var(--codeBg);
 }
 
 .green {
@@ -209,12 +209,6 @@ img {
   max-width: 100%;
 }
 
-body.dark {
-  img {
-    mix-blend-mode: multiply;
-  }
-}
-
 blockquote {
   border-left-color: var(--gray2);
 }
@@ -229,7 +223,6 @@ code {
 }
 
 pre>code {
-  color: rgba(207, 207, 194, 1);
   padding: calc(var(--base-unit) * 1);
 
   tab-size: 2;
