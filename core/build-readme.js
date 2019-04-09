@@ -30,7 +30,7 @@ const extension = (str = '') => {
 
 const htmlBuilder = rehype()
   .use(rehypeSlug)
-  .use(rehypePrism, { preLangClass: false })
+  .use(rehypePrism, { ignoreMissing: true, preLangClass: false })
 
 const toHTML = promisify(htmlBuilder.process)
 
