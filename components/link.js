@@ -4,7 +4,7 @@ import { ExternalLink as ExternalLinkIcon } from './icons'
 import styled from 'styled-components'
 import { justifyContent, flexWrap, display, alignItems, flexDirection, space } from 'styled-system'
 
-const isInternalLink = to => /^\/(?!\/)/.test(to)
+const { REGEX_LOCAL_URL } = require('../constants')
 
 const CustomLink = styled('a')(
   display,
@@ -41,7 +41,7 @@ ExternalLink.defaultProps = {
 }
 
 export const Link = props => {
-  const isInternal = props.href.startsWith('#') || isInternalLink(props.href)
+  const isInternal = props.href.startsWith('#') || REGEX_LOCAL_URL.test(props.href)
   const LinkComponent = isInternal ? InternalLink : ExternalLink
   return createElement(LinkComponent, props)
 }

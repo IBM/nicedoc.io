@@ -46,7 +46,7 @@ const normalizeParams = createNormalizeParams({
   MARKDOWN_EXTENSIONS,
   ALTERNATIVE_README_NAMES
 })
-const fetchMeta = createFetchMeta({ normalizeParams, fetchRepo })
+const fetchMeta = createFetchMeta({ fetchRepo })
 const fetchReadme = createFetchReadme({ GITHUB_TOKEN })
 
 export { fetchMeta, normalizeParams, fetchRepo, fetchReadme }

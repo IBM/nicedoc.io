@@ -1,9 +1,10 @@
 import { Permalink, ExternalLink } from 'components/icons'
+import imageExtensions from 'image-extensions'
 import ReactDOMServer from 'react-dom/server'
-import isRelativeUrl from 'is-relative-url'
 import fileExtension from 'file-extension'
 import { isEmpty, forEach } from 'lodash'
 import { InternalLink } from 'components'
+import regexParam from 'regexparam'
 import { promisify } from 'util'
 import { TAGS } from 'html-urls'
 import { Fragment } from 'react'
@@ -12,18 +13,22 @@ import url from 'url'
 import qsm from 'qsm'
 
 import remarkPreset from 'remark-preset-lint-recommended'
-import remarkHtml from 'remark-html'
 import remarkEmoji from 'remark-emoji'
-
+import remarkHtml from 'remark-html'
 import remark from 'remark'
 
-import rehype from 'rehype'
 import rehypePrism from '@mapbox/rehype-prism'
 import rehypeSlug from 'rehype-slug'
+import rehype from 'rehype'
+
+const {
+  REGEX_HTTP_PROTOCOL,
+  SITE_URL,
+  REGEX_LOCAL_URL,
+  REGEX_START_WITH_LETTER_OR_NUMBER
+} = require('../constants')
 
 const { URL } = url
-
-const { SITE_URL } = process.env
 
 const extension = (str = '') => {
   const urlObj = url.parse(str)
@@ -37,6 +42,8 @@ const htmlBuilder = rehype()
   .use(rehypePrism, { ignoreMissing: true, preLangClass: false })
 
 const toHTML = promisify(htmlBuilder.process)
+
+const githubRegexParam = regexParam('/:owner/:repo').pattern
 
 const build = async markdown => {
   const { contents: normalizedHtmlFromMarkdown } = await remark()
@@ -87,7 +94,13 @@ const withExternalIcon = $ => {
   $('a:not(a:has(img))').each(function () {
     const el = $(this)
     const href = el.attr('href') || ''
-    const isInternalLink = href.startsWith('#') || href.startsWith(SITE_URL)
+
+    const isInternalLink =
+      href.startsWith('#') ||
+      href.startsWith(SITE_URL) ||
+      REGEX_LOCAL_URL.test(href) ||
+      (!REGEX_HTTP_PROTOCOL.test(href) && REGEX_START_WITH_LETTER_OR_NUMBER.test(href))
+
     if (!isInternalLink) externalLink($(this))
   })
 }
@@ -107,20 +120,16 @@ const createWithRelativeLinks = ({ normalizeParams }) => ($, { owner, repo, ref 
           urlObj = {}
         }
 
-        // Rewrite markdown github urls into local urls
         if (urlObj.hostname === 'github.com') {
           const { pathname } = urlObj
-
+          // rewrite github markdown files urls into relative urls
           if (normalizeParams.isMarkdownPath(pathname)) {
             el.attr(propName, resolveUrl(SITE_URL, pathname.replace(`tree/${ref}/`, '')))
+          } else if (githubRegexParam.test(pathname)) {
+            // rewrite other github repositories urls present in the markup
+            // TODO: Add hash support?
+            el.attr(propName, resolveUrl(SITE_URL, pathname))
           }
-
-          // Rewrite relative assets urls into local urls
-        } else if (isRelativeUrl(attr)) {
-          el.attr(
-            propName,
-            resolveUrl(`https://raw.githubusercontent.com/${owner}/${repo}/${ref}/`, attr)
-          )
         }
       }
     })
@@ -135,14 +144,15 @@ const externalLink = (el, { appendIcon = true } = {}) => {
   }
 }
 
-const withZoomImages = $ => {
+const withZoomImages = ($, { owner, repo, ref }) => {
   $('img').each(function () {
     const el = $(this)
     const parentLink = el.closest('a')[0]
     if (!parentLink) {
       const src = el.attr('src')
-      if (extension(src) === 'svg') {
-        el.attr('src', qsm.add(src, { sanitize: true }))
+      if (imageExtensions.includes(extension(src))) {
+        const newSrc = resolveUrl(`https://raw.githubusercontent.com/${owner}/${repo}/${ref}/`, src)
+        el.attr('src', qsm.add(newSrc, { sanitize: true }))
       }
       el.attr('data-action', 'zoom')
     } else {
@@ -156,7 +166,7 @@ export default ({ normalizeParams, fetchReadme }) => {
 
   return async query => {
     const { owner, repo, paths, ref } = normalizeParams(query)
-    const response = await fetchReadme({ owner, repo, paths, ref })
+    const { response, path } = await fetchReadme({ owner, repo, paths, ref })
     if (!response) throw new Error('Readme Not Found')
 
     const markdown = await response.text()
@@ -165,10 +175,16 @@ export default ({ normalizeParams, fetchReadme }) => {
 
     withRelativeLinks($, { owner, repo, ref })
     withAnchorLinks($)
-    withZoomImages($)
+    withZoomImages($, { owner, repo, ref })
     withExternalIcon($)
 
-    const meta = { image: $('img').attr('src') }
-    return { meta, html: $.html() }
+    return {
+      ref,
+      path,
+      repo,
+      owner,
+      html: $.html(),
+      image: $('img').attr('src')
+    }
   }
 }

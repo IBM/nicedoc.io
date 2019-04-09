@@ -6,20 +6,13 @@ const next = require('next')
 
 const routes = require('./routes')
 
-const { NODE_ENV = 'development', PORT = '3000', DEPLOY_DATE } = process.env
-
-const INTERNAL_NEXT_PATHS = ['/_next', '/_webpack/', '/__webpack_hmr', '/static/']
+const { INTERNAL_NEXT_PATHS, NODE_ENV, PORT, DEPLOY_DATE } = require('./constants')
 
 const isNextPath = ({ url }) => INTERNAL_NEXT_PATHS.some(path => url.startsWith(path))
 
 const isProduction = NODE_ENV === 'production'
 const isStaging = NODE_ENV === 'staging'
 
-const deployDate = DEPLOY_DATE
-  ? new Date(parseInt(process.env.DEPLOY_DATE, 10) * 1000).toISOString()
-  : 'n/a'
-
-const port = parseInt(PORT, 10)
 const dev = !isProduction
 
 const app = next({ dev })
@@ -46,7 +39,7 @@ const middleware = (() => {
 
 app.prepare().then(() => {
   const server = express()
-  server.get('/api/status', (req, res) => res.json({ deployDate }))
+  server.get('/api/status', (req, res) => res.json({ deployDate: DEPLOY_DATE }))
   server.use(middleware)
-  server.listen(port, () => console.log(`> Ready on http://localhost:${port}`))
+  server.listen(PORT, () => console.log(`> Ready on http://localhost:${PORT}`))
 })

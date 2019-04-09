@@ -25,16 +25,12 @@ function Readme (props) {
 
 Readme.getInitialProps = async ({ query }) => {
   if (query) {
-    const [readme, metaProps] = await Promise.all([
-      buildReadme(query),
-      fetchMeta(query)
-    ])
-
-    const { meta, html } = readme
+    const { html, image, ...normalizedQuery } = await buildReadme(query)
+    const meta = await fetchMeta(normalizedQuery)
 
     return {
-      meta: { ...meta, ...metaProps },
-      readme: html
+      readme: html,
+      meta: { ...meta, image }
     }
   }
 }

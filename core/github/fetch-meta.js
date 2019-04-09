@@ -12,7 +12,7 @@ const score = ({ updatedAt, stars, issues }) => {
   return (stars + 1) / (stars + 1 + SCORE_RATIO * days * issues)
 }
 
-const mapMeta = async (payload, { ref }) => {
+const mapMeta = async (payload, { path, ref }) => {
   const owner = get(payload, 'owner.login')
   const repo = get(payload, 'name')
   const repoUrl = get(payload, 'html_url')
@@ -25,7 +25,7 @@ const mapMeta = async (payload, { ref }) => {
 
   return {
     url: `${SITE_URL}/${owner}/${repo}`,
-    githubUrl: `${repoUrl}/tree/${ref}`,
+    githubUrl: `${repoUrl}/tree/${ref}/${path}`,
     description: shortnameToUnicode(get(payload, 'description')),
     owner: get(payload, 'owner.login'),
     repo: get(payload, 'name'),
@@ -50,10 +50,10 @@ const mapMeta = async (payload, { ref }) => {
   }
 }
 
-export default ({ normalizeParams, fetchRepo }) => async query => {
-  const { owner, ref, repo } = normalizeParams(query)
+export default ({ fetchRepo }) => async readme => {
+  const { owner, ref, repo, path } = readme
   const res = await fetchRepo({ owner, repo })
   const payload = await res.json()
-  const meta = await mapMeta(payload, { ref })
+  const meta = await mapMeta(payload, { path, ref })
   return meta
 }
