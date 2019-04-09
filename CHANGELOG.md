@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/Kikobeats/nicedoc.io/compare/v1.1.0...v1.2.0) (2019-04-09)
+
+
+### Bug Fixes
+
+* add missing dependency ([dc35bc1](https://github.com/Kikobeats/nicedoc.io/commit/dc35bc1))
+* add missing require ([473f253](https://github.com/Kikobeats/nicedoc.io/commit/473f253))
+* avoid homepage if it is the nicedoc website ([00c7669](https://github.com/Kikobeats/nicedoc.io/commit/00c7669))
+* dark background ([482b5e6](https://github.com/Kikobeats/nicedoc.io/commit/482b5e6))
+* deps on the right place ([b949110](https://github.com/Kikobeats/nicedoc.io/commit/b949110))
+* improve anchor links ([5ae6fdf](https://github.com/Kikobeats/nicedoc.io/commit/5ae6fdf)), closes [#27](https://github.com/Kikobeats/nicedoc.io/issues/27)
+* pass props ([a6ce320](https://github.com/Kikobeats/nicedoc.io/commit/a6ce320))
+* put deps in the right place ([ee00d40](https://github.com/Kikobeats/nicedoc.io/commit/ee00d40))
+* resolve svg images ([4e0009f](https://github.com/Kikobeats/nicedoc.io/commit/4e0009f))
+* style ([e73c583](https://github.com/Kikobeats/nicedoc.io/commit/e73c583))
+* zindex ([722119d](https://github.com/Kikobeats/nicedoc.io/commit/722119d))
+
+
+### Features
+
+* add code highlight ([43e0243](https://github.com/Kikobeats/nicedoc.io/commit/43e0243)), closes [#33](https://github.com/Kikobeats/nicedoc.io/issues/33)
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/Kikobeats/nicedoc.io/compare/v1.0.0...v1.1.0) (2019-02-11)
 
