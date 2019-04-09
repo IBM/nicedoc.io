@@ -12,4 +12,4 @@ After `npm install`:
 ## License
 
 **nicedoc.io** © released under the [Apache](/LICENSE.md) License.<br>
-Authored and maintained by [Kiko Beats](https://github.com/Kikobeats) with help from [contributors](https://github.com/Kikobeats/unavatar.now.sh/contributors).
+Authored and maintained by [Kiko Beats](https://github.com/Kikobeats) with help from [contributors](https://github.com/IBMResearch/nicedoc.io/graphs/contributors).
