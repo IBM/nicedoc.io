@@ -21,6 +21,10 @@ import rehype from 'rehype'
 import rehypePrism from '@mapbox/rehype-prism'
 import rehypeSlug from 'rehype-slug'
 
+const { URL } = url
+
+const { SITE_URL } = process.env
+
 const extension = (str = '') => {
   const urlObj = url.parse(str)
   urlObj.hash = ''
@@ -83,20 +87,41 @@ const withExternalIcon = $ => {
   $('a:not(a:has(img))').each(function () {
     const el = $(this)
     const href = el.attr('href') || ''
-    if (!href.startsWith('#')) externalLink($(this))
+    const isInternalLink = href.startsWith('#') || href.startsWith(SITE_URL)
+    if (!isInternalLink) externalLink($(this))
   })
 }
 
-const withRelativeLinks = ($, { owner, repo, ref }) => {
+const createWithRelativeLinks = ({ normalizeParams }) => ($, { owner, repo, ref }) => {
   forEach(TAGS, (htmlTags, propName) => {
     $(htmlTags.join(',')).each(function () {
       const el = $(this)
       const attr = el.attr(propName)
-      if (!isEmpty(attr) && isRelativeUrl(attr)) {
-        el.attr(
-          propName,
-          resolveUrl(`https://raw.githubusercontent.com/${owner}/${repo}/${ref}/`, attr)
-        )
+
+      if (!isEmpty(attr)) {
+        let urlObj
+
+        try {
+          urlObj = new URL(attr)
+        } catch (err) {
+          urlObj = {}
+        }
+
+        // Rewrite markdown github urls into local urls
+        if (urlObj.hostname === 'github.com') {
+          const { pathname } = urlObj
+
+          if (normalizeParams.isMarkdownPath(pathname)) {
+            el.attr(propName, resolveUrl(SITE_URL, pathname.replace(`tree/${ref}/`, '')))
+          }
+
+          // Rewrite relative assets urls into local urls
+        } else if (isRelativeUrl(attr)) {
+          el.attr(
+            propName,
+            resolveUrl(`https://raw.githubusercontent.com/${owner}/${repo}/${ref}/`, attr)
+          )
+        }
       }
     })
   })
@@ -126,20 +151,24 @@ const withZoomImages = $ => {
   })
 }
 
-export default ({ normalizeParams, fetchReadme }) => async query => {
-  const { owner, repo, paths, ref } = normalizeParams(query)
-  const response = await fetchReadme({ owner, repo, paths, ref })
-  if (!response) throw new Error('Readme Not Found')
+export default ({ normalizeParams, fetchReadme }) => {
+  const withRelativeLinks = createWithRelativeLinks({ normalizeParams })
 
-  const markdown = await response.text()
-  const html = await build(markdown)
-  const $ = loadHTML(html)
+  return async query => {
+    const { owner, repo, paths, ref } = normalizeParams(query)
+    const response = await fetchReadme({ owner, repo, paths, ref })
+    if (!response) throw new Error('Readme Not Found')
 
-  withRelativeLinks($, { owner, repo, ref })
-  withAnchorLinks($)
-  withZoomImages($)
-  withExternalIcon($)
+    const markdown = await response.text()
+    const html = await build(markdown)
+    const $ = loadHTML(html)
 
-  const meta = { image: $('img').attr('src') }
-  return { meta, html: $.html() }
+    withRelativeLinks($, { owner, repo, ref })
+    withAnchorLinks($)
+    withZoomImages($)
+    withExternalIcon($)
+
+    const meta = { image: $('img').attr('src') }
+    return { meta, html: $.html() }
+  }
 }
