@@ -3,5 +3,5 @@ export default ({ fetchReadme }) => async ({ paths, ...opts }) => {
     const response = await fetchReadme({ ...opts, path })
     if (response.status === 200) return { response, path }
   }
-  return null
+  return {}
 }
