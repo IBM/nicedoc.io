@@ -26,7 +26,7 @@ const mapMeta = async (payload, { path, ref }) => {
   return {
     url: `${SITE_URL}/${owner}/${repo}`,
     githubUrl: `${repoUrl}/tree/${ref}/${path}`,
-    description: shortnameToUnicode(get(payload, 'description')),
+    description: shortnameToUnicode(get(payload, 'description') || ''),
     owner: get(payload, 'owner.login'),
     repo: get(payload, 'name'),
     logo: get(payload, 'owner.avatar_url'),
