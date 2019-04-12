@@ -124,9 +124,10 @@ const withZoomImages = ($, { owner, repo, ref }) => {
     const parentLink = el.closest('a')[0]
     if (!parentLink) {
       const src = el.attr('src')
-      if (imageExtensions.includes(extension(src))) {
+      const extname = extension(src)
+      if (imageExtensions.includes(extname)) {
         const newSrc = resolveUrl(`https://raw.githubusercontent.com/${owner}/${repo}/${ref}/`, src)
-        el.attr('src', qsm.add(newSrc, { sanitize: true }))
+        el.attr('src', qsm.add(newSrc, { sanitize: extname === 'svg' }))
       }
       el.attr('data-action', 'zoom')
     } else {
