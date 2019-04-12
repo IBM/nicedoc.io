@@ -5,21 +5,13 @@ import fileExtension from 'file-extension'
 import { isEmpty, forEach } from 'lodash'
 import { InternalLink } from 'components'
 import regexParam from 'regexparam'
-import { promisify } from 'util'
 import { TAGS } from 'html-urls'
 import { Fragment } from 'react'
 import cheerio from 'cheerio'
 import url from 'url'
 import qsm from 'qsm'
 
-import remarkPreset from 'remark-preset-lint-recommended'
-import remarkEmoji from 'remark-emoji'
-import remarkHtml from 'remark-html'
-import remark from 'remark'
-
-import rehypePrism from '@mapbox/rehype-prism'
-import rehypeSlug from 'rehype-slug'
-import rehype from 'rehype'
+import build from './build'
 
 const {
   REGEX_HTTP_PROTOCOL,
@@ -37,25 +29,7 @@ const extension = (str = '') => {
   return fileExtension(url.format(urlObj))
 }
 
-const htmlBuilder = rehype()
-  .use(rehypeSlug)
-  .use(rehypePrism, { ignoreMissing: true, preLangClass: false })
-
-const toHTML = promisify(htmlBuilder.process)
-
-const githubRegexParam = regexParam('/:owner/:repo').pattern
-
-const build = async markdown => {
-  const { contents: normalizedHtmlFromMarkdown } = await remark()
-    .use(remarkPreset)
-    .use(remarkEmoji)
-    .use(remarkHtml)
-
-    .process(markdown)
-
-  const file = await toHTML(normalizedHtmlFromMarkdown)
-  return String(file)
-}
+const { pattern: githubRegexParam } = regexParam('/:owner/:repo')
 
 const loadHTML = html =>
   cheerio.load(html, {
@@ -170,7 +144,7 @@ export default ({ normalizeParams, fetchReadme }) => {
     if (!response) throw new Error('Readme Not Found')
 
     const markdown = await response.text()
-    const html = await build(markdown)
+    const { html } = await build(markdown)
     const $ = loadHTML(html)
 
     withRelativeLinks($, { owner, repo, ref })

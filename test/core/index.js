@@ -1,5 +1,3 @@
-'use strict'
-
 import test from 'ava'
 
 import createFetchReadme from 'core/fetch-readme'
