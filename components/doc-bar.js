@@ -66,15 +66,14 @@ NavLink.defaultProps = {
 }
 
 export default function DocBar ({ meta }) {
-  const [state, setState] = useState({ theme: null })
+  const [theme, setTheme] = useState(null)
 
-  // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
-    setState({ theme: window.__theme })
+    setTheme(window.__theme)
     window.__onThemeChange = () => {
-      setState({ theme: window.__theme })
+      setTheme(window.__theme)
     }
-  })
+  }, [])
 
   return (
     <Nav as='nav' justifyContent={['space-evenly', 'center']} px={3} py={0}>
@@ -191,7 +190,7 @@ export default function DocBar ({ meta }) {
               />
             )
           }}
-          checked={state.theme === 'dark'}
+          checked={theme === 'dark'}
           onChange={e => window.__setPreferredTheme(e.target.checked ? 'dark' : 'light')}
         />
       </Flex>
