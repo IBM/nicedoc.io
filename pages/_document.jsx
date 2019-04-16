@@ -43,7 +43,8 @@ export default class MyDocument extends Document {
                 darkQuery.addListener(function(e) {
                   window.__setPreferredTheme(e.matches ? 'dark' : 'light')
                 });
-                setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
+                window.__preferredTheme = preferredTheme || (darkQuery.matches ? 'dark' : 'light')
+                setTheme(window.__preferredTheme);
               })();
             `
             }}
