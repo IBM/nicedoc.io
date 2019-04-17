@@ -26,16 +26,17 @@ export default class Error extends React.Component {
           >
             {statusCode}
           </h1>
-          <h5
+          <p
             style={{
+              fontWeight: 'bold',
               textAlign: 'center',
               marginTop: 0,
               marginBottom: '.5rem'
             }}
           >
             {explanation}
-          </h5>
-          <h5 style={{ fontWeight: 'normal', margin: 0 }}>{children}</h5>
+          </p>
+          <p style={{ fontWeight: 'normal', margin: 0 }}>{children}</p>
         </Flex>
       </Fragment>
     )
