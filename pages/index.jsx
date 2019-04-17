@@ -107,6 +107,11 @@ export default class Index extends Component {
                   cyrilwanner/next-optimized-images
                 </Link>
               </Li>
+              <Li>
+                <Link href='ahmadawais/Shades-of-Purple-VSCode'>
+                  ahmadawais/Shades-of-Purple-VSCode
+                </Link>
+              </Li>
             </ul>
           </Box>
         </Flex>
