@@ -1,6 +1,7 @@
 'use strict'
 
 const terminalLink = require('terminal-link')
+const { isNil } = require('lodash')
 const chalk = require('chalk')
 const url = require('url')
 
@@ -16,7 +17,7 @@ const {
 
 const isDevelopment = NODE_ENV === 'development'
 
-if (!GITHUB_TOKEN) {
+if (isNil(GITHUB_TOKEN)) {
   const helpUrl = 'https://github.com/IBM/nicedoc.io#github_token'
 
   const helpLink = terminalLink('See how to', helpUrl, {
