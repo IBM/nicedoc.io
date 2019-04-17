@@ -32,6 +32,13 @@ It sets the base URL to be used for resolving relative URLs detected on GitHub.
 
 After `npm install`, just do a `npm run dev`.
 
+## Community Showcase
+
+> Feel free to add your example
+
+- [nicedoc.io/ahmadawais/Shades-of-Purple-VSCode](https://nicedoc.io/ahmadawais/Shades-of-Purple-VSCode).
+- [nicedoc.io/nucliweb/awesome-css-houdini](https://nicedoc.io/nucliweb/awesome-css-houdini).
+
 ## License
 
 **nicedoc.io** © released under the [Apache](/LICENSE.md) License.<br>
