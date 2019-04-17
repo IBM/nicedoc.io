@@ -1,6 +1,7 @@
 'use strict'
 
 const cacheableResponse = require('cacheable-response')
+const procStats = require('process-stats')
 const express = require('express')
 const next = require('next')
 
@@ -39,7 +40,7 @@ const middleware = (() => {
 
 app.prepare().then(() => {
   const server = express()
-  server.get('/api/status', (req, res) => res.json({ deployDate: DEPLOY_DATE }))
+  server.get('/api/status', (req, res) => res.json({ ...procStats(), deployDate: DEPLOY_DATE }))
   server.use(middleware)
   server.listen(PORT, () => console.log(`> Ready on http://localhost:${PORT}`))
 })
