@@ -17,7 +17,7 @@ const {
 const isDevelopment = NODE_ENV === 'development'
 
 if (!GITHUB_TOKEN) {
-  const helpUrl = 'https://github.com/IBM/nicedoc.io'
+  const helpUrl = 'https://github.com/IBM/nicedoc.io#github_token'
 
   const helpLink = terminalLink('See how to', helpUrl, {
     fallback: () => `See how to at ${helpUrl}`
