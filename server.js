@@ -1,13 +1,29 @@
 'use strict'
 
 const cacheableResponse = require('cacheable-response')
+const terminalLink = require('terminal-link')
 const procStats = require('process-stats')
+const { isNil } = require('lodash')
 const express = require('express')
+const chalk = require('chalk')
 const next = require('next')
 
 const routes = require('./routes')
 
-const { INTERNAL_NEXT_PATHS, NODE_ENV, PORT, DEPLOY_DATE } = require('./constants')
+const { INTERNAL_NEXT_PATHS, NODE_ENV, PORT, DEPLOY_DATE, GITHUB_TOKEN } = require('./constants')
+
+if (isNil(GITHUB_TOKEN)) {
+  const helpUrl = 'https://github.com/IBM/nicedoc.io#github_token'
+
+  const helpLink = terminalLink('See how to', helpUrl, {
+    fallback: () => `See how to at ${helpUrl}`
+  })
+
+  const message = `${chalk.red('Error:')} You need to setup \`GITHUB_TOKEN\`. ${helpLink}.\n`
+
+  console.error(message)
+  process.exit(1)
+}
 
 const isNextPath = ({ url }) => INTERNAL_NEXT_PATHS.some(path => url.startsWith(path))
 

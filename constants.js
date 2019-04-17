@@ -1,34 +1,13 @@
 'use strict'
 
-const terminalLink = require('terminal-link')
-const { isNil } = require('lodash')
-const chalk = require('chalk')
 const url = require('url')
 
 const pkg = require('./package.json')
 
-const {
-  SITE_URL = pkg.homepage,
-  DEPLOY_DATE,
-  PORT = 3000,
-  NODE_ENV = 'development',
-  GITHUB_TOKEN
-} = process.env || {}
+const { SITE_URL = pkg.homepage, DEPLOY_DATE, PORT = 3000, NODE_ENV = 'development' } =
+  process.env || {}
 
 const isDevelopment = NODE_ENV === 'development'
-
-if (isNil(GITHUB_TOKEN)) {
-  const helpUrl = 'https://github.com/IBM/nicedoc.io#github_token'
-
-  const helpLink = terminalLink('See how to', helpUrl, {
-    fallback: () => `See how to at ${helpUrl}`
-  })
-
-  const message = `${chalk.red('Error:')} You need to setup \`GITHUB_TOKEN\`. ${helpLink}.\n`
-
-  console.error(message)
-  process.exit(1)
-}
 
 module.exports = {
   REGEX_LOCAL_URL: /^\/(?!\/)/,
