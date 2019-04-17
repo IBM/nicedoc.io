@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/Kikobeats/nicedoc.io/compare/v1.2.0...v1.3.0) (2019-04-17)
+
+
+### Bug Fixes
+
+* better url github detection ([0c4e12b](https://github.com/Kikobeats/nicedoc.io/commit/0c4e12b))
+* ersolve github blob urls ([63ff582](https://github.com/Kikobeats/nicedoc.io/commit/63ff582)), closes [#48](https://github.com/Kikobeats/nicedoc.io/issues/48)
+* expose token at constants ([ebb32ec](https://github.com/Kikobeats/nicedoc.io/commit/ebb32ec))
+* ignore missing languages ([8dbdad2](https://github.com/Kikobeats/nicedoc.io/commit/8dbdad2)), closes [#37](https://github.com/Kikobeats/nicedoc.io/issues/37)
+* lodash.get return null as valid ([f0cf370](https://github.com/Kikobeats/nicedoc.io/commit/f0cf370))
+* only sanitize svg images ([6ee6100](https://github.com/Kikobeats/nicedoc.io/commit/6ee6100))
+* resolve github external markup urls as internal ([8fbe320](https://github.com/Kikobeats/nicedoc.io/commit/8fbe320)), closes [#35](https://github.com/Kikobeats/nicedoc.io/issues/35)
+
+
+### Features
+
+* **transition:** added transition to background when we switch theme ([8836b5e](https://github.com/Kikobeats/nicedoc.io/commit/8836b5e))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/Kikobeats/nicedoc.io/compare/v1.1.0...v1.2.0) (2019-04-09)
 
