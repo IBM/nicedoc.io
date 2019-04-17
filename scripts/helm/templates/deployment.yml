@@ -33,8 +33,6 @@ spec:
           env:
             - name: GITHUB_TOKEN
               value: "{{ .Values.env.GITHUB_TOKEN }}"
-            - name: DEPLOY_DATE
-              value: "{{ .Release.Time.Seconds }}"
             - name: SITE_URL
               value: "https://nicedoc.io"
       imagePullSecrets:

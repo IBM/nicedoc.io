@@ -10,7 +10,7 @@ const next = require('next')
 
 const routes = require('./routes')
 
-const { INTERNAL_NEXT_PATHS, NODE_ENV, PORT, DEPLOY_DATE, GITHUB_TOKEN } = require('./constants')
+const { INTERNAL_NEXT_PATHS, NODE_ENV, PORT, GITHUB_TOKEN } = require('./constants')
 
 if (isNil(GITHUB_TOKEN)) {
   const helpUrl = 'https://github.com/IBM/nicedoc.io#github_token'
@@ -56,7 +56,7 @@ const middleware = (() => {
 
 app.prepare().then(() => {
   const server = express()
-  server.get('/api/status', (req, res) => res.json({ ...procStats(), deployDate: DEPLOY_DATE }))
+  server.get('/api/status', (req, res) => res.json(procStats()))
   server.use(middleware)
   server.listen(PORT, () => console.log(`> Ready on http://localhost:${PORT}`))
 })
