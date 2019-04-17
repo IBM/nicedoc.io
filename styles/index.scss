@@ -42,6 +42,7 @@
   --codeBg: #ebebeb;
   --codeInlineBg: #2727270d;
   --progressBg: var(--black);
+  --transtionTime: .250s;
 }
 
 body.dark {
@@ -81,10 +82,12 @@ html {
 body {
   background-color: var(--bg);
   color: var(--textNormal);
+  transition: background-color var(--transtionTime) ease-in-out;
 }
 
 nav {
   background-color: var(--navBg);
+  transition: background-color var(--transtionTime) ease-in-out;
 }
 
 nav a {
