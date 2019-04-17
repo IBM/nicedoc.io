@@ -56,6 +56,7 @@
     "postcss-easy-import": "~3.0.0",
     "postcss-focus": "~4.0.0",
     "postcss-loader": "~3.0.0",
+    "process-stats": "~3.0.4",
     "qsm": "~2.1.0",
     "react": "16.8.6",
     "react-bounty": "~1.0.4",
