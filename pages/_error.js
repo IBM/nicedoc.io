@@ -8,15 +8,16 @@ export default class Error extends React.Component {
   }
 
   render () {
-    const { statusCode = 500 } = this.props
+    const {
+      title = 'Page Not Found',
+      explanation = 'Things are a little unstable here.',
+      children = 'I suggest come back later.',
+      statusCode = 500
+    } = this.props
     return (
       <Fragment>
-        <Head title='Page Not Found' />
-        <Flex
-          flexDirection='column'
-          alignItems='center'
-          justifyContent='center'
-        >
+        <Head title={title} />
+        <Flex flexDirection='column' alignItems='center' justifyContent='center'>
           <h1
             style={{
               fontSize: '34vw',
@@ -32,11 +33,9 @@ export default class Error extends React.Component {
               marginBottom: '.5rem'
             }}
           >
-            Things are a little unstable here.
+            {explanation}
           </h5>
-          <h5 style={{ fontWeight: 'normal', margin: 0 }}>
-            I suggest come back later.
-          </h5>
+          <h5 style={{ fontWeight: 'normal', margin: 0 }}>{children}</h5>
         </Flex>
       </Fragment>
     )

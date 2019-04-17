@@ -1,9 +1,7 @@
 import createBuildReadme from './build-readme'
-import createFetchReadme from './fetch-readme'
 
-import { normalizeParams, fetchReadme as fetchReadmeFromGitHub } from './github'
+import { fetchMeta, fetchRepo, isMarkdownPath } from './github'
 
-const fetchReadme = createFetchReadme({ fetchReadme: fetchReadmeFromGitHub })
-const buildReadme = createBuildReadme({ normalizeParams, fetchReadme })
+const buildReadme = createBuildReadme({ isMarkdownPath })
 
-export { buildReadme, fetchReadme }
+export { fetchRepo, fetchMeta, buildReadme }
