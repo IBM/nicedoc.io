@@ -4,12 +4,18 @@ const url = require('url')
 
 const pkg = require('./package.json')
 
-const { SITE_URL = pkg.homepage, DEPLOY_DATE, PORT = 3000, NODE_ENV = 'development' } =
-  process.env || {}
+const {
+  GITHUB_TOKEN,
+  SITE_URL = pkg.homepage,
+  DEPLOY_DATE,
+  PORT = 3000,
+  NODE_ENV = 'development'
+} = process.env || {}
 
 const isDevelopment = NODE_ENV === 'development'
 
 module.exports = {
+  GITHUB_TOKEN,
   REGEX_LOCAL_URL: /^\/(?!\/)/,
   REGEX_HTTP_PROTOCOL: /^https?:\/\//i,
   REGEX_START_WITH_LETTER_OR_NUMBER: /^[a-z0-9]/i,
