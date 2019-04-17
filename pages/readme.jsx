@@ -1,16 +1,29 @@
+import { fetchRepo, fetchMeta, buildReadme } from 'core'
+import { ExternalLink, DocBar, Container, Head } from 'components'
 import React, { useEffect, Fragment } from 'react'
-import { fetchMeta } from 'core/github'
-import { buildReadme } from 'core'
-import { DocBar, Container, Head } from 'components'
 import ScrollProgress from 'scrollprogress'
 import NProgress from 'nprogress'
+import Error from './_error'
 
 import { navbar } from 'styles'
 
 function Readme (props) {
   useReadProgress()
 
-  const { meta, readme } = props
+  const { query, meta, readme } = props
+
+  if (!readme) {
+    return (
+      <Error
+        title='Readme Not Found'
+        explanation='Readme Not Found'
+        statusCode={404}
+      >
+        Looks like <ExternalLink href={`https://github.com/${query.repo}/${query.owner}`}>github.com/{query.repo}/{query.owner}</ExternalLink> doesn't exist.
+      </Error>
+    )
+  }
+
   return (
     <Fragment>
       <Head {...meta} />
@@ -25,10 +38,17 @@ function Readme (props) {
 
 Readme.getInitialProps = async ({ query }) => {
   if (query) {
-    const { html, image, ...normalizedQuery } = await buildReadme(query)
-    const meta = await fetchMeta(normalizedQuery)
+    const { markdown, source, ...info } = await fetchRepo(query)
+
+    if (!markdown) return { query }
+
+    const [{ html, image }, meta] = await Promise.all([
+      buildReadme({ markdown, source }),
+      fetchMeta({ source, info })
+    ])
 
     return {
+      query,
       readme: html,
       meta: { ...meta, image }
     }
