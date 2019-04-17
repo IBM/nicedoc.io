@@ -79,7 +79,7 @@ const withExternalIcon = $ => {
   })
 }
 
-const createWithRelativeLinks = ({ normalizeParams }) => ($, { owner, repo, ref }) => {
+const createWithRelativeLinks = ({ isMarkdownPath }) => ($, { ref }) => {
   forEach(TAGS, (htmlTags, propName) => {
     $(htmlTags.join(',')).each(function () {
       const el = $(this)
@@ -97,7 +97,7 @@ const createWithRelativeLinks = ({ normalizeParams }) => ($, { owner, repo, ref 
         if (urlObj.hostname === 'github.com') {
           const { pathname } = urlObj
           // rewrite github markdown files urls into relative urls
-          if (normalizeParams.isMarkdownPath(pathname)) {
+          if (isMarkdownPath(pathname)) {
             el.attr(propName, resolveUrl(SITE_URL, pathname.replace(`tree/${ref}/`, '')))
           } else if (githubRegexParam.test(pathname)) {
             // rewrite other github repositories urls present in the markup
@@ -136,28 +136,19 @@ const withZoomImages = ($, { owner, repo, ref }) => {
   })
 }
 
-export default ({ normalizeParams, fetchReadme }) => {
-  const withRelativeLinks = createWithRelativeLinks({ normalizeParams })
+export default ({ isMarkdownPath }) => {
+  const withRelativeLinks = createWithRelativeLinks({ isMarkdownPath })
 
-  return async query => {
-    const { owner, repo, paths, ref } = normalizeParams(query)
-    const { response, path } = await fetchReadme({ owner, repo, paths, ref })
-    if (!response) throw new Error('Readme Not Found')
-
-    const markdown = await response.text()
+  return async ({ source, markdown }) => {
     const { html } = await build(markdown)
     const $ = loadHTML(html)
 
-    withRelativeLinks($, { owner, repo, ref })
+    withRelativeLinks($, source)
     withAnchorLinks($)
-    withZoomImages($, { owner, repo, ref })
+    withZoomImages($, source)
     withExternalIcon($)
 
     return {
-      ref,
-      path,
-      repo,
-      owner,
       html: $.html(),
       image: $('img').attr('src')
     }

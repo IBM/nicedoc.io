@@ -1,9 +1,8 @@
-import createFetchMeta from './fetch-meta'
-import createNormalizeParams from './normalize-params'
-import createFetchRepo from './fetch-repo'
-import createFetchReadme from './fetch-readme'
-
 import { concat } from 'lodash'
+import { extname } from 'path'
+
+import createFetchRepo from './fetch-repo'
+import fetchMeta from './fetch-meta'
 
 const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
 
@@ -41,12 +40,12 @@ const MARKDOWN_EXTENSIONS = [
   '.pod6'
 ]
 
-const fetchRepo = createFetchRepo({ GITHUB_TOKEN })
-const normalizeParams = createNormalizeParams({
-  MARKDOWN_EXTENSIONS,
+const isMarkdownPath = path => MARKDOWN_EXTENSIONS.includes(extname(path))
+
+const fetchRepo = createFetchRepo({
+  isMarkdownPath,
+  GITHUB_TOKEN,
   ALTERNATIVE_README_NAMES
 })
-const fetchMeta = createFetchMeta({ fetchRepo })
-const fetchReadme = createFetchReadme({ GITHUB_TOKEN })
 
-export { fetchMeta, normalizeParams, fetchRepo, fetchReadme }
+export { fetchMeta, fetchRepo, isMarkdownPath }
