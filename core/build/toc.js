@@ -1,12 +1,8 @@
-import remark from 'remark'
 import remarkStringify from 'remark-stringify'
+import remarkSlug from 'remark-slug'
+import remarkParse from 'remark-parse'
 import mdastToc from 'mdast-util-toc'
-import slug from 'remark-slug'
-
-const remarkProcessor = remark()
-  .use(slug)
-  .use(toc)
-  .use(remarkStringify)
+import unified from 'unified'
 
 function toc () {
   return function transformer (node) {
@@ -54,4 +50,8 @@ function generateTocFromContent (node) {
   return result
 }
 
-export default data => remarkProcessor.process(data)
+export default unified()
+  .use(remarkParse)
+  .use(remarkSlug)
+  .use(toc)
+  .use(remarkStringify)

@@ -1,9 +1,9 @@
 import test from 'ava'
 
-import TOC from 'core/build/toc'
+import toTOC from 'core/build/toc'
 
 test('should generate a table of content based on the content headings', async t => {
-  const toc = await TOC(`
+  const toc = await toTOC.process(`
 # Package Name
 ## Installation
 npm install lowlight
@@ -17,7 +17,7 @@ Mit`)
 })
 
 test('should use existing table of content if it is already present on the content', async t => {
-  const toc = await TOC(`
+  const toc = await toTOC.process(`
 # Package Name
 ## Installation
 npm install lowlight
