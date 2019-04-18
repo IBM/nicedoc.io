@@ -1,11 +1,14 @@
+import sanitizeGithubPreset from 'hast-util-sanitize/lib/github'
 import remarkStringify from 'remark-stringify'
+import rehypeSanitize from 'rehype-sanitize'
 import remarkEmoji from 'remark-emoji'
 import remarkParse from 'remark-parse'
+import rehypeSlug from 'rehype-slug'
+import rehypeRaw from 'rehype-raw'
 
 import rehypeStringify from 'rehype-stringify'
 import rehypePrism from '@mapbox/rehype-prism'
 import remarkRehype from 'remark-rehype'
-import rehypeSlug from 'rehype-slug'
 
 import unified from 'unified'
 
@@ -18,9 +21,11 @@ const toMarkdown = unified()
 
 const toHTML = unified()
   .use(remarkParse)
-  .use(remarkRehype)
+  .use(remarkRehype, { allowDangerousHTML: true })
+  .use(rehypeRaw)
   .use(rehypeSlug)
   .use(rehypePrism, { ignoreMissing: true, preLangClass: false })
+  .use(rehypeSanitize, sanitizeGithubPreset)
   .use(rehypeStringify)
 
 export default async data => {
