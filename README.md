@@ -1,6 +1,6 @@
 ![](/static/banner.jpg)
 
-**nicedoc.io** is a presentation layer for beautify any doc file hosted on github.com.
+**nicedoc.io** is a presentation layer to beautify any doc file hosted on github.com.
 
 ## Development
 
