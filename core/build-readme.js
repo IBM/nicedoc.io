@@ -12,8 +12,13 @@ import qsm from 'qsm'
 
 import build from './build'
 
-const isEmpty = obj =>
-  [Object, Array].includes((obj || {}).constructor) && !Object.entries(obj || {}).length
+const isEmpty = value => {
+  return (
+    value == null ||
+    (typeof value === 'object' && Object.keys(value).length === 0) ||
+    (typeof value === 'string' && value.trim().length === 0)
+  )
+}
 
 const {
   REGEX_HTTP_PROTOCOL,

@@ -5,8 +5,13 @@ import fetch from 'isomorphic-unfetch'
 
 const githubBlobUrl = regexParam('blob/:ref/*')
 
-const isEmpty = obj =>
-  [Object, Array].includes((obj || {}).constructor) && !Object.entries(obj || {}).length
+const isEmpty = value => {
+  return (
+    value == null ||
+    (typeof value === 'object' && Object.keys(value).length === 0) ||
+    (typeof value === 'string' && value.trim().length === 0)
+  )
+}
 
 const exec = (path, result) => {
   let i = 0
