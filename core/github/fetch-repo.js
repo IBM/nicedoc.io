@@ -1,10 +1,12 @@
 import { join as pathJoin } from 'path'
 import regexParam from 'regexparam'
-import { isEmpty } from 'lodash'
 
 import fetch from 'isomorphic-unfetch'
 
 const githubBlobUrl = regexParam('blob/:ref/*')
+
+const isEmpty = obj =>
+  [Object, Array].includes((obj || {}).constructor) && !Object.entries(obj || {}).length
 
 const exec = (path, result) => {
   let i = 0

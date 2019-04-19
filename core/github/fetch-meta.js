@@ -1,11 +1,13 @@
 import { differenceInCalendarDays } from 'date-fns'
 import { shortnameToUnicode } from 'emojione'
-import { get } from 'lodash'
 import { URL } from 'url'
 
 const { SITE_URL } = process.env
 
 const SCORE_RATIO = 0.2
+
+const get = (obj, path, defaultValue) =>
+  path.split('.').reduce((a, c) => (a && a[c] ? a[c] : defaultValue || 0), obj)
 
 const score = ({ updatedAt, stars, issues }) => {
   const days = Math.abs(differenceInCalendarDays(updatedAt, Date.now()))

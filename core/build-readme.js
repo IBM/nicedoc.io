@@ -2,7 +2,6 @@ import { Permalink, ExternalLink } from 'components/icons'
 import imageExtensions from 'image-extensions'
 import ReactDOMServer from 'react-dom/server'
 import fileExtension from 'file-extension'
-import { isEmpty, forEach } from 'lodash'
 import { InternalLink } from 'components'
 import regexParam from 'regexparam'
 import { TAGS } from 'html-urls'
@@ -12,6 +11,9 @@ import url from 'url'
 import qsm from 'qsm'
 
 import build from './build'
+
+const isEmpty = obj =>
+  [Object, Array].includes((obj || {}).constructor) && !Object.entries(obj || {}).length
 
 const {
   REGEX_HTTP_PROTOCOL,
@@ -80,7 +82,7 @@ const withExternalIcon = $ => {
 }
 
 const createWithRelativeLinks = ({ isMarkdownPath }) => ($, { ref }) => {
-  forEach(TAGS, (htmlTags, propName) => {
+  Array.from(TAGS).forEach((htmlTags, propName) => {
     $(htmlTags.join(',')).each(function () {
       const el = $(this)
       const attr = el.attr(propName)

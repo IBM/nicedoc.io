@@ -3,7 +3,6 @@
 const cacheableResponse = require('cacheable-response')
 const terminalLink = require('terminal-link')
 const procStats = require('process-stats')
-const { isNil } = require('lodash')
 const express = require('express')
 const chalk = require('chalk')
 const next = require('next')
@@ -12,7 +11,7 @@ const routes = require('./routes')
 
 const { INTERNAL_NEXT_PATHS, NODE_ENV, PORT, GITHUB_TOKEN } = require('./constants')
 
-if (isNil(GITHUB_TOKEN)) {
+if (GITHUB_TOKEN === null || undefined) {
   const helpUrl = 'https://github.com/IBM/nicedoc.io#github_token'
 
   const helpLink = terminalLink('See how to', helpUrl, {
