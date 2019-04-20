@@ -2,6 +2,7 @@ import { Permalink, ExternalLink } from 'components/icons'
 import imageExtensions from 'image-extensions'
 import ReactDOMServer from 'react-dom/server'
 import fileExtension from 'file-extension'
+import { isEmpty } from 'lodash'
 import { InternalLink } from 'components'
 import regexParam from 'regexparam'
 import { TAGS } from 'html-urls'
@@ -11,14 +12,6 @@ import url from 'url'
 import qsm from 'qsm'
 
 import build from './build'
-
-const isEmpty = value => {
-  return (
-    value == null ||
-    (typeof value === 'object' && Object.keys(value).length === 0) ||
-    (typeof value === 'string' && value.trim().length === 0)
-  )
-}
 
 const {
   REGEX_HTTP_PROTOCOL,
