@@ -53,7 +53,7 @@ export default class Index extends Component {
           <Box>
             <h2>Features</h2>
             <ul>
-              <Li>Instant beauty documentation for github.com.</Li>
+              <Li>Instant beautiful documentation for any github.com repository.</Li>
               <Li>Compatible with any <Link href='https://github.com/github/markup#markups'>markup</Link>{' '} format.</Li>
               <Li>Point to any git hash or branch.</Li>
               <Li>File-system based routing.</Li>
