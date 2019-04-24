@@ -39,6 +39,7 @@ After `npm install`, just do a `npm run dev`.
 - [nicedoc.io/ahmadawais/Shades-of-Purple-VSCode](https://nicedoc.io/ahmadawais/Shades-of-Purple-VSCode).
 - [nicedoc.io/nucliweb/awesome-css-houdini](https://nicedoc.io/nucliweb/awesome-css-houdini).
 - [nicedoc.io/12bitvn/social-image-gen](https://nicedoc.io/12bitvn/social-image-gen).
+- [nicedoc.io/helpermethod/spring-boot-style-guide](https://nicedoc.io/helpermethod/spring-boot-style-guide).
 
 ## License
 
