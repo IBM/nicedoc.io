@@ -1,4 +1,3 @@
-import { concat } from 'lodash'
 import { extname } from 'path'
 
 import createFetchRepo from './fetch-repo'
@@ -15,8 +14,7 @@ const cases = (name, ext) => [
 const { GITHUB_TOKEN } = process.env || {}
 
 // based on https://github.com/github/markup#markups
-const ALTERNATIVE_README_NAMES = concat(
-  cases('readme', 'md'),
+const ALTERNATIVE_README_NAMES = cases('readme', 'md').concat(
   cases('readme', 'markdown'),
   cases('readme', 'rst')
 )
