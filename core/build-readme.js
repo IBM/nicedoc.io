@@ -2,7 +2,7 @@ import { Permalink, ExternalLink } from 'components/icons'
 import imageExtensions from 'image-extensions'
 import ReactDOMServer from 'react-dom/server'
 import fileExtension from 'file-extension'
-import { isEmpty } from 'lodash'
+import { isEmpty, forEach } from 'lodash'
 import { InternalLink } from 'components'
 import regexParam from 'regexparam'
 import { TAGS } from 'html-urls'
@@ -80,7 +80,7 @@ const withExternalIcon = $ => {
 }
 
 const createWithRelativeLinks = ({ isMarkdownPath }) => ($, { ref }) => {
-  Array.from(TAGS).forEach((htmlTags, propName) => {
+  forEach(TAGS, (htmlTags, propName) => {
     $(htmlTags.join(',')).each(function () {
       const el = $(this)
       const attr = el.attr(propName)
