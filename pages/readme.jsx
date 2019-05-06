@@ -1,5 +1,5 @@
 import { fetchRepo, fetchMeta, buildReadme } from 'core'
-import { ExternalLink, DocBar, Container, Head } from 'components'
+import { ExternalLink, NavBar, Container, Head } from 'components'
 import React, { useEffect, Fragment } from 'react'
 import ScrollProgress from 'scrollprogress'
 import NProgress from 'nprogress'
@@ -27,7 +27,7 @@ function Readme (props) {
   return (
     <Fragment>
       <Head {...meta} />
-      <DocBar meta={meta} />
+      <NavBar meta={meta} />
       <Container
         pt={`${navbar}px`}
         dangerouslySetInnerHTML={{ __html: readme }}

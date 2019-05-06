@@ -65,7 +65,7 @@ NavLink.defaultProps = {
   icon: false
 }
 
-export default function DocBar ({ meta }) {
+export default function NavBar ({ meta }) {
   const [theme, setTheme] = useState(null)
 
   useEffect(() => {
