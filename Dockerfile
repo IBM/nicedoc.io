@@ -1,4 +1,4 @@
-FROM node:10.15.0-alpine
+FROM node:12-alpine
 WORKDIR /home/node
 USER node
 COPY --chown=node:node package*.json ./
