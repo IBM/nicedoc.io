@@ -1,5 +1,5 @@
 export const layout = [700, 700, 700]
-export const navbar = 65
+export const navbar = [65, 65, 65]
 
 export const breakpoints = ['40em', '52em', '64em']
 export const fontSizes = [12, 14, 16, 20, 24, 32, 48, 64]
