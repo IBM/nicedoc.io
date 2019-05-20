@@ -43,7 +43,7 @@ if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
   eval $STORE_KUBECONFIG
 
   # Deploy
-  helm upgrade ${TRAVIS_BRANCH} ${root}/scripts/helm --install
+  helm upgrade ${TRAVIS_PULL_REQUEST_BRANCH} ${root}/scripts/helm --install
 fi
 
 get_last_merged_branch() {
