@@ -46,19 +46,12 @@ if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
   helm upgrade ${TRAVIS_PULL_REQUEST_BRANCH} ${root}/scripts/helm --install
 
   # Update github status
-  OWNER=`echo "${TRAVIS_REPO_SLUG}" | perl -n -e'/(.*)\// && print $1'`
-  REPO=`echo "${TRAVIS_REPO_SLUG}" | perl -n -e'/(.*)\/(.*)/ && print $2'`
-  docker run -i --rm \
-        -e GITHUB_ACTION=update_state \
-        -e GITHUB_TOKEN=${GITHUB_TOKEN} \
-        -e GITHUB_OWNER=${OWNER} \
-        -e GITHUB_REPO=${REPO} \
-        -e GITHUB_REF=${TRAVIS_COMMIT} \
-        -e GITHUB_STATE=success \
-        -e GITHUB_CONTEXT="deploy" \
-        -e GITHUB_DESCRIPTION="Deploy preview deployed to" \
-        -e GITHUB_TARGET_URL="https://${TRAVIS_PULL_REQUEST_BRANCH}.nicedocio.us-south.containers.appdomain.cloud" \
-        cloudposse/github-status-updater
+  curl "https://api.github.com/repos/${TRAVIS_REPO_SLUG}/statuses/${TRAVIS_COMMIT}" \
+    -H "Authorization: 'Bearer ${GITHUB_TOKEN}'" \
+    -H "Content-Type: application/json" \
+    -H "Accept: 'application/vnd.github.v3+json'" \
+    -X POST \
+    -d "{\"state\": \"success\", \"context\": \"deploy\", \"description\": \"Deploy preview\", \"target_url\": \"https://${TRAVIS_PULL_REQUEST_BRANCH}.nicedocio.us-south.containers.appdomain.cloud\"}"
 fi
 
 get_last_merged_branch() {
