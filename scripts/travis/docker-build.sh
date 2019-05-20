@@ -9,7 +9,10 @@ if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
   TAG=us.icr.io/nicedoc/nicedoc:${TRAVIS_PULL_REQUEST_BRANCH}
 
   # Install IBM Cloud Cli
-  curl -sL https://ibm.biz/idt-installer | bash
+  curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
+  ibmcloud config --check-version=false
+  ibmcloud plugin install container-registry
+  ibmcloud plugin install container-service
 
   # Log in into IBM Cloud Container Service
   ibmcloud login --apikey ${IBMCLOUD_API_KEY} -g 'IBM RESEARCH PRO' -r 'us-south'
@@ -23,6 +26,14 @@ if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
   docker push ${TAG}
 
   # Deploy to preview
+
+  # Install helm
+  HELM_URL=https://storage.googleapis.com/kubernetes-helm
+  HELM_TGZ=helm-v2.12.1-linux-amd64.tar.gz
+  wget -q ${HELM_URL}/${HELM_TGZ}
+  tar xzfv ${HELM_TGZ}
+  PATH=`pwd`/linux-amd64/:$PATH
+  helm init --client-only
 
   # Decrypt encrypted files
   openssl aes-256-cbc -k "$TRAVIS_ENCRYPT_PASSWORD" -in "${root}/scripts/helm/values.yaml.enc" -out "${root}/scripts/helm/values.yaml" -d
