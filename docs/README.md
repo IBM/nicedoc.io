@@ -68,7 +68,7 @@ The problem with this kind of name is they are already taken, so need to determi
 
 That includes:
 
-- [x] Choose a Name – Should be easy to pronun in English.
+- [x] Choose a Name – Should be easy to pronounce in English.
 - [x] Choose a Logo – Should be readable as favicon, Name + Logo and Name + Logo + Claim.
 - [x] Choose a Claim – Should something minimal that resume the project (eg: Pretty README as service). 
 - [x] Choose a typography.
@@ -123,7 +123,7 @@ That's include:
 	- [Carbon Design System](https://www.carbondesignsystem.com/) (click dark mode on bottom).
 - [x]  Choice a paired font to use.
 	- [fontpair](https://fontpair.co)
-- [x] Abbility to switch to Dark mode & remember preferences ([#2](https://github.com/Kikobeats/nicedoc.io/issues/2)).
+- [x] Ability to switch to Dark mode & remember preferences ([#2](https://github.com/Kikobeats/nicedoc.io/issues/2)).
 	- [Building the N26 Dark Mode](https://medium.com/insiden26/building-the-n26-dark-mode-2fc18c2ccdd5)
 	- [Redesigning your product and website for dark mode](https://stuffandnonsense.co.uk/blog/redesigning-your-product-and-website-for-dark-mode)
 	- [How to detect if OS X is in dark mode in browsers?](https://stackoverflow.com/questions/50840168/how-to-detect-if-os-x-is-in-dark-mode-in-browsers/52986538#52986538)
@@ -149,7 +149,7 @@ These settings could be also encoded at [query-state](https://nmotw.in/query-sta
 
 ![](https://user-images.githubusercontent.com/2096101/36397262-46e2c95a-15c2-11e8-8ba5-8c7f384383cc.png)
 
-Add the abbility to see a link preview on hover.
+Add the ability to see a link preview on hover.
 
 #### 🚧 Star Button
 
@@ -159,7 +159,7 @@ Add the abbility to see a link preview on hover.
 
 Now we have a functional site, it's time to start bringing up some sugar things in order to improve the user experience.
 
-We can translate the "Clap" button by Medium, but using the GitHub way, this means, the button reflects the ⭐️'s.
+We can translate the `Clap` button by Medium, but using the GitHub way, this means, the button reflects the ⭐️'s.
 
 Another things we can add after the star button could be 
 
@@ -173,7 +173,7 @@ Another things we can add after the star button could be
 
 ![](https://i.imgur.com/mhcZDJ8.png)
 
-Add the abbility to add comments. The comments works similar to Twitter Threads, where the started point is a previous sentence writtent in the documentation.
+Add the ability to add comments. The comments works similar to Twitter Threads, where the started point is a previous sentence writtent in the documentation.
 
 The comment can be created using your GitHub credentials.
 
