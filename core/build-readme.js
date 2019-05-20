@@ -140,7 +140,7 @@ export default ({ isMarkdownPath }) => {
   const withRelativeLinks = createWithRelativeLinks({ isMarkdownPath })
 
   return async ({ source, markdown }) => {
-    const { html } = await build(markdown)
+    const { html, toc } = await build(markdown)
     const $ = loadHTML(html)
 
     withRelativeLinks($, source)
@@ -149,6 +149,7 @@ export default ({ isMarkdownPath }) => {
     withExternalIcon($)
 
     return {
+      toc,
       html: $.html(),
       image: $('img').attr('src')
     }

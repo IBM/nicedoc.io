@@ -1,16 +1,24 @@
+import { Aside, Hide, ExternalLink, Nav, Container, Head, Flex, Box } from 'components'
+
 import { fetchRepo, fetchMeta, buildReadme } from 'core'
-import { ExternalLink, NavBar, Container, Head } from 'components'
 import React, { useEffect, Fragment } from 'react'
 import ScrollProgress from 'scrollprogress'
+import styled from 'styled-components'
+import { top } from 'styled-system'
 import NProgress from 'nprogress'
+
 import Error from './_error'
 
-import { navbar } from 'styles'
+import { speed, aside, navbar, transition, fontSizes } from 'styles'
+
+if (global.window) {
+  window.scroll = require('smooth-scroll')('a[href*="#"]', { speed: speed.normal })
+}
 
 function Readme (props) {
   useReadProgress()
 
-  const { query, meta, readme } = props
+  const { toc, query, meta, readme } = props
 
   if (!readme) {
     return (
@@ -24,14 +32,24 @@ function Readme (props) {
     )
   }
 
+  const pr = navbar.map((s, index) => s * (index / navbar.length))
+  const pl = pr.map((s, index) => s + aside[index])
+
   return (
     <Fragment>
       <Head {...meta} />
-      <NavBar meta={meta} />
-      <Container
-        pt={`${navbar}px`}
-        dangerouslySetInnerHTML={{ __html: readme }}
-      />
+      <Nav meta={meta} />
+      <Container as='main' mx='auto'>
+        <Hide breakpoints={[1, 2]}>
+          <Box as='section' dangerouslySetInnerHTML={{ __html: readme }} />
+        </Hide>
+        <Hide breakpoints={[0]}>
+          <Flex as='article' pt={navbar}>
+            <Aside pr={pr} width={aside} pt={navbar} top={navbar} dangerouslySetInnerHTML={{ __html: toc }} />
+            <Box as='section' pl={pl} dangerouslySetInnerHTML={{ __html: readme }} />
+          </Flex>
+        </Hide>
+      </Container>
     </Fragment>
   )
 }
@@ -42,13 +60,14 @@ Readme.getInitialProps = async ({ query }) => {
 
     if (!markdown) return { query }
 
-    const [{ html, image }, meta] = await Promise.all([
+    const [{ toc, html, image }, meta] = await Promise.all([
       buildReadme({ markdown, source }),
       fetchMeta({ source, info })
     ])
 
     return {
       query,
+      toc,
       readme: html,
       meta: { ...meta, image }
     }

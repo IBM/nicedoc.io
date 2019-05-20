@@ -1,6 +1,7 @@
 import { Link, ExternalLink, InternalLink } from './link'
 import Container from './container'
-import NavBar from './nav-bar'
+import Nav from './nav'
+import Aside from './aside'
 import Toggle from './toggle'
 import Small from './small'
 import Head from './head'
@@ -11,9 +12,9 @@ import Box from './box'
 import Li from './li'
 
 export {
+  Aside,
   Box,
   Container,
-  NavBar,
   ExternalLink,
   Flex,
   Head,
@@ -21,6 +22,7 @@ export {
   InternalLink,
   Li,
   Link,
+  Nav,
   Small,
   Text,
   Toggle
