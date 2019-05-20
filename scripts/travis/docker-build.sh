@@ -44,6 +44,21 @@ if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
 
   # Deploy
   helm upgrade ${TRAVIS_PULL_REQUEST_BRANCH} ${root}/scripts/helm --install
+
+  # Update github status
+  OWNER=`echo "${TRAVIS_REPO_SLUG}" | perl -n -e'/(.*)\// && print $1'`
+  REPO=`echo "${TRAVIS_REPO_SLUG}" | perl -n -e'/(.*)\/(.*)/ && print $2'`
+  docker run -i --rm \
+        -e GITHUB_ACTION=update_state \
+        -e GITHUB_TOKEN=${GITHUB_TOKEN} \
+        -e GITHUB_OWNER=${OWNER} \
+        -e GITHUB_REPO=${REPO} \
+        -e GITHUB_REF=${TRAVIS_COMMIT} \
+        -e GITHUB_STATE=success \
+        -e GITHUB_CONTEXT="deploy" \
+        -e GITHUB_DESCRIPTION="Deploy preview deployed to" \
+        -e GITHUB_TARGET_URL="https://${TRAVIS_PULL_REQUEST_BRANCH}.nicedocio.us-south.containers.appdomain.cloud" \
+        github-status-updater
 fi
 
 get_last_merged_branch() {
