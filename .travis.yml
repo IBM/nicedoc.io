@@ -4,7 +4,6 @@ services:
   - docker
 
 script:
-  - ./scripts/travis/docker-login.sh
   - ./scripts/travis/docker-build.sh
 
 branches:
