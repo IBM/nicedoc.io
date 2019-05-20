@@ -1,0 +1,1300 @@
+[
+  [
+    "beforeEach hook for detect from github blob url",
+    [
+      {
+        "body": "",
+        "method": "GET",
+        "path": "/repos/glorious-codes/glorious-pitsby",
+        "rawHeaders": [
+          "Server",
+          "GitHub.com",
+          "Date",
+          "Mon, 20 May 2019 16:34:16 GMT",
+          "Content-Type",
+          "application/json; charset=utf-8",
+          "Transfer-Encoding",
+          "chunked",
+          "Connection",
+          "close",
+          "Status",
+          "200 OK",
+          "X-RateLimit-Limit",
+          "5000",
+          "X-RateLimit-Remaining",
+          "4639",
+          "X-RateLimit-Reset",
+          "1558371543",
+          "Cache-Control",
+          "private, max-age=60, s-maxage=60",
+          "Vary",
+          "Accept, Authorization, Cookie, X-GitHub-OTP",
+          "ETag",
+          "W/\"79d067b86792aca14860af17c7428008\"",
+          "Last-Modified",
+          "Thu, 09 May 2019 02:20:09 GMT",
+          "X-OAuth-Scopes",
+          "public_repo",
+          "X-Accepted-OAuth-Scopes",
+          "repo",
+          "X-GitHub-Media-Type",
+          "github.v3; format=json",
+          "Access-Control-Expose-Headers",
+          "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+          "Access-Control-Allow-Origin",
+          "*",
+          "Strict-Transport-Security",
+          "max-age=31536000; includeSubdomains; preload",
+          "X-Frame-Options",
+          "deny",
+          "X-Content-Type-Options",
+          "nosniff",
+          "X-XSS-Protection",
+          "1; mode=block",
+          "Referrer-Policy",
+          "origin-when-cross-origin, strict-origin-when-cross-origin",
+          "Content-Security-Policy",
+          "default-src 'none'",
+          "X-GitHub-Request-Id",
+          "E885:6170:1455A19:3162AB2:5CE2D707"
+        ],
+        "reqheaders": {
+          "accept": [
+            "*/*"
+          ],
+          "accept-encoding": [
+            "gzip,deflate"
+          ],
+          "authorization": [
+            "token FAKE_GITHUB_TOKEN"
+          ],
+          "connection": [
+            "close"
+          ],
+          "host": "api.github.com"
+        },
+        "response": "{\"id\":158036849,\"node_id\":\"MDEwOlJlcG9zaXRvcnkxNTgwMzY4NDk=\",\"name\":\"glorious-pitsby\",\"full_name\":\"glorious-codes/glorious-pitsby\",\"private\":false,\"owner\":{\"login\":\"glorious-codes\",\"id\":42779456,\"node_id\":\"MDEyOk9yZ2FuaXphdGlvbjQyNzc5NDU2\",\"avatar_url\":\"https://avatars1.githubusercontent.com/u/42779456?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/glorious-codes\",\"html_url\":\"https://github.com/glorious-codes\",\"followers_url\":\"https://api.github.com/users/glorious-codes/followers\",\"following_url\":\"https://api.github.com/users/glorious-codes/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/glorious-codes/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/glorious-codes/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/glorious-codes/subscriptions\",\"organizations_url\":\"https://api.github.com/users/glorious-codes/orgs\",\"repos_url\":\"https://api.github.com/users/glorious-codes/repos\",\"events_url\":\"https://api.github.com/users/glorious-codes/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/glorious-codes/received_events\",\"type\":\"Organization\",\"site_admin\":false},\"html_url\":\"https://github.com/glorious-codes/glorious-pitsby\",\"description\":\"Docs generator for AngularJS and Vue components\",\"fork\":false,\"url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby\",\"forks_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/forks\",\"keys_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/keys{/key_id}\",\"collaborators_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/collaborators{/collaborator}\",\"teams_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/teams\",\"hooks_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/hooks\",\"issue_events_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/issues/events{/number}\",\"events_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/events\",\"assignees_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/assignees{/user}\",\"branches_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/branches{/branch}\",\"tags_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/tags\",\"blobs_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/git/blobs{/sha}\",\"git_tags_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/git/tags{/sha}\",\"git_refs_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/git/refs{/sha}\",\"trees_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/git/trees{/sha}\",\"statuses_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/statuses/{sha}\",\"languages_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/languages\",\"stargazers_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/stargazers\",\"contributors_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/contributors\",\"subscribers_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/subscribers\",\"subscription_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/subscription\",\"commits_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/commits{/sha}\",\"git_commits_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/git/commits{/sha}\",\"comments_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/comments{/number}\",\"issue_comment_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/issues/comments{/number}\",\"contents_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/contents/{+path}\",\"compare_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/compare/{base}...{head}\",\"merges_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/merges\",\"archive_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/{archive_format}{/ref}\",\"downloads_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/downloads\",\"issues_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/issues{/number}\",\"pulls_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/pulls{/number}\",\"milestones_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/milestones{/number}\",\"notifications_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/notifications{?since,all,participating}\",\"labels_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/labels{/name}\",\"releases_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/releases{/id}\",\"deployments_url\":\"https://api.github.com/repos/glorious-codes/glorious-pitsby/deployments\",\"created_at\":\"2018-11-18T00:29:43Z\",\"updated_at\":\"2019-05-09T02:20:09Z\",\"pushed_at\":\"2019-05-07T01:20:17Z\",\"git_url\":\"git://github.com/glorious-codes/glorious-pitsby.git\",\"ssh_url\":\"git@github.com:glorious-codes/glorious-pitsby.git\",\"clone_url\":\"https://github.com/glorious-codes/glorious-pitsby.git\",\"svn_url\":\"https://github.com/glorious-codes/glorious-pitsby\",\"homepage\":\"\",\"size\":1567,\"stargazers_count\":8,\"watchers_count\":8,\"language\":\"JavaScript\",\"has_issues\":true,\"has_projects\":true,\"has_downloads\":true,\"has_wiki\":true,\"has_pages\":false,\"forks_count\":1,\"mirror_url\":null,\"archived\":false,\"disabled\":false,\"open_issues_count\":4,\"license\":{\"key\":\"mit\",\"name\":\"MIT License\",\"spdx_id\":\"MIT\",\"url\":\"https://api.github.com/licenses/mit\",\"node_id\":\"MDc6TGljZW5zZTEz\"},\"forks\":1,\"open_issues\":4,\"watchers\":8,\"default_branch\":\"master\",\"permissions\":{\"admin\":false,\"push\":false,\"pull\":true},\"organization\":{\"login\":\"glorious-codes\",\"id\":42779456,\"node_id\":\"MDEyOk9yZ2FuaXphdGlvbjQyNzc5NDU2\",\"avatar_url\":\"https://avatars1.githubusercontent.com/u/42779456?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/glorious-codes\",\"html_url\":\"https://github.com/glorious-codes\",\"followers_url\":\"https://api.github.com/users/glorious-codes/followers\",\"following_url\":\"https://api.github.com/users/glorious-codes/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/glorious-codes/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/glorious-codes/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/glorious-codes/subscriptions\",\"organizations_url\":\"https://api.github.com/users/glorious-codes/orgs\",\"repos_url\":\"https://api.github.com/users/glorious-codes/repos\",\"events_url\":\"https://api.github.com/users/glorious-codes/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/glorious-codes/received_events\",\"type\":\"Organization\",\"site_admin\":false},\"network_count\":1,\"subscribers_count\":1}",
+        "scope": "https://api.github.com:443",
+        "status": 200
+      },
+      {
+        "body": "",
+        "method": "GET",
+        "path": "/repos/glorious-codes/glorious-pitsby/contents//docs/documentation.md?ref=master",
+        "rawHeaders": [
+          "Server",
+          "GitHub.com",
+          "Date",
+          "Mon, 20 May 2019 16:34:17 GMT",
+          "Content-Type",
+          "application/vnd.github.v3.raw; charset=utf-8",
+          "Content-Length",
+          "2119",
+          "Connection",
+          "close",
+          "Status",
+          "200 OK",
+          "X-RateLimit-Limit",
+          "5000",
+          "X-RateLimit-Remaining",
+          "4638",
+          "X-RateLimit-Reset",
+          "1558371543",
+          "Cache-Control",
+          "private, max-age=60, s-maxage=60",
+          "Vary",
+          "Accept, Authorization, Cookie, X-GitHub-OTP",
+          "ETag",
+          "\"2b6255bc42e297b36ac194ebeb2d7950e645d291\"",
+          "Last-Modified",
+          "Tue, 07 May 2019 01:19:52 GMT",
+          "X-OAuth-Scopes",
+          "public_repo",
+          "X-Accepted-OAuth-Scopes",
+          "",
+          "X-GitHub-Media-Type",
+          "github.v3; param=raw",
+          "Access-Control-Expose-Headers",
+          "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+          "Access-Control-Allow-Origin",
+          "*",
+          "Strict-Transport-Security",
+          "max-age=31536000; includeSubdomains; preload",
+          "X-Frame-Options",
+          "deny",
+          "X-Content-Type-Options",
+          "nosniff",
+          "X-XSS-Protection",
+          "1; mode=block",
+          "Referrer-Policy",
+          "origin-when-cross-origin, strict-origin-when-cross-origin",
+          "Content-Security-Policy",
+          "default-src 'none'",
+          "X-GitHub-Request-Id",
+          "E887:7630:2BEBE76:573BE2B:5CE2D708"
+        ],
+        "reqheaders": {
+          "accept": [
+            "application/vnd.github.v3.raw"
+          ],
+          "accept-encoding": [
+            "gzip,deflate"
+          ],
+          "authorization": [
+            "token FAKE_GITHUB_TOKEN"
+          ],
+          "connection": [
+            "close"
+          ],
+          "host": "api.github.com"
+        },
+        "response": "# Documentation\n\n### component.doc.js\n\nYou should create one `.doc.js` file per component per engine. That said, be careful about:\n\n- If you have a button component written in AngularJS and a button component written in Vue, both will need their own `.doc.js`.\n- You shouldn't ever mix AngularJS examples with Vue examples in the same `doc.js`.\n\nThe following is an example of button component documentation:\n\n``` javascript\nmodule.exports = {\n  name: 'Button',\n  description: 'Trigger for actions in forms, dialogs, and more.',\n  properties: [\n    {\n      name: 'theme',\n      type: 'String',\n      values: 'primary, secondary',\n      required: 'No'\n    },\n    {\n      name: 'size',\n      type: 'String',\n      values: 'small, large',\n      required: 'No'\n    }\n  ],\n  // Angular Examples should be written like below:\n  examples: [\n    {\n      title: 'My Button Example',\n      description: 'This is my custom Angular button.'\n      controller: function($window){\n        const $ctrl = this;\n        $ctrl.label = 'Greet';\n        $ctrl.greet = () => $window.alert('Hello!');\n      },\n      dependencies: ['$window'],\n      template: `\n      <my-button\n        ng-click=\"$ctrl.greet()\"\n        ng-bind=\"$ctrl.label\">\n      </my-button>`,\n      // Sometimes you need to customize styles for documentation purpose only.\n      // Use this attribute to target some styles for your example:\n      styles: `\n      .my-button { color: red; }`\n    }\n  ]\n  // Vue Examples should be written like below:\n  examples: [\n    {\n      title: 'My Button Example',\n      description: 'This is my custom Vue button.'\n      controller: {\n        data(){\n          return {\n            label: 'Greet'\n          };\n        },\n        methods: {\n          greet(){\n            window.alert('Hello!');\n          }\n        }\n      },\n      template: `\n      <my-button @click=\"greet\">\n        {{ label }}\n      </my-button>`,\n      // Sometimes you need to customize styles for documentation purpose only.\n      // Use this attribute to target some styles for your example:\n      styles: `\n      .my-button { color: red; }`\n    }\n  ]\n};\n```\n",
+        "scope": "https://api.github.com:443",
+        "status": 200
+      }
+    ]
+  ],
+  [
+    "beforeEach hook for infer master branch by default",
+    [
+      {
+        "body": "",
+        "method": "GET",
+        "path": "/repos/CKGrafico/Frontend-Boilerplates",
+        "rawHeaders": [
+          "Server",
+          "GitHub.com",
+          "Date",
+          "Mon, 20 May 2019 16:34:04 GMT",
+          "Content-Type",
+          "application/json; charset=utf-8",
+          "Transfer-Encoding",
+          "chunked",
+          "Connection",
+          "close",
+          "Status",
+          "200 OK",
+          "X-RateLimit-Limit",
+          "5000",
+          "X-RateLimit-Remaining",
+          "4655",
+          "X-RateLimit-Reset",
+          "1558371543",
+          "Cache-Control",
+          "private, max-age=60, s-maxage=60",
+          "Vary",
+          "Accept, Authorization, Cookie, X-GitHub-OTP",
+          "ETag",
+          "W/\"46468a5f55f80060945d33f9aad22cbb\"",
+          "Last-Modified",
+          "Sat, 18 May 2019 17:51:40 GMT",
+          "X-OAuth-Scopes",
+          "public_repo",
+          "X-Accepted-OAuth-Scopes",
+          "repo",
+          "X-GitHub-Media-Type",
+          "github.v3; format=json",
+          "Access-Control-Expose-Headers",
+          "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+          "Access-Control-Allow-Origin",
+          "*",
+          "Strict-Transport-Security",
+          "max-age=31536000; includeSubdomains; preload",
+          "X-Frame-Options",
+          "deny",
+          "X-Content-Type-Options",
+          "nosniff",
+          "X-XSS-Protection",
+          "1; mode=block",
+          "Referrer-Policy",
+          "origin-when-cross-origin, strict-origin-when-cross-origin",
+          "Content-Security-Policy",
+          "default-src 'none'",
+          "X-GitHub-Request-Id",
+          "E86D:3A20:21DF91E:48F26D1:5CE2D6FC"
+        ],
+        "reqheaders": {
+          "accept": [
+            "*/*"
+          ],
+          "accept-encoding": [
+            "gzip,deflate"
+          ],
+          "authorization": [
+            "token FAKE_GITHUB_TOKEN"
+          ],
+          "connection": [
+            "close"
+          ],
+          "host": "api.github.com"
+        },
+        "response": "{\"id\":78850218,\"node_id\":\"MDEwOlJlcG9zaXRvcnk3ODg1MDIxOA==\",\"name\":\"Frontend-Boilerplates\",\"full_name\":\"CKGrafico/Frontend-Boilerplates\",\"private\":false,\"owner\":{\"login\":\"CKGrafico\",\"id\":2048511,\"node_id\":\"MDQ6VXNlcjIwNDg1MTE=\",\"avatar_url\":\"https://avatars1.githubusercontent.com/u/2048511?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/CKGrafico\",\"html_url\":\"https://github.com/CKGrafico\",\"followers_url\":\"https://api.github.com/users/CKGrafico/followers\",\"following_url\":\"https://api.github.com/users/CKGrafico/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/CKGrafico/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/CKGrafico/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/CKGrafico/subscriptions\",\"organizations_url\":\"https://api.github.com/users/CKGrafico/orgs\",\"repos_url\":\"https://api.github.com/users/CKGrafico/repos\",\"events_url\":\"https://api.github.com/users/CKGrafico/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/CKGrafico/received_events\",\"type\":\"User\",\"site_admin\":false},\"html_url\":\"https://github.com/CKGrafico/Frontend-Boilerplates\",\"description\":\"Collection of Boilerplates with ES6, Vue, React, Nuxt, TypeScript, SCSS, Nodejs...\",\"fork\":false,\"url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates\",\"forks_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/forks\",\"keys_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/keys{/key_id}\",\"collaborators_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/collaborators{/collaborator}\",\"teams_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/teams\",\"hooks_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/hooks\",\"issue_events_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/issues/events{/number}\",\"events_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/events\",\"assignees_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/assignees{/user}\",\"branches_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/branches{/branch}\",\"tags_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/tags\",\"blobs_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/git/blobs{/sha}\",\"git_tags_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/git/tags{/sha}\",\"git_refs_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/git/refs{/sha}\",\"trees_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/git/trees{/sha}\",\"statuses_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/statuses/{sha}\",\"languages_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/languages\",\"stargazers_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/stargazers\",\"contributors_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/contributors\",\"subscribers_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/subscribers\",\"subscription_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/subscription\",\"commits_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/commits{/sha}\",\"git_commits_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/git/commits{/sha}\",\"comments_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/comments{/number}\",\"issue_comment_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/issues/comments{/number}\",\"contents_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/contents/{+path}\",\"compare_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/compare/{base}...{head}\",\"merges_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/merges\",\"archive_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/{archive_format}{/ref}\",\"downloads_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/downloads\",\"issues_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/issues{/number}\",\"pulls_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/pulls{/number}\",\"milestones_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/milestones{/number}\",\"notifications_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/notifications{?since,all,participating}\",\"labels_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/labels{/name}\",\"releases_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/releases{/id}\",\"deployments_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/deployments\",\"created_at\":\"2017-01-13T13:09:39Z\",\"updated_at\":\"2019-05-18T17:51:40Z\",\"pushed_at\":\"2019-05-09T08:44:34Z\",\"git_url\":\"git://github.com/CKGrafico/Frontend-Boilerplates.git\",\"ssh_url\":\"git@github.com:CKGrafico/Frontend-Boilerplates.git\",\"clone_url\":\"https://github.com/CKGrafico/Frontend-Boilerplates.git\",\"svn_url\":\"https://github.com/CKGrafico/Frontend-Boilerplates\",\"homepage\":\"https://boilerplates.js.org\",\"size\":7066,\"stargazers_count\":134,\"watchers_count\":134,\"language\":\"TypeScript\",\"has_issues\":true,\"has_projects\":false,\"has_downloads\":true,\"has_wiki\":false,\"has_pages\":true,\"forks_count\":26,\"mirror_url\":null,\"archived\":false,\"disabled\":false,\"open_issues_count\":4,\"license\":null,\"forks\":26,\"open_issues\":4,\"watchers\":134,\"default_branch\":\"vue\",\"permissions\":{\"admin\":false,\"push\":false,\"pull\":true},\"network_count\":26,\"subscribers_count\":11}",
+        "scope": "https://api.github.com:443",
+        "status": 200
+      },
+      {
+        "body": "",
+        "method": "GET",
+        "path": "/repos/CKGrafico/Frontend-Boilerplates/contents/README.md?ref=vue",
+        "rawHeaders": [
+          "Server",
+          "GitHub.com",
+          "Date",
+          "Mon, 20 May 2019 16:34:05 GMT",
+          "Content-Type",
+          "application/vnd.github.v3.raw; charset=utf-8",
+          "Content-Length",
+          "6039",
+          "Connection",
+          "close",
+          "Status",
+          "200 OK",
+          "X-RateLimit-Limit",
+          "5000",
+          "X-RateLimit-Remaining",
+          "4654",
+          "X-RateLimit-Reset",
+          "1558371543",
+          "Cache-Control",
+          "private, max-age=60, s-maxage=60",
+          "Vary",
+          "Accept, Authorization, Cookie, X-GitHub-OTP",
+          "ETag",
+          "\"c6e166673a6806c04a074efe6229a773f26be2ba\"",
+          "Last-Modified",
+          "Thu, 09 May 2019 08:38:25 GMT",
+          "X-OAuth-Scopes",
+          "public_repo",
+          "X-Accepted-OAuth-Scopes",
+          "",
+          "X-GitHub-Media-Type",
+          "github.v3; param=raw",
+          "Access-Control-Expose-Headers",
+          "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+          "Access-Control-Allow-Origin",
+          "*",
+          "Strict-Transport-Security",
+          "max-age=31536000; includeSubdomains; preload",
+          "X-Frame-Options",
+          "deny",
+          "X-Content-Type-Options",
+          "nosniff",
+          "X-XSS-Protection",
+          "1; mode=block",
+          "Referrer-Policy",
+          "origin-when-cross-origin, strict-origin-when-cross-origin",
+          "Content-Security-Policy",
+          "default-src 'none'",
+          "X-GitHub-Request-Id",
+          "E86E:113A:2AC9961:5834371:5CE2D6FD"
+        ],
+        "reqheaders": {
+          "accept": [
+            "application/vnd.github.v3.raw"
+          ],
+          "accept-encoding": [
+            "gzip,deflate"
+          ],
+          "authorization": [
+            "token FAKE_GITHUB_TOKEN"
+          ],
+          "connection": [
+            "close"
+          ],
+          "host": "api.github.com"
+        },
+        "response": "# Frontend Boilerplates\nSome examples of **good practises**, **tips**, and **boilerplates** that I like to follow. You will find the different technologies separated by branches and I will add more examples in the future, helped by the contributors.\n\n[<img src=\"https://raw.githubusercontent.com/CKGrafico/Frontend-Boilerplates/docs/resources/techs/spa-d.png\" width=\"140\" title=\"Basic\">](https://github.com/CKGrafico/Frontend-Boilerplates/tree/basic#frontend-boilerplates)\n[<img src=\"https://raw.githubusercontent.com/CKGrafico/Frontend-Boilerplates/docs/resources/techs/ts-d.png\" width=\"140\" title=\"TypeScript\">](https://github.com/CKGrafico/Frontend-Boilerplates/tree/ts#frontend-boilerplates)\n[<img src=\"https://raw.githubusercontent.com/CKGrafico/Frontend-Boilerplates/docs/resources/techs/vue.png\" width=\"140\" title=\"Vuejs\">](https://github.com/CKGrafico/Frontend-Boilerplates/tree/vue#frontend-boilerplates)\n[<img src=\"https://raw.githubusercontent.com/CKGrafico/Frontend-Boilerplates/docs/resources/techs/nuxt-d.png\" width=\"140\" title=\"Nuxt\">](https://github.com/CKGrafico/Frontend-Boilerplates/tree/nuxt#frontend-boilerplates)\n[<img src=\"https://raw.githubusercontent.com/CKGrafico/Frontend-Boilerplates/docs/resources/techs/react-d.png\" width=\"140\" title=\"React\">](https://github.com/CKGrafico/Frontend-Boilerplates/tree/react#frontend-boilerplates)\n[<img src=\"https://raw.githubusercontent.com/CKGrafico/Frontend-Boilerplates/docs/resources/techs/nodets-d.png\" width=\"140\" title=\"Nodejs with TypeScript\">](https://github.com/CKGrafico/Frontend-Boilerplates/tree/node-ts#frontend-boilerplates)\n\n## Vue - Boilerplate Features <img src=\"https://raw.githubusercontent.com/CKGrafico/Frontend-Boilerplates/docs/resources/techs/vue.png\" align=\"right\" width=\"35\" title=\"Boilerplate\">\n\n[![Build Status](https://travis-ci.org/CKGrafico/Frontend-Boilerplates.svg?branch=vue)](https://travis-ci.org/CKGrafico/Frontend-Boilerplates)\n![GitHub last commit (branch)](https://img.shields.io/github/last-commit/CKGrafico/Frontend-Boilerplates/vue.svg)\n[![GitHub license](https://img.shields.io/github/license/CKGrafico/Frontend-Boilerplates.svg)](https://github.com/CKGrafico/Frontend-Boilerplates/blob/vue/LICENSE)\n[![GitHub forks](https://img.shields.io/github/forks/CKGrafico/Frontend-Boilerplates.svg)](https://github.com/CKGrafico/Frontend-Boilerplates/network)\n![GitHub contributors](https://img.shields.io/github/contributors/CKGrafico/Frontend-Boilerplates.svg)\n[![GitHub issues](https://img.shields.io/github/issues/CKGrafico/Frontend-Boilerplates.svg)](https://github.com/CKGrafico/Frontend-Boilerplates/issues)\n\nOn this boilerplate you can find:\n- **Vue:** The progressive JavaScript framework.\n- **TypeScript:** All the code uses TypeScript.\n- **SASS:** Scss structure with good practises.\n- **Linting:** Linting for JavaScript and SASS.\n- **BEM (Non strict) + BEMIT:** Some conventions for CSS classes.\n\n## 📚 Documentation ([boilerplates.js.org](https://boilerplates.js.org/))\n- [🍩 Starting the project](https://boilerplates.js.org/docs/vue-installation)\n- [⛩️ Project structure](https://boilerplates.js.org/docs/vue-structure)\n- [⚙️ Configuring automated tasks](https://boilerplates.js.org/docs/started-tasks)\n- [📜 License](https://boilerplates.js.org/docs/started-license)\n\n## 🎩 Contributors\n\n| <img src=\"https://i.imgur.com/CcJ7vXL.jpg\" width=\"150\"><br>**Quique Fdez Guerra**<br>[👨‍💻](https://github.com/CKGrafico)[🌍](http://ckgrafico.com)[🐦](https://twitter.com/CKGrafico) | <img src=\"https://i.imgur.com/W8Ks7Ss.jpg\" width=\"150\"><br>**Juan Carlos<br>**<br>[👨‍💻](https://github.com/jcarloslr10)[🌍](http://plainconcepts.com)[🐦](https://twitter.com/jcarloslr10) | <img src=\"https://i.imgur.com/kLqGDso.jpg\" width=\"150\"><br>**Alex Kryzhanovskyy**<br>[👨‍💻](https://github.com/AlexKryzh)[🌍](http://kryzh.com)[🐦](https://twitter.com/AlexKryzh) | <img src=\"https://i.imgur.com/ScMiaNz.png\" width=\"150\"><br>**Victor Gamez<br>**<br>[👨‍💻](https://github.com/VGamezz19) | <img src=\"https://i.imgur.com/idu3Mnw.png\" width=\"150\"><br>**PlainConcepts<br>**<br>[👨‍💻](https://github.com/PlainConcepts)[🌍](http://plainconcepts.com)[🐦](https://twitter.com/PlainConcepts)|\n| :---: | :---: | :---: | :---: | :---: |\n\n[View Contributors](https://github.com/CKGrafico/Frontend-Boilerplates/graphs/contributors)\n\n\n## ⛳️ Check all the boilerplates\n\n- **[basic:](https://github.com/CKGrafico/Frontend-Boilerplates/tree)** **Basic SPA** example with SCSS and ES6. <img src=\"https://raw.githubusercontent.com/CKGrafico/Frontend-Boilerplates/docs/resources/techs/spa.png\" align=\"right\" width=\"35\" title=\"SPA\">\n\n- **[ts:](https://github.com/CKGrafico/Frontend-Boilerplates/tree/ts)** **TypeScript** example with SCSS. <img src=\"https://raw.githubusercontent.com/CKGrafico/Frontend-Boilerplates/docs/resources/techs/ts.png\" align=\"right\" width=\"35\" title=\"TypeScript\">\n\n- **[vue:](https://github.com/CKGrafico/Frontend-Boilerplates/tree/vue)** **Vuejs** example with SCSS and TypeScript. <img src=\"https://raw.githubusercontent.com/CKGrafico/Frontend-Boilerplates/docs/resources/techs/vue.png\" align=\"right\" width=\"35\" title=\"Vue\">\n\n- **[nuxt:](https://github.com/CKGrafico/Frontend-Boilerplates/tree/nuxt)** **Nuxt** example with SCSS and TypeScript. <img src=\"https://raw.githubusercontent.com/CKGrafico/Frontend-Boilerplates/docs/resources/techs/nuxt.png\" align=\"right\" width=\"35\" title=\"Nuxt\">\n\n- **[react:](https://github.com/CKGrafico/Frontend-Boilerplates/tree/react)** **React** example with SCSS and TypeScript. <img src=\"https://raw.githubusercontent.com/CKGrafico/Frontend-Boilerplates/docs/resources/techs/react.png\" align=\"right\" width=\"35\" title=\"React\">\n\n- **[node-ts:](https://github.com/CKGrafico/Frontend-Boilerplates/tree/node-ts)** **Backend and TypeScript** example with SCSS and Nodejs. <img src=\"https://raw.githubusercontent.com/CKGrafico/Frontend-Boilerplates/docs/resources/techs/nodets.png\" align=\"right\" width=\"35\" title=\"Node with TypeScript\">\n",
+        "scope": "https://api.github.com:443",
+        "status": 200
+      }
+    ]
+  ],
+  [
+    "beforeEach hook for resolve first valid path",
+    [
+      {
+        "body": "",
+        "method": "GET",
+        "path": "/repos/CKGrafico/Frontend-Boilerplates",
+        "rawHeaders": [
+          "Server",
+          "GitHub.com",
+          "Date",
+          "Mon, 20 May 2019 16:34:05 GMT",
+          "Content-Type",
+          "application/json; charset=utf-8",
+          "Transfer-Encoding",
+          "chunked",
+          "Connection",
+          "close",
+          "Status",
+          "200 OK",
+          "X-RateLimit-Limit",
+          "5000",
+          "X-RateLimit-Remaining",
+          "4653",
+          "X-RateLimit-Reset",
+          "1558371543",
+          "Cache-Control",
+          "private, max-age=60, s-maxage=60",
+          "Vary",
+          "Accept, Authorization, Cookie, X-GitHub-OTP",
+          "ETag",
+          "W/\"46468a5f55f80060945d33f9aad22cbb\"",
+          "Last-Modified",
+          "Sat, 18 May 2019 17:51:40 GMT",
+          "X-OAuth-Scopes",
+          "public_repo",
+          "X-Accepted-OAuth-Scopes",
+          "repo",
+          "X-GitHub-Media-Type",
+          "github.v3; format=json",
+          "Access-Control-Expose-Headers",
+          "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+          "Access-Control-Allow-Origin",
+          "*",
+          "Strict-Transport-Security",
+          "max-age=31536000; includeSubdomains; preload",
+          "X-Frame-Options",
+          "deny",
+          "X-Content-Type-Options",
+          "nosniff",
+          "X-XSS-Protection",
+          "1; mode=block",
+          "Referrer-Policy",
+          "origin-when-cross-origin, strict-origin-when-cross-origin",
+          "Content-Security-Policy",
+          "default-src 'none'",
+          "X-GitHub-Request-Id",
+          "E86F:03BA:A907FA:1D864B5:5CE2D6FD"
+        ],
+        "reqheaders": {
+          "accept": [
+            "*/*"
+          ],
+          "accept-encoding": [
+            "gzip,deflate"
+          ],
+          "authorization": [
+            "token FAKE_GITHUB_TOKEN"
+          ],
+          "connection": [
+            "close"
+          ],
+          "host": "api.github.com"
+        },
+        "response": "{\"id\":78850218,\"node_id\":\"MDEwOlJlcG9zaXRvcnk3ODg1MDIxOA==\",\"name\":\"Frontend-Boilerplates\",\"full_name\":\"CKGrafico/Frontend-Boilerplates\",\"private\":false,\"owner\":{\"login\":\"CKGrafico\",\"id\":2048511,\"node_id\":\"MDQ6VXNlcjIwNDg1MTE=\",\"avatar_url\":\"https://avatars1.githubusercontent.com/u/2048511?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/CKGrafico\",\"html_url\":\"https://github.com/CKGrafico\",\"followers_url\":\"https://api.github.com/users/CKGrafico/followers\",\"following_url\":\"https://api.github.com/users/CKGrafico/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/CKGrafico/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/CKGrafico/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/CKGrafico/subscriptions\",\"organizations_url\":\"https://api.github.com/users/CKGrafico/orgs\",\"repos_url\":\"https://api.github.com/users/CKGrafico/repos\",\"events_url\":\"https://api.github.com/users/CKGrafico/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/CKGrafico/received_events\",\"type\":\"User\",\"site_admin\":false},\"html_url\":\"https://github.com/CKGrafico/Frontend-Boilerplates\",\"description\":\"Collection of Boilerplates with ES6, Vue, React, Nuxt, TypeScript, SCSS, Nodejs...\",\"fork\":false,\"url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates\",\"forks_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/forks\",\"keys_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/keys{/key_id}\",\"collaborators_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/collaborators{/collaborator}\",\"teams_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/teams\",\"hooks_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/hooks\",\"issue_events_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/issues/events{/number}\",\"events_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/events\",\"assignees_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/assignees{/user}\",\"branches_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/branches{/branch}\",\"tags_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/tags\",\"blobs_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/git/blobs{/sha}\",\"git_tags_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/git/tags{/sha}\",\"git_refs_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/git/refs{/sha}\",\"trees_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/git/trees{/sha}\",\"statuses_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/statuses/{sha}\",\"languages_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/languages\",\"stargazers_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/stargazers\",\"contributors_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/contributors\",\"subscribers_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/subscribers\",\"subscription_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/subscription\",\"commits_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/commits{/sha}\",\"git_commits_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/git/commits{/sha}\",\"comments_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/comments{/number}\",\"issue_comment_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/issues/comments{/number}\",\"contents_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/contents/{+path}\",\"compare_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/compare/{base}...{head}\",\"merges_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/merges\",\"archive_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/{archive_format}{/ref}\",\"downloads_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/downloads\",\"issues_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/issues{/number}\",\"pulls_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/pulls{/number}\",\"milestones_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/milestones{/number}\",\"notifications_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/notifications{?since,all,participating}\",\"labels_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/labels{/name}\",\"releases_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/releases{/id}\",\"deployments_url\":\"https://api.github.com/repos/CKGrafico/Frontend-Boilerplates/deployments\",\"created_at\":\"2017-01-13T13:09:39Z\",\"updated_at\":\"2019-05-18T17:51:40Z\",\"pushed_at\":\"2019-05-09T08:44:34Z\",\"git_url\":\"git://github.com/CKGrafico/Frontend-Boilerplates.git\",\"ssh_url\":\"git@github.com:CKGrafico/Frontend-Boilerplates.git\",\"clone_url\":\"https://github.com/CKGrafico/Frontend-Boilerplates.git\",\"svn_url\":\"https://github.com/CKGrafico/Frontend-Boilerplates\",\"homepage\":\"https://boilerplates.js.org\",\"size\":7066,\"stargazers_count\":134,\"watchers_count\":134,\"language\":\"TypeScript\",\"has_issues\":true,\"has_projects\":false,\"has_downloads\":true,\"has_wiki\":false,\"has_pages\":true,\"forks_count\":26,\"mirror_url\":null,\"archived\":false,\"disabled\":false,\"open_issues_count\":4,\"license\":null,\"forks\":26,\"open_issues\":4,\"watchers\":134,\"default_branch\":\"vue\",\"permissions\":{\"admin\":false,\"push\":false,\"pull\":true},\"network_count\":26,\"subscribers_count\":11}",
+        "scope": "https://api.github.com:443",
+        "status": 200
+      },
+      {
+        "body": "",
+        "method": "GET",
+        "path": "/repos/CKGrafico/Frontend-Boilerplates/contents/README.md?ref=vue",
+        "rawHeaders": [
+          "Server",
+          "GitHub.com",
+          "Date",
+          "Mon, 20 May 2019 16:34:06 GMT",
+          "Content-Type",
+          "application/vnd.github.v3.raw; charset=utf-8",
+          "Content-Length",
+          "6039",
+          "Connection",
+          "close",
+          "Status",
+          "200 OK",
+          "X-RateLimit-Limit",
+          "5000",
+          "X-RateLimit-Remaining",
+          "4652",
+          "X-RateLimit-Reset",
+          "1558371543",
+          "Cache-Control",
+          "private, max-age=60, s-maxage=60",
+          "Vary",
+          "Accept, Authorization, Cookie, X-GitHub-OTP",
+          "ETag",
+          "\"c6e166673a6806c04a074efe6229a773f26be2ba\"",
+          "Last-Modified",
+          "Thu, 09 May 2019 08:38:25 GMT",
+          "X-OAuth-Scopes",
+          "public_repo",
+          "X-Accepted-OAuth-Scopes",
+          "",
+          "X-GitHub-Media-Type",
+          "github.v3; param=raw",
+          "Access-Control-Expose-Headers",
+          "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+          "Access-Control-Allow-Origin",
+          "*",
+          "Strict-Transport-Security",
+          "max-age=31536000; includeSubdomains; preload",
+          "X-Frame-Options",
+          "deny",
+          "X-Content-Type-Options",
+          "nosniff",
+          "X-XSS-Protection",
+          "1; mode=block",
+          "Referrer-Policy",
+          "origin-when-cross-origin, strict-origin-when-cross-origin",
+          "Content-Security-Policy",
+          "default-src 'none'",
+          "X-GitHub-Request-Id",
+          "E870:4F97:2A0E6D7:573A7CA:5CE2D6FE"
+        ],
+        "reqheaders": {
+          "accept": [
+            "application/vnd.github.v3.raw"
+          ],
+          "accept-encoding": [
+            "gzip,deflate"
+          ],
+          "authorization": [
+            "token FAKE_GITHUB_TOKEN"
+          ],
+          "connection": [
+            "close"
+          ],
+          "host": "api.github.com"
+        },
+        "response": "# Frontend Boilerplates\nSome examples of **good practises**, **tips**, and **boilerplates** that I like to follow. You will find the different technologies separated by branches and I will add more examples in the future, helped by the contributors.\n\n[<img src=\"https://raw.githubusercontent.com/CKGrafico/Frontend-Boilerplates/docs/resources/techs/spa-d.png\" width=\"140\" title=\"Basic\">](https://github.com/CKGrafico/Frontend-Boilerplates/tree/basic#frontend-boilerplates)\n[<img src=\"https://raw.githubusercontent.com/CKGrafico/Frontend-Boilerplates/docs/resources/techs/ts-d.png\" width=\"140\" title=\"TypeScript\">](https://github.com/CKGrafico/Frontend-Boilerplates/tree/ts#frontend-boilerplates)\n[<img src=\"https://raw.githubusercontent.com/CKGrafico/Frontend-Boilerplates/docs/resources/techs/vue.png\" width=\"140\" title=\"Vuejs\">](https://github.com/CKGrafico/Frontend-Boilerplates/tree/vue#frontend-boilerplates)\n[<img src=\"https://raw.githubusercontent.com/CKGrafico/Frontend-Boilerplates/docs/resources/techs/nuxt-d.png\" width=\"140\" title=\"Nuxt\">](https://github.com/CKGrafico/Frontend-Boilerplates/tree/nuxt#frontend-boilerplates)\n[<img src=\"https://raw.githubusercontent.com/CKGrafico/Frontend-Boilerplates/docs/resources/techs/react-d.png\" width=\"140\" title=\"React\">](https://github.com/CKGrafico/Frontend-Boilerplates/tree/react#frontend-boilerplates)\n[<img src=\"https://raw.githubusercontent.com/CKGrafico/Frontend-Boilerplates/docs/resources/techs/nodets-d.png\" width=\"140\" title=\"Nodejs with TypeScript\">](https://github.com/CKGrafico/Frontend-Boilerplates/tree/node-ts#frontend-boilerplates)\n\n## Vue - Boilerplate Features <img src=\"https://raw.githubusercontent.com/CKGrafico/Frontend-Boilerplates/docs/resources/techs/vue.png\" align=\"right\" width=\"35\" title=\"Boilerplate\">\n\n[![Build Status](https://travis-ci.org/CKGrafico/Frontend-Boilerplates.svg?branch=vue)](https://travis-ci.org/CKGrafico/Frontend-Boilerplates)\n![GitHub last commit (branch)](https://img.shields.io/github/last-commit/CKGrafico/Frontend-Boilerplates/vue.svg)\n[![GitHub license](https://img.shields.io/github/license/CKGrafico/Frontend-Boilerplates.svg)](https://github.com/CKGrafico/Frontend-Boilerplates/blob/vue/LICENSE)\n[![GitHub forks](https://img.shields.io/github/forks/CKGrafico/Frontend-Boilerplates.svg)](https://github.com/CKGrafico/Frontend-Boilerplates/network)\n![GitHub contributors](https://img.shields.io/github/contributors/CKGrafico/Frontend-Boilerplates.svg)\n[![GitHub issues](https://img.shields.io/github/issues/CKGrafico/Frontend-Boilerplates.svg)](https://github.com/CKGrafico/Frontend-Boilerplates/issues)\n\nOn this boilerplate you can find:\n- **Vue:** The progressive JavaScript framework.\n- **TypeScript:** All the code uses TypeScript.\n- **SASS:** Scss structure with good practises.\n- **Linting:** Linting for JavaScript and SASS.\n- **BEM (Non strict) + BEMIT:** Some conventions for CSS classes.\n\n## 📚 Documentation ([boilerplates.js.org](https://boilerplates.js.org/))\n- [🍩 Starting the project](https://boilerplates.js.org/docs/vue-installation)\n- [⛩️ Project structure](https://boilerplates.js.org/docs/vue-structure)\n- [⚙️ Configuring automated tasks](https://boilerplates.js.org/docs/started-tasks)\n- [📜 License](https://boilerplates.js.org/docs/started-license)\n\n## 🎩 Contributors\n\n| <img src=\"https://i.imgur.com/CcJ7vXL.jpg\" width=\"150\"><br>**Quique Fdez Guerra**<br>[👨‍💻](https://github.com/CKGrafico)[🌍](http://ckgrafico.com)[🐦](https://twitter.com/CKGrafico) | <img src=\"https://i.imgur.com/W8Ks7Ss.jpg\" width=\"150\"><br>**Juan Carlos<br>**<br>[👨‍💻](https://github.com/jcarloslr10)[🌍](http://plainconcepts.com)[🐦](https://twitter.com/jcarloslr10) | <img src=\"https://i.imgur.com/kLqGDso.jpg\" width=\"150\"><br>**Alex Kryzhanovskyy**<br>[👨‍💻](https://github.com/AlexKryzh)[🌍](http://kryzh.com)[🐦](https://twitter.com/AlexKryzh) | <img src=\"https://i.imgur.com/ScMiaNz.png\" width=\"150\"><br>**Victor Gamez<br>**<br>[👨‍💻](https://github.com/VGamezz19) | <img src=\"https://i.imgur.com/idu3Mnw.png\" width=\"150\"><br>**PlainConcepts<br>**<br>[👨‍💻](https://github.com/PlainConcepts)[🌍](http://plainconcepts.com)[🐦](https://twitter.com/PlainConcepts)|\n| :---: | :---: | :---: | :---: | :---: |\n\n[View Contributors](https://github.com/CKGrafico/Frontend-Boilerplates/graphs/contributors)\n\n\n## ⛳️ Check all the boilerplates\n\n- **[basic:](https://github.com/CKGrafico/Frontend-Boilerplates/tree)** **Basic SPA** example with SCSS and ES6. <img src=\"https://raw.githubusercontent.com/CKGrafico/Frontend-Boilerplates/docs/resources/techs/spa.png\" align=\"right\" width=\"35\" title=\"SPA\">\n\n- **[ts:](https://github.com/CKGrafico/Frontend-Boilerplates/tree/ts)** **TypeScript** example with SCSS. <img src=\"https://raw.githubusercontent.com/CKGrafico/Frontend-Boilerplates/docs/resources/techs/ts.png\" align=\"right\" width=\"35\" title=\"TypeScript\">\n\n- **[vue:](https://github.com/CKGrafico/Frontend-Boilerplates/tree/vue)** **Vuejs** example with SCSS and TypeScript. <img src=\"https://raw.githubusercontent.com/CKGrafico/Frontend-Boilerplates/docs/resources/techs/vue.png\" align=\"right\" width=\"35\" title=\"Vue\">\n\n- **[nuxt:](https://github.com/CKGrafico/Frontend-Boilerplates/tree/nuxt)** **Nuxt** example with SCSS and TypeScript. <img src=\"https://raw.githubusercontent.com/CKGrafico/Frontend-Boilerplates/docs/resources/techs/nuxt.png\" align=\"right\" width=\"35\" title=\"Nuxt\">\n\n- **[react:](https://github.com/CKGrafico/Frontend-Boilerplates/tree/react)** **React** example with SCSS and TypeScript. <img src=\"https://raw.githubusercontent.com/CKGrafico/Frontend-Boilerplates/docs/resources/techs/react.png\" align=\"right\" width=\"35\" title=\"React\">\n\n- **[node-ts:](https://github.com/CKGrafico/Frontend-Boilerplates/tree/node-ts)** **Backend and TypeScript** example with SCSS and Nodejs. <img src=\"https://raw.githubusercontent.com/CKGrafico/Frontend-Boilerplates/docs/resources/techs/nodets.png\" align=\"right\" width=\"35\" title=\"Node with TypeScript\">\n",
+        "scope": "https://api.github.com:443",
+        "status": 200
+      }
+    ]
+  ],
+  [
+    "beforeEach hook for support @ notation",
+    [
+      {
+        "body": "",
+        "method": "GET",
+        "path": "/repos/kikobeats/voll",
+        "rawHeaders": [
+          "Server",
+          "GitHub.com",
+          "Date",
+          "Mon, 20 May 2019 16:34:08 GMT",
+          "Content-Type",
+          "application/json; charset=utf-8",
+          "Transfer-Encoding",
+          "chunked",
+          "Connection",
+          "close",
+          "Status",
+          "200 OK",
+          "X-RateLimit-Limit",
+          "5000",
+          "X-RateLimit-Remaining",
+          "4651",
+          "X-RateLimit-Reset",
+          "1558371543",
+          "Cache-Control",
+          "private, max-age=60, s-maxage=60",
+          "Vary",
+          "Accept, Authorization, Cookie, X-GitHub-OTP",
+          "ETag",
+          "W/\"fc5cc002a329d7b605c05516a2aafd41\"",
+          "Last-Modified",
+          "Sat, 18 May 2019 08:44:58 GMT",
+          "X-OAuth-Scopes",
+          "public_repo",
+          "X-Accepted-OAuth-Scopes",
+          "repo",
+          "X-GitHub-Media-Type",
+          "github.v3; format=json",
+          "Access-Control-Expose-Headers",
+          "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+          "Access-Control-Allow-Origin",
+          "*",
+          "Strict-Transport-Security",
+          "max-age=31536000; includeSubdomains; preload",
+          "X-Frame-Options",
+          "deny",
+          "X-Content-Type-Options",
+          "nosniff",
+          "X-XSS-Protection",
+          "1; mode=block",
+          "Referrer-Policy",
+          "origin-when-cross-origin, strict-origin-when-cross-origin",
+          "Content-Security-Policy",
+          "default-src 'none'",
+          "X-GitHub-Request-Id",
+          "E872:5DB8:23038F4:4B69938:5CE2D6FE"
+        ],
+        "reqheaders": {
+          "accept": [
+            "*/*"
+          ],
+          "accept-encoding": [
+            "gzip,deflate"
+          ],
+          "authorization": [
+            "token FAKE_GITHUB_TOKEN"
+          ],
+          "connection": [
+            "close"
+          ],
+          "host": "api.github.com"
+        },
+        "response": "{\"id\":63536421,\"node_id\":\"MDEwOlJlcG9zaXRvcnk2MzUzNjQyMQ==\",\"name\":\"voll\",\"full_name\":\"Kikobeats/voll\",\"private\":false,\"owner\":{\"login\":\"Kikobeats\",\"id\":2096101,\"node_id\":\"MDQ6VXNlcjIwOTYxMDE=\",\"avatar_url\":\"https://avatars2.githubusercontent.com/u/2096101?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Kikobeats\",\"html_url\":\"https://github.com/Kikobeats\",\"followers_url\":\"https://api.github.com/users/Kikobeats/followers\",\"following_url\":\"https://api.github.com/users/Kikobeats/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Kikobeats/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Kikobeats/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Kikobeats/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Kikobeats/orgs\",\"repos_url\":\"https://api.github.com/users/Kikobeats/repos\",\"events_url\":\"https://api.github.com/users/Kikobeats/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Kikobeats/received_events\",\"type\":\"User\",\"site_admin\":false},\"html_url\":\"https://github.com/Kikobeats/voll\",\"description\":\"A boolean expressions evaluator.\",\"fork\":false,\"url\":\"https://api.github.com/repos/Kikobeats/voll\",\"forks_url\":\"https://api.github.com/repos/Kikobeats/voll/forks\",\"keys_url\":\"https://api.github.com/repos/Kikobeats/voll/keys{/key_id}\",\"collaborators_url\":\"https://api.github.com/repos/Kikobeats/voll/collaborators{/collaborator}\",\"teams_url\":\"https://api.github.com/repos/Kikobeats/voll/teams\",\"hooks_url\":\"https://api.github.com/repos/Kikobeats/voll/hooks\",\"issue_events_url\":\"https://api.github.com/repos/Kikobeats/voll/issues/events{/number}\",\"events_url\":\"https://api.github.com/repos/Kikobeats/voll/events\",\"assignees_url\":\"https://api.github.com/repos/Kikobeats/voll/assignees{/user}\",\"branches_url\":\"https://api.github.com/repos/Kikobeats/voll/branches{/branch}\",\"tags_url\":\"https://api.github.com/repos/Kikobeats/voll/tags\",\"blobs_url\":\"https://api.github.com/repos/Kikobeats/voll/git/blobs{/sha}\",\"git_tags_url\":\"https://api.github.com/repos/Kikobeats/voll/git/tags{/sha}\",\"git_refs_url\":\"https://api.github.com/repos/Kikobeats/voll/git/refs{/sha}\",\"trees_url\":\"https://api.github.com/repos/Kikobeats/voll/git/trees{/sha}\",\"statuses_url\":\"https://api.github.com/repos/Kikobeats/voll/statuses/{sha}\",\"languages_url\":\"https://api.github.com/repos/Kikobeats/voll/languages\",\"stargazers_url\":\"https://api.github.com/repos/Kikobeats/voll/stargazers\",\"contributors_url\":\"https://api.github.com/repos/Kikobeats/voll/contributors\",\"subscribers_url\":\"https://api.github.com/repos/Kikobeats/voll/subscribers\",\"subscription_url\":\"https://api.github.com/repos/Kikobeats/voll/subscription\",\"commits_url\":\"https://api.github.com/repos/Kikobeats/voll/commits{/sha}\",\"git_commits_url\":\"https://api.github.com/repos/Kikobeats/voll/git/commits{/sha}\",\"comments_url\":\"https://api.github.com/repos/Kikobeats/voll/comments{/number}\",\"issue_comment_url\":\"https://api.github.com/repos/Kikobeats/voll/issues/comments{/number}\",\"contents_url\":\"https://api.github.com/repos/Kikobeats/voll/contents/{+path}\",\"compare_url\":\"https://api.github.com/repos/Kikobeats/voll/compare/{base}...{head}\",\"merges_url\":\"https://api.github.com/repos/Kikobeats/voll/merges\",\"archive_url\":\"https://api.github.com/repos/Kikobeats/voll/{archive_format}{/ref}\",\"downloads_url\":\"https://api.github.com/repos/Kikobeats/voll/downloads\",\"issues_url\":\"https://api.github.com/repos/Kikobeats/voll/issues{/number}\",\"pulls_url\":\"https://api.github.com/repos/Kikobeats/voll/pulls{/number}\",\"milestones_url\":\"https://api.github.com/repos/Kikobeats/voll/milestones{/number}\",\"notifications_url\":\"https://api.github.com/repos/Kikobeats/voll/notifications{?since,all,participating}\",\"labels_url\":\"https://api.github.com/repos/Kikobeats/voll/labels{/name}\",\"releases_url\":\"https://api.github.com/repos/Kikobeats/voll/releases{/id}\",\"deployments_url\":\"https://api.github.com/repos/Kikobeats/voll/deployments\",\"created_at\":\"2016-07-17T14:37:30Z\",\"updated_at\":\"2019-05-18T08:44:58Z\",\"pushed_at\":\"2019-05-18T08:45:00Z\",\"git_url\":\"git://github.com/Kikobeats/voll.git\",\"ssh_url\":\"git@github.com:Kikobeats/voll.git\",\"clone_url\":\"https://github.com/Kikobeats/voll.git\",\"svn_url\":\"https://github.com/Kikobeats/voll\",\"homepage\":\"http://Kikobeats.github.io/voll/\",\"size\":89,\"stargazers_count\":18,\"watchers_count\":18,\"language\":\"JavaScript\",\"has_issues\":true,\"has_projects\":true,\"has_downloads\":true,\"has_wiki\":true,\"has_pages\":true,\"forks_count\":2,\"mirror_url\":null,\"archived\":false,\"disabled\":false,\"open_issues_count\":1,\"license\":{\"key\":\"mit\",\"name\":\"MIT License\",\"spdx_id\":\"MIT\",\"url\":\"https://api.github.com/licenses/mit\",\"node_id\":\"MDc6TGljZW5zZTEz\"},\"forks\":2,\"open_issues\":1,\"watchers\":18,\"default_branch\":\"master\",\"permissions\":{\"admin\":true,\"push\":true,\"pull\":true},\"allow_squash_merge\":true,\"allow_merge_commit\":true,\"allow_rebase_merge\":true,\"network_count\":2,\"subscribers_count\":1}",
+        "scope": "https://api.github.com:443",
+        "status": 200
+      },
+      {
+        "body": "",
+        "method": "GET",
+        "path": "/repos/kikobeats/voll/contents/README.md?ref=master",
+        "rawHeaders": [
+          "Server",
+          "GitHub.com",
+          "Date",
+          "Mon, 20 May 2019 16:34:08 GMT",
+          "Content-Type",
+          "application/vnd.github.v3.raw; charset=utf-8",
+          "Content-Length",
+          "3077",
+          "Connection",
+          "close",
+          "Status",
+          "200 OK",
+          "X-RateLimit-Limit",
+          "5000",
+          "X-RateLimit-Remaining",
+          "4650",
+          "X-RateLimit-Reset",
+          "1558371543",
+          "Cache-Control",
+          "private, max-age=60, s-maxage=60",
+          "Vary",
+          "Accept, Authorization, Cookie, X-GitHub-OTP",
+          "ETag",
+          "\"49392c8299dc6ffecb57616add8c3d82c3d84b59\"",
+          "Last-Modified",
+          "Sat, 18 May 2019 08:44:47 GMT",
+          "X-OAuth-Scopes",
+          "public_repo",
+          "X-Accepted-OAuth-Scopes",
+          "",
+          "X-GitHub-Media-Type",
+          "github.v3; param=raw",
+          "Access-Control-Expose-Headers",
+          "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+          "Access-Control-Allow-Origin",
+          "*",
+          "Strict-Transport-Security",
+          "max-age=31536000; includeSubdomains; preload",
+          "X-Frame-Options",
+          "deny",
+          "X-Content-Type-Options",
+          "nosniff",
+          "X-XSS-Protection",
+          "1; mode=block",
+          "Referrer-Policy",
+          "origin-when-cross-origin, strict-origin-when-cross-origin",
+          "Content-Security-Policy",
+          "default-src 'none'",
+          "X-GitHub-Request-Id",
+          "E874:59CB:2915CB6:51F6661:5CE2D700"
+        ],
+        "reqheaders": {
+          "accept": [
+            "application/vnd.github.v3.raw"
+          ],
+          "accept-encoding": [
+            "gzip,deflate"
+          ],
+          "authorization": [
+            "token FAKE_GITHUB_TOKEN"
+          ],
+          "connection": [
+            "close"
+          ],
+          "host": "api.github.com"
+        },
+        "response": "<h1 align=\"center\">\n  <img src=\"/logo.png\" alt=\"voll\" width=\"200\">\n  <br>\n  Boolean expressions evaluator.\n  <br>\n  <br>\n</h1>\n\n<p align=\"center\">\n  <img src=\"https://img.shields.io/github/tag/Kikobeats/voll.svg?style=flat-square\" alt=\"Last version\"> <a href=\"https://travis-ci.org/Kikobeats/voll\"><img src=\"http://img.shields.io/travis/Kikobeats/voll/master.svg?style=flat-square\" alt=\"Build Status\"></a> <a href=\"https://coveralls.io/github/Kikobeats/voll\"><img src=\"https://img.shields.io/coveralls/Kikobeats/voll.svg?style=flat-square\" alt=\"Coverage Status\"></a> <a href=\"https://paypal.me/kikobeats\"><img src=\"https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square\" alt=\"Donate\"></a><br><a href=\"https://david-dm.org/Kikobeats/voll\"><img src=\"http://img.shields.io/david/Kikobeats/voll.svg?style=flat-square\" alt=\"Dependency status\"></a> <a href=\"https://david-dm.org/Kikobeats/voll#info=devDependencies\"><img src=\"http://img.shields.io/david/dev/Kikobeats/voll.svg?style=flat-square\" alt=\"Dev Dependencies Status\"></a> <a href=\"https://www.npmjs.org/package/voll\"><img src=\"http://img.shields.io/npm/dm/voll.svg?style=flat-square\" alt=\"NPM Status\"></a>\n</p>\n\n**voll** is based mayority [bool](https://www.npmjs.com/package/bool) but improved in some aspects:\n\n- Exact word matching.\n- Insensitive comparison support.\n- Detect words based on unicode ranges.\n- Caching level for speed up AST evaluation.\n- Detect quotes words using scape quotes (`'` or `\"`) for exact matches.\n- Operators alias (example: `red+yellow` means the same than `red OR yellow`).\n\n## Install\n\n```bash\n$ npm install voll --save\n```\n\n## Usage\n\n```js\nvar voll = require('voll')\nvar test = voll('(red OR blue) AND (orange OR yellow)')\n\ntest('red') //=> false\ntest('yellow') //=> false\ntest('red yellow') //=> true\n```\n\nYou can build complex expressions as you need. Use parentheses to specify the preference:\n\n```\n((red OR blue) AND NOT (orange OR yellow)) OR orange\n```\n\nIn other case the preference is `left` to `right`. Also it handles malformed expressions. For example:\n\n```\n((red OR blue) AND NOT (orange yellow)) OR orange\n```\n\nProduces the follow error:\n\n```\nSyntaxError: Parse error on line 1:\n...ue) AND NOT (orange yellow)) OR orange\n-----------------------^\n```\n\n## Operators\n\n| Operator | Alias       |\n|----------|-------------|\n| `AND`    |             |\n| `OR`     | `+`         |\n| `NOT`    | `-`         |\n\n## API\n\n### voll(expr, [options])\n\n#### expr\n\n*Required*<br>\nType: `string`\n\nBoolean expression to be evaluated.\n\n#### options\n\nType: `object`\n\nProvide specific parser options\n\n##### insensitive\n\nType: `boolean`<br>\nDefault: `false`\n\nEnable/Disable insensitive comparison.\n\n##### cache\n\nType: `boolean`<br>\nDefault: `true`\n\nEnable/Disable caching.\n\n##### cacheOpts\n\nType: `object`\n\nProvide specific cache options. See [mem#options](https://github.com/sindresorhus/mem#options).\n\n## License\n\nIcon made by [Darius Dan](http://www.flaticon.com/free-icon/browser_173659) from [flaticon](http://www.flaticon.com/).\n\nMIT © [Kiko Beats](https://github.com/Kikobeats)\n",
+        "scope": "https://api.github.com:443",
+        "status": 200
+      },
+      {
+        "body": "",
+        "method": "GET",
+        "path": "/repos/kikobeats/voll",
+        "rawHeaders": [
+          "Server",
+          "GitHub.com",
+          "Date",
+          "Mon, 20 May 2019 16:34:09 GMT",
+          "Content-Type",
+          "application/json; charset=utf-8",
+          "Transfer-Encoding",
+          "chunked",
+          "Connection",
+          "close",
+          "Status",
+          "200 OK",
+          "X-RateLimit-Limit",
+          "5000",
+          "X-RateLimit-Remaining",
+          "4649",
+          "X-RateLimit-Reset",
+          "1558371543",
+          "Cache-Control",
+          "private, max-age=60, s-maxage=60",
+          "Vary",
+          "Accept, Authorization, Cookie, X-GitHub-OTP",
+          "ETag",
+          "W/\"fc5cc002a329d7b605c05516a2aafd41\"",
+          "Last-Modified",
+          "Sat, 18 May 2019 08:44:58 GMT",
+          "X-OAuth-Scopes",
+          "public_repo",
+          "X-Accepted-OAuth-Scopes",
+          "repo",
+          "X-GitHub-Media-Type",
+          "github.v3; format=json",
+          "Access-Control-Expose-Headers",
+          "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+          "Access-Control-Allow-Origin",
+          "*",
+          "Strict-Transport-Security",
+          "max-age=31536000; includeSubdomains; preload",
+          "X-Frame-Options",
+          "deny",
+          "X-Content-Type-Options",
+          "nosniff",
+          "X-XSS-Protection",
+          "1; mode=block",
+          "Referrer-Policy",
+          "origin-when-cross-origin, strict-origin-when-cross-origin",
+          "Content-Security-Policy",
+          "default-src 'none'",
+          "X-GitHub-Request-Id",
+          "E876:238E:21B5FB3:488CEEF:5CE2D700"
+        ],
+        "reqheaders": {
+          "accept": [
+            "*/*"
+          ],
+          "accept-encoding": [
+            "gzip,deflate"
+          ],
+          "authorization": [
+            "token FAKE_GITHUB_TOKEN"
+          ],
+          "connection": [
+            "close"
+          ],
+          "host": "api.github.com"
+        },
+        "response": "{\"id\":63536421,\"node_id\":\"MDEwOlJlcG9zaXRvcnk2MzUzNjQyMQ==\",\"name\":\"voll\",\"full_name\":\"Kikobeats/voll\",\"private\":false,\"owner\":{\"login\":\"Kikobeats\",\"id\":2096101,\"node_id\":\"MDQ6VXNlcjIwOTYxMDE=\",\"avatar_url\":\"https://avatars2.githubusercontent.com/u/2096101?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Kikobeats\",\"html_url\":\"https://github.com/Kikobeats\",\"followers_url\":\"https://api.github.com/users/Kikobeats/followers\",\"following_url\":\"https://api.github.com/users/Kikobeats/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Kikobeats/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Kikobeats/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Kikobeats/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Kikobeats/orgs\",\"repos_url\":\"https://api.github.com/users/Kikobeats/repos\",\"events_url\":\"https://api.github.com/users/Kikobeats/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Kikobeats/received_events\",\"type\":\"User\",\"site_admin\":false},\"html_url\":\"https://github.com/Kikobeats/voll\",\"description\":\"A boolean expressions evaluator.\",\"fork\":false,\"url\":\"https://api.github.com/repos/Kikobeats/voll\",\"forks_url\":\"https://api.github.com/repos/Kikobeats/voll/forks\",\"keys_url\":\"https://api.github.com/repos/Kikobeats/voll/keys{/key_id}\",\"collaborators_url\":\"https://api.github.com/repos/Kikobeats/voll/collaborators{/collaborator}\",\"teams_url\":\"https://api.github.com/repos/Kikobeats/voll/teams\",\"hooks_url\":\"https://api.github.com/repos/Kikobeats/voll/hooks\",\"issue_events_url\":\"https://api.github.com/repos/Kikobeats/voll/issues/events{/number}\",\"events_url\":\"https://api.github.com/repos/Kikobeats/voll/events\",\"assignees_url\":\"https://api.github.com/repos/Kikobeats/voll/assignees{/user}\",\"branches_url\":\"https://api.github.com/repos/Kikobeats/voll/branches{/branch}\",\"tags_url\":\"https://api.github.com/repos/Kikobeats/voll/tags\",\"blobs_url\":\"https://api.github.com/repos/Kikobeats/voll/git/blobs{/sha}\",\"git_tags_url\":\"https://api.github.com/repos/Kikobeats/voll/git/tags{/sha}\",\"git_refs_url\":\"https://api.github.com/repos/Kikobeats/voll/git/refs{/sha}\",\"trees_url\":\"https://api.github.com/repos/Kikobeats/voll/git/trees{/sha}\",\"statuses_url\":\"https://api.github.com/repos/Kikobeats/voll/statuses/{sha}\",\"languages_url\":\"https://api.github.com/repos/Kikobeats/voll/languages\",\"stargazers_url\":\"https://api.github.com/repos/Kikobeats/voll/stargazers\",\"contributors_url\":\"https://api.github.com/repos/Kikobeats/voll/contributors\",\"subscribers_url\":\"https://api.github.com/repos/Kikobeats/voll/subscribers\",\"subscription_url\":\"https://api.github.com/repos/Kikobeats/voll/subscription\",\"commits_url\":\"https://api.github.com/repos/Kikobeats/voll/commits{/sha}\",\"git_commits_url\":\"https://api.github.com/repos/Kikobeats/voll/git/commits{/sha}\",\"comments_url\":\"https://api.github.com/repos/Kikobeats/voll/comments{/number}\",\"issue_comment_url\":\"https://api.github.com/repos/Kikobeats/voll/issues/comments{/number}\",\"contents_url\":\"https://api.github.com/repos/Kikobeats/voll/contents/{+path}\",\"compare_url\":\"https://api.github.com/repos/Kikobeats/voll/compare/{base}...{head}\",\"merges_url\":\"https://api.github.com/repos/Kikobeats/voll/merges\",\"archive_url\":\"https://api.github.com/repos/Kikobeats/voll/{archive_format}{/ref}\",\"downloads_url\":\"https://api.github.com/repos/Kikobeats/voll/downloads\",\"issues_url\":\"https://api.github.com/repos/Kikobeats/voll/issues{/number}\",\"pulls_url\":\"https://api.github.com/repos/Kikobeats/voll/pulls{/number}\",\"milestones_url\":\"https://api.github.com/repos/Kikobeats/voll/milestones{/number}\",\"notifications_url\":\"https://api.github.com/repos/Kikobeats/voll/notifications{?since,all,participating}\",\"labels_url\":\"https://api.github.com/repos/Kikobeats/voll/labels{/name}\",\"releases_url\":\"https://api.github.com/repos/Kikobeats/voll/releases{/id}\",\"deployments_url\":\"https://api.github.com/repos/Kikobeats/voll/deployments\",\"created_at\":\"2016-07-17T14:37:30Z\",\"updated_at\":\"2019-05-18T08:44:58Z\",\"pushed_at\":\"2019-05-18T08:45:00Z\",\"git_url\":\"git://github.com/Kikobeats/voll.git\",\"ssh_url\":\"git@github.com:Kikobeats/voll.git\",\"clone_url\":\"https://github.com/Kikobeats/voll.git\",\"svn_url\":\"https://github.com/Kikobeats/voll\",\"homepage\":\"http://Kikobeats.github.io/voll/\",\"size\":89,\"stargazers_count\":18,\"watchers_count\":18,\"language\":\"JavaScript\",\"has_issues\":true,\"has_projects\":true,\"has_downloads\":true,\"has_wiki\":true,\"has_pages\":true,\"forks_count\":2,\"mirror_url\":null,\"archived\":false,\"disabled\":false,\"open_issues_count\":1,\"license\":{\"key\":\"mit\",\"name\":\"MIT License\",\"spdx_id\":\"MIT\",\"url\":\"https://api.github.com/licenses/mit\",\"node_id\":\"MDc6TGljZW5zZTEz\"},\"forks\":2,\"open_issues\":1,\"watchers\":18,\"default_branch\":\"master\",\"permissions\":{\"admin\":true,\"push\":true,\"pull\":true},\"allow_squash_merge\":true,\"allow_merge_commit\":true,\"allow_rebase_merge\":true,\"network_count\":2,\"subscribers_count\":1}",
+        "scope": "https://api.github.com:443",
+        "status": 200
+      },
+      {
+        "body": "",
+        "method": "GET",
+        "path": "/repos/kikobeats/voll/contents/README.md?ref=next",
+        "rawHeaders": [
+          "Server",
+          "GitHub.com",
+          "Date",
+          "Mon, 20 May 2019 16:34:09 GMT",
+          "Content-Type",
+          "application/json; charset=utf-8",
+          "Transfer-Encoding",
+          "chunked",
+          "Connection",
+          "close",
+          "Status",
+          "404 Not Found",
+          "X-RateLimit-Limit",
+          "5000",
+          "X-RateLimit-Remaining",
+          "4648",
+          "X-RateLimit-Reset",
+          "1558371543",
+          "X-OAuth-Scopes",
+          "public_repo",
+          "X-Accepted-OAuth-Scopes",
+          "",
+          "X-GitHub-Media-Type",
+          "github.v3; param=raw",
+          "Access-Control-Expose-Headers",
+          "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+          "Access-Control-Allow-Origin",
+          "*",
+          "Strict-Transport-Security",
+          "max-age=31536000; includeSubdomains; preload",
+          "X-Frame-Options",
+          "deny",
+          "X-Content-Type-Options",
+          "nosniff",
+          "X-XSS-Protection",
+          "1; mode=block",
+          "Referrer-Policy",
+          "origin-when-cross-origin, strict-origin-when-cross-origin",
+          "Content-Security-Policy",
+          "default-src 'none'",
+          "X-GitHub-Request-Id",
+          "E877:4BE4:24B3F2A:4D9280A:5CE2D701"
+        ],
+        "reqheaders": {
+          "accept": [
+            "application/vnd.github.v3.raw"
+          ],
+          "accept-encoding": [
+            "gzip,deflate"
+          ],
+          "authorization": [
+            "token FAKE_GITHUB_TOKEN"
+          ],
+          "connection": [
+            "close"
+          ],
+          "host": "api.github.com"
+        },
+        "response": "{\"message\":\"No commit found for the ref next\",\"documentation_url\":\"https://developer.github.com/v3/repos/contents/\"}",
+        "scope": "https://api.github.com:443",
+        "status": 404
+      },
+      {
+        "body": "",
+        "method": "GET",
+        "path": "/repos/kikobeats/voll/contents/readme.md?ref=next",
+        "rawHeaders": [
+          "Server",
+          "GitHub.com",
+          "Date",
+          "Mon, 20 May 2019 16:34:10 GMT",
+          "Content-Type",
+          "application/json; charset=utf-8",
+          "Transfer-Encoding",
+          "chunked",
+          "Connection",
+          "close",
+          "Status",
+          "404 Not Found",
+          "X-RateLimit-Limit",
+          "5000",
+          "X-RateLimit-Remaining",
+          "4647",
+          "X-RateLimit-Reset",
+          "1558371543",
+          "X-OAuth-Scopes",
+          "public_repo",
+          "X-Accepted-OAuth-Scopes",
+          "",
+          "X-GitHub-Media-Type",
+          "github.v3; param=raw",
+          "Access-Control-Expose-Headers",
+          "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+          "Access-Control-Allow-Origin",
+          "*",
+          "Strict-Transport-Security",
+          "max-age=31536000; includeSubdomains; preload",
+          "X-Frame-Options",
+          "deny",
+          "X-Content-Type-Options",
+          "nosniff",
+          "X-XSS-Protection",
+          "1; mode=block",
+          "Referrer-Policy",
+          "origin-when-cross-origin, strict-origin-when-cross-origin",
+          "Content-Security-Policy",
+          "default-src 'none'",
+          "X-GitHub-Request-Id",
+          "E878:51B8:2E0566D:5C086E6:5CE2D702"
+        ],
+        "reqheaders": {
+          "accept": [
+            "application/vnd.github.v3.raw"
+          ],
+          "accept-encoding": [
+            "gzip,deflate"
+          ],
+          "authorization": [
+            "token FAKE_GITHUB_TOKEN"
+          ],
+          "connection": [
+            "close"
+          ],
+          "host": "api.github.com"
+        },
+        "response": "{\"message\":\"No commit found for the ref next\",\"documentation_url\":\"https://developer.github.com/v3/repos/contents/\"}",
+        "scope": "https://api.github.com:443",
+        "status": 404
+      },
+      {
+        "body": "",
+        "method": "GET",
+        "path": "/repos/kikobeats/voll/contents/Readme.md?ref=next",
+        "rawHeaders": [
+          "Server",
+          "GitHub.com",
+          "Date",
+          "Mon, 20 May 2019 16:34:11 GMT",
+          "Content-Type",
+          "application/json; charset=utf-8",
+          "Transfer-Encoding",
+          "chunked",
+          "Connection",
+          "close",
+          "Status",
+          "404 Not Found",
+          "X-RateLimit-Limit",
+          "5000",
+          "X-RateLimit-Remaining",
+          "4646",
+          "X-RateLimit-Reset",
+          "1558371543",
+          "X-OAuth-Scopes",
+          "public_repo",
+          "X-Accepted-OAuth-Scopes",
+          "",
+          "X-GitHub-Media-Type",
+          "github.v3; param=raw",
+          "Access-Control-Expose-Headers",
+          "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+          "Access-Control-Allow-Origin",
+          "*",
+          "Strict-Transport-Security",
+          "max-age=31536000; includeSubdomains; preload",
+          "X-Frame-Options",
+          "deny",
+          "X-Content-Type-Options",
+          "nosniff",
+          "X-XSS-Protection",
+          "1; mode=block",
+          "Referrer-Policy",
+          "origin-when-cross-origin, strict-origin-when-cross-origin",
+          "Content-Security-Policy",
+          "default-src 'none'",
+          "X-GitHub-Request-Id",
+          "E87A:053B:221A02C:48AACA7:5CE2D702"
+        ],
+        "reqheaders": {
+          "accept": [
+            "application/vnd.github.v3.raw"
+          ],
+          "accept-encoding": [
+            "gzip,deflate"
+          ],
+          "authorization": [
+            "token FAKE_GITHUB_TOKEN"
+          ],
+          "connection": [
+            "close"
+          ],
+          "host": "api.github.com"
+        },
+        "response": "{\"message\":\"No commit found for the ref next\",\"documentation_url\":\"https://developer.github.com/v3/repos/contents/\"}",
+        "scope": "https://api.github.com:443",
+        "status": 404
+      },
+      {
+        "body": "",
+        "method": "GET",
+        "path": "/repos/kikobeats/voll/contents/README.markdown?ref=next",
+        "rawHeaders": [
+          "Server",
+          "GitHub.com",
+          "Date",
+          "Mon, 20 May 2019 16:34:12 GMT",
+          "Content-Type",
+          "application/json; charset=utf-8",
+          "Transfer-Encoding",
+          "chunked",
+          "Connection",
+          "close",
+          "Status",
+          "404 Not Found",
+          "X-RateLimit-Limit",
+          "5000",
+          "X-RateLimit-Remaining",
+          "4645",
+          "X-RateLimit-Reset",
+          "1558371543",
+          "X-OAuth-Scopes",
+          "public_repo",
+          "X-Accepted-OAuth-Scopes",
+          "",
+          "X-GitHub-Media-Type",
+          "github.v3; param=raw",
+          "Access-Control-Expose-Headers",
+          "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+          "Access-Control-Allow-Origin",
+          "*",
+          "Strict-Transport-Security",
+          "max-age=31536000; includeSubdomains; preload",
+          "X-Frame-Options",
+          "deny",
+          "X-Content-Type-Options",
+          "nosniff",
+          "X-XSS-Protection",
+          "1; mode=block",
+          "Referrer-Policy",
+          "origin-when-cross-origin, strict-origin-when-cross-origin",
+          "Content-Security-Policy",
+          "default-src 'none'",
+          "X-GitHub-Request-Id",
+          "E87B:51B7:238EBF2:4CD1A93:5CE2D704"
+        ],
+        "reqheaders": {
+          "accept": [
+            "application/vnd.github.v3.raw"
+          ],
+          "accept-encoding": [
+            "gzip,deflate"
+          ],
+          "authorization": [
+            "token FAKE_GITHUB_TOKEN"
+          ],
+          "connection": [
+            "close"
+          ],
+          "host": "api.github.com"
+        },
+        "response": "{\"message\":\"No commit found for the ref next\",\"documentation_url\":\"https://developer.github.com/v3/repos/contents/\"}",
+        "scope": "https://api.github.com:443",
+        "status": 404
+      },
+      {
+        "body": "",
+        "method": "GET",
+        "path": "/repos/kikobeats/voll/contents/readme.markdown?ref=next",
+        "rawHeaders": [
+          "Server",
+          "GitHub.com",
+          "Date",
+          "Mon, 20 May 2019 16:34:13 GMT",
+          "Content-Type",
+          "application/json; charset=utf-8",
+          "Transfer-Encoding",
+          "chunked",
+          "Connection",
+          "close",
+          "Status",
+          "404 Not Found",
+          "X-RateLimit-Limit",
+          "5000",
+          "X-RateLimit-Remaining",
+          "4644",
+          "X-RateLimit-Reset",
+          "1558371543",
+          "X-OAuth-Scopes",
+          "public_repo",
+          "X-Accepted-OAuth-Scopes",
+          "",
+          "X-GitHub-Media-Type",
+          "github.v3; param=raw",
+          "Access-Control-Expose-Headers",
+          "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+          "Access-Control-Allow-Origin",
+          "*",
+          "Strict-Transport-Security",
+          "max-age=31536000; includeSubdomains; preload",
+          "X-Frame-Options",
+          "deny",
+          "X-Content-Type-Options",
+          "nosniff",
+          "X-XSS-Protection",
+          "1; mode=block",
+          "Referrer-Policy",
+          "origin-when-cross-origin, strict-origin-when-cross-origin",
+          "Content-Security-Policy",
+          "default-src 'none'",
+          "X-GitHub-Request-Id",
+          "E87D:053C:298A06F:55940C2:5CE2D704"
+        ],
+        "reqheaders": {
+          "accept": [
+            "application/vnd.github.v3.raw"
+          ],
+          "accept-encoding": [
+            "gzip,deflate"
+          ],
+          "authorization": [
+            "token FAKE_GITHUB_TOKEN"
+          ],
+          "connection": [
+            "close"
+          ],
+          "host": "api.github.com"
+        },
+        "response": "{\"message\":\"No commit found for the ref next\",\"documentation_url\":\"https://developer.github.com/v3/repos/contents/\"}",
+        "scope": "https://api.github.com:443",
+        "status": 404
+      },
+      {
+        "body": "",
+        "method": "GET",
+        "path": "/repos/kikobeats/voll/contents/Readme.markdown?ref=next",
+        "rawHeaders": [
+          "Server",
+          "GitHub.com",
+          "Date",
+          "Mon, 20 May 2019 16:34:13 GMT",
+          "Content-Type",
+          "application/json; charset=utf-8",
+          "Transfer-Encoding",
+          "chunked",
+          "Connection",
+          "close",
+          "Status",
+          "404 Not Found",
+          "X-RateLimit-Limit",
+          "5000",
+          "X-RateLimit-Remaining",
+          "4643",
+          "X-RateLimit-Reset",
+          "1558371543",
+          "X-OAuth-Scopes",
+          "public_repo",
+          "X-Accepted-OAuth-Scopes",
+          "",
+          "X-GitHub-Media-Type",
+          "github.v3; param=raw",
+          "Access-Control-Expose-Headers",
+          "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+          "Access-Control-Allow-Origin",
+          "*",
+          "Strict-Transport-Security",
+          "max-age=31536000; includeSubdomains; preload",
+          "X-Frame-Options",
+          "deny",
+          "X-Content-Type-Options",
+          "nosniff",
+          "X-XSS-Protection",
+          "1; mode=block",
+          "Referrer-Policy",
+          "origin-when-cross-origin, strict-origin-when-cross-origin",
+          "Content-Security-Policy",
+          "default-src 'none'",
+          "X-GitHub-Request-Id",
+          "E87E:7630:2BEBCDD:573BB2E:5CE2D705"
+        ],
+        "reqheaders": {
+          "accept": [
+            "application/vnd.github.v3.raw"
+          ],
+          "accept-encoding": [
+            "gzip,deflate"
+          ],
+          "authorization": [
+            "token FAKE_GITHUB_TOKEN"
+          ],
+          "connection": [
+            "close"
+          ],
+          "host": "api.github.com"
+        },
+        "response": "{\"message\":\"No commit found for the ref next\",\"documentation_url\":\"https://developer.github.com/v3/repos/contents/\"}",
+        "scope": "https://api.github.com:443",
+        "status": 404
+      },
+      {
+        "body": "",
+        "method": "GET",
+        "path": "/repos/kikobeats/voll/contents/README.rst?ref=next",
+        "rawHeaders": [
+          "Server",
+          "GitHub.com",
+          "Date",
+          "Mon, 20 May 2019 16:34:14 GMT",
+          "Content-Type",
+          "application/json; charset=utf-8",
+          "Transfer-Encoding",
+          "chunked",
+          "Connection",
+          "close",
+          "Status",
+          "404 Not Found",
+          "X-RateLimit-Limit",
+          "5000",
+          "X-RateLimit-Remaining",
+          "4642",
+          "X-RateLimit-Reset",
+          "1558371543",
+          "X-OAuth-Scopes",
+          "public_repo",
+          "X-Accepted-OAuth-Scopes",
+          "",
+          "X-GitHub-Media-Type",
+          "github.v3; param=raw",
+          "Access-Control-Expose-Headers",
+          "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+          "Access-Control-Allow-Origin",
+          "*",
+          "Strict-Transport-Security",
+          "max-age=31536000; includeSubdomains; preload",
+          "X-Frame-Options",
+          "deny",
+          "X-Content-Type-Options",
+          "nosniff",
+          "X-XSS-Protection",
+          "1; mode=block",
+          "Referrer-Policy",
+          "origin-when-cross-origin, strict-origin-when-cross-origin",
+          "Content-Security-Policy",
+          "default-src 'none'",
+          "X-GitHub-Request-Id",
+          "E87F:2D7D:1F18239:44DDE8C:5CE2D705"
+        ],
+        "reqheaders": {
+          "accept": [
+            "application/vnd.github.v3.raw"
+          ],
+          "accept-encoding": [
+            "gzip,deflate"
+          ],
+          "authorization": [
+            "token FAKE_GITHUB_TOKEN"
+          ],
+          "connection": [
+            "close"
+          ],
+          "host": "api.github.com"
+        },
+        "response": "{\"message\":\"No commit found for the ref next\",\"documentation_url\":\"https://developer.github.com/v3/repos/contents/\"}",
+        "scope": "https://api.github.com:443",
+        "status": 404
+      },
+      {
+        "body": "",
+        "method": "GET",
+        "path": "/repos/kikobeats/voll/contents/readme.rst?ref=next",
+        "rawHeaders": [
+          "Server",
+          "GitHub.com",
+          "Date",
+          "Mon, 20 May 2019 16:34:14 GMT",
+          "Content-Type",
+          "application/json; charset=utf-8",
+          "Transfer-Encoding",
+          "chunked",
+          "Connection",
+          "close",
+          "Status",
+          "404 Not Found",
+          "X-RateLimit-Limit",
+          "5000",
+          "X-RateLimit-Remaining",
+          "4641",
+          "X-RateLimit-Reset",
+          "1558371543",
+          "X-OAuth-Scopes",
+          "public_repo",
+          "X-Accepted-OAuth-Scopes",
+          "",
+          "X-GitHub-Media-Type",
+          "github.v3; param=raw",
+          "Access-Control-Expose-Headers",
+          "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+          "Access-Control-Allow-Origin",
+          "*",
+          "Strict-Transport-Security",
+          "max-age=31536000; includeSubdomains; preload",
+          "X-Frame-Options",
+          "deny",
+          "X-Content-Type-Options",
+          "nosniff",
+          "X-XSS-Protection",
+          "1; mode=block",
+          "Referrer-Policy",
+          "origin-when-cross-origin, strict-origin-when-cross-origin",
+          "Content-Security-Policy",
+          "default-src 'none'",
+          "X-GitHub-Request-Id",
+          "E881:2E35:1171F69:2CF25B4:5CE2D706"
+        ],
+        "reqheaders": {
+          "accept": [
+            "application/vnd.github.v3.raw"
+          ],
+          "accept-encoding": [
+            "gzip,deflate"
+          ],
+          "authorization": [
+            "token FAKE_GITHUB_TOKEN"
+          ],
+          "connection": [
+            "close"
+          ],
+          "host": "api.github.com"
+        },
+        "response": "{\"message\":\"No commit found for the ref next\",\"documentation_url\":\"https://developer.github.com/v3/repos/contents/\"}",
+        "scope": "https://api.github.com:443",
+        "status": 404
+      },
+      {
+        "body": "",
+        "method": "GET",
+        "path": "/repos/kikobeats/voll/contents/Readme.rst?ref=next",
+        "rawHeaders": [
+          "Server",
+          "GitHub.com",
+          "Date",
+          "Mon, 20 May 2019 16:34:15 GMT",
+          "Content-Type",
+          "application/json; charset=utf-8",
+          "Transfer-Encoding",
+          "chunked",
+          "Connection",
+          "close",
+          "Status",
+          "404 Not Found",
+          "X-RateLimit-Limit",
+          "5000",
+          "X-RateLimit-Remaining",
+          "4640",
+          "X-RateLimit-Reset",
+          "1558371543",
+          "X-OAuth-Scopes",
+          "public_repo",
+          "X-Accepted-OAuth-Scopes",
+          "",
+          "X-GitHub-Media-Type",
+          "github.v3; param=raw",
+          "Access-Control-Expose-Headers",
+          "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type",
+          "Access-Control-Allow-Origin",
+          "*",
+          "Strict-Transport-Security",
+          "max-age=31536000; includeSubdomains; preload",
+          "X-Frame-Options",
+          "deny",
+          "X-Content-Type-Options",
+          "nosniff",
+          "X-XSS-Protection",
+          "1; mode=block",
+          "Referrer-Policy",
+          "origin-when-cross-origin, strict-origin-when-cross-origin",
+          "Content-Security-Policy",
+          "default-src 'none'",
+          "X-GitHub-Request-Id",
+          "E884:1137:A13471:1A782A3:5CE2D707"
+        ],
+        "reqheaders": {
+          "accept": [
+            "application/vnd.github.v3.raw"
+          ],
+          "accept-encoding": [
+            "gzip,deflate"
+          ],
+          "authorization": [
+            "token FAKE_GITHUB_TOKEN"
+          ],
+          "connection": [
+            "close"
+          ],
+          "host": "api.github.com"
+        },
+        "response": "{\"message\":\"No commit found for the ref next\",\"documentation_url\":\"https://developer.github.com/v3/repos/contents/\"}",
+        "scope": "https://api.github.com:443",
+        "status": 404
+      }
+    ]
+  ]
+]
