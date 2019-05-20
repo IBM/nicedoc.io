@@ -5,7 +5,7 @@ set -xeo pipefail
 TAG=us.icr.io/nicedoc/nicedoc:${TRAVIS_BRANCH}
 root=$(dirname "$0")/../../
 
-if [[ "$TRAVIS_PULL_REQUEST" = "true" ]]; then
+if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
   # Install IBM Cloud Cli
   curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
   ibmcloud config --check-version=false
