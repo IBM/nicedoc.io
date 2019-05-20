@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: {{ .Chart.Name }}-{{ .Release.Name }}
-          image: "registry.ng.bluemix.net/nicedoc/nicedoc:latest"
+          image: "us.icr.io/nicedoc/nicedoc:{{ .Release.Name }}"
           imagePullPolicy: Always
           ports:
             - name: http
@@ -34,6 +34,10 @@ spec:
             - name: GITHUB_TOKEN
               value: "{{ .Values.env.GITHUB_TOKEN }}"
             - name: SITE_URL
-              value: "https://nicedoc.io"
+              {{- if eq .Release.Name "master" }}
+              value: nicedoc.io
+              {{- else }}
+              value: {{ .Release.Name }}.nicedocio.us-south.containers.appdomain.cloud
+              {{- end }}
       imagePullSecrets:
-        - name: regcred
+        - name: regcred2

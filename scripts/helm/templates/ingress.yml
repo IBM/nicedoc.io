@@ -5,8 +5,18 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
+  {{- if ne .Release.Name "master"}}
+  tls:
+  - hosts:
+    - {{ .Release.Name }}.nicedocio.us-south.containers.appdomain.cloud
+    secretName: nicedocio
+  {{- end}}
   rules:
+  {{- if eq .Release.Name "master" }}
   - host: nicedoc.io
+  {{- else }}
+  - host: {{ .Release.Name }}.nicedocio.us-south.containers.appdomain.cloud
+  {{- end }}
     http:
       paths:
       - path: /
