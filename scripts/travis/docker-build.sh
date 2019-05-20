@@ -12,6 +12,7 @@ if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
   curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
   ibmcloud config --check-version=false
   ibmcloud plugin install container-registry
+  ibmcloud plugin install container-service/kubernetes-service
 
   # Log in into IBM Cloud Container Service
   ibmcloud login --apikey ${IBMCLOUD_API_KEY} -g 'IBM RESEARCH PRO' -r 'us-south'
