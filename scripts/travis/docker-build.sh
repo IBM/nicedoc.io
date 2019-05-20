@@ -5,10 +5,14 @@ set -xeo pipefail
 
 root=$(dirname "$0")/../../
 
-if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
-  TAG=us.icr.io/nicedoc/nicedoc:${TRAVIS_PULL_REQUEST_BRANCH}
+get_last_merged_branch() {
+    local OWNER=`echo "${TRAVIS_REPO_SLUG}" | perl -n -e'/(.*)\// && print $1'`
+    local MERGED_BRANCH=`git log --merges -n 1 | perl -n -e"/Merge pull request #\d+ from ${OWNER}\/(.*)/ && print \\$1"`
+    echo ${MERGED_BRANCH}
+}
 
-  # Install IBM Cloud Cli
+install_ibm_cli() {
+  # Install IBM Cli
   curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
   ibmcloud config --check-version=false
   ibmcloud plugin install container-registry
@@ -17,34 +21,19 @@ if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
   # Log in into IBM Cloud Container Service
   ibmcloud login --apikey ${IBMCLOUD_API_KEY} -g 'IBM RESEARCH PRO' -r 'us-south'
   ibmcloud cr login
+}
 
-  # Build docker image
-  docker pull "${TAG}" || true
-  docker build --cache-from ${TAG} --tag ${TAG} ${root}
-
-  # Push image to registry
-  docker push ${TAG}
-
-  # Deploy to preview
-
-  # Install helm
+install_helm() {
+  # Install Helm 2.12.1
   HELM_URL=https://storage.googleapis.com/kubernetes-helm
   HELM_TGZ=helm-v2.12.1-linux-amd64.tar.gz
   wget -q ${HELM_URL}/${HELM_TGZ}
   tar xzfv ${HELM_TGZ}
   PATH=`pwd`/linux-amd64/:$PATH
   helm init --client-only
+}
 
-  # Decrypt encrypted files
-  openssl aes-256-cbc -k "$TRAVIS_ENCRYPT_PASSWORD" -in "${root}/scripts/helm/values.yaml.enc" -out "${root}/scripts/helm/values.yaml" -d
-
-  # Set Kubernetes cluster
-  STORE_KUBECONFIG=$(ibmcloud ks cluster-config nicedoc.io | grep KUBECONFIG)
-  eval $STORE_KUBECONFIG
-
-  # Deploy
-  helm upgrade ${TRAVIS_PULL_REQUEST_BRANCH} ${root}/scripts/helm --install
-
+update_github_pr_status() {
   # Update github status
   curl "https://api.github.com/repos/${TRAVIS_REPO_SLUG}/statuses/${TRAVIS_PULL_REQUEST_SHA}" \
     -H "Authorization: Bearer ${GITHUB_TOKEN}" \
@@ -52,10 +41,74 @@ if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
     -H "Accept: 'application/vnd.github.v3+json'" \
     -X POST \
     -d "{\"state\": \"success\", \"context\": \"deploy\", \"description\": \"Deploy preview\", \"target_url\": \"https://${TRAVIS_PULL_REQUEST_BRANCH}.nicedocio.us-south.containers.appdomain.cloud\"}"
+}
+
+setup_k8s() {
+  # Decrypt encrypted files
+  openssl aes-256-cbc -k "$TRAVIS_ENCRYPT_PASSWORD" -in "${root}/scripts/helm/values.yaml.enc" -out "${root}/scripts/helm/values.yaml" -d
+
+  # Set Kubernetes cluster
+  local STORE_KUBECONFIG=$(ibmcloud ks cluster-config nicedoc.io | grep KUBECONFIG)
+  eval ${STORE_KUBECONFIG}
+}
+
+helm_deploy_branch() {
+  helm upgrade ${1} ${root}/scripts/helm --install
+}
+
+helm_delete_branch() {
+  helm upgrade ${1} ${root}/scripts/helm --install
+}
+
+docker_build_and_push() {
+  local TAG=$1
+
+  # Build docker image
+  docker pull "${TAG}" || true
+  docker build --cache-from ${TAG} --tag ${TAG} ${root}
+
+  # Push image to registry
+  docker push ${TAG}
+}
+
+docker_registry_tag() {
+  local FROM=$1
+  local TO=$2
+  docker pull ${FROM}
+  docker tag ${FROM} ${TO}
+  docker push ${TO}
+}
+
+if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
+  BRANCH=${TRAVIS_PULL_REQUEST_BRANCH}
+  TAG=us.icr.io/nicedoc/nicedoc:${BRANCH}
+
+  install_ibm_cli
+  install_helm
+
+  docker_build_and_push ${TAG}
+
+  setup_k8s
+
+  helm_deploy_branch ${BRANCH}
+  update_github_pr_status
 fi
 
-get_last_merged_branch() {
-    local OWNER=`echo "${TRAVIS_REPO_SLUG}" | perl -n -e'/(.*)\// && print $1'`
-    local MERGED_BRANCH=`git log --merges -n 1 | perl -n -e"/Merge pull request #\d+ from ${OWNER}\/(.*)/ && print \\$1"`
-    echo ${MERGED_BRANCH}
-}
+if [[ "$TRAVIS_PULL_REQUEST" == "false" ]]; then
+  PR_BRANCH=$(get_last_merged_branch)
+  BRANCH=${TRAVIS_BRANCH}
+
+  PR_TAG=us.icr.io/nicedoc/nicedoc:${PR_BRANCH}
+  DEPLOY_TAG=us.icr.io/nicedoc/nicedoc:${BRANCH}
+
+  docker_registry_tag ${PR_TAG} ${DEPLOY_TAG}
+
+  install_ibm_cli
+  install_helm
+  setup_k8s
+
+  helm_deploy_branch ${BRANCH}
+  helm_delete_branch ${PR_BRANCH}
+fi
+
+
