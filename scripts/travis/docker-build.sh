@@ -58,7 +58,7 @@ if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
         -e GITHUB_CONTEXT="deploy" \
         -e GITHUB_DESCRIPTION="Deploy preview deployed to" \
         -e GITHUB_TARGET_URL="https://${TRAVIS_PULL_REQUEST_BRANCH}.nicedocio.us-south.containers.appdomain.cloud" \
-        github-status-updater
+        cloudposse/github-status-updater
 fi
 
 get_last_merged_branch() {
