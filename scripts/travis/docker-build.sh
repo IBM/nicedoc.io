@@ -47,7 +47,7 @@ if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
 
   # Update github status
   curl "https://api.github.com/repos/${TRAVIS_REPO_SLUG}/statuses/${TRAVIS_COMMIT}" \
-    -H "Authorization: 'Bearer ${GITHUB_TOKEN}'" \
+    -H "Authorization: Bearer ${GITHUB_TOKEN}" \
     -H "Content-Type: application/json" \
     -H "Accept: 'application/vnd.github.v3+json'" \
     -X POST \
