@@ -44,16 +44,15 @@ update_github_pr_status() {
 }
 
 setup_k8s() {
-  # Decrypt encrypted files
-  openssl aes-256-cbc -k "$TRAVIS_ENCRYPT_PASSWORD" -in "${root}/scripts/helm/values.yaml.enc" -out "${root}/scripts/helm/values.yaml" -d
-
   # Set Kubernetes cluster
   local STORE_KUBECONFIG=$(ibmcloud ks cluster-config nicedoc.io | grep KUBECONFIG)
   eval ${STORE_KUBECONFIG}
 }
 
 helm_deploy_branch() {
-  helm upgrade ${1} ${root}/scripts/helm --install
+  local NAME=$1
+  local REPLICAS=$2
+  helm upgrade ${1} ${root}/scripts/helm --install --set replicaCount=${REPLICAS} --set GITHUB_TOKEN=${GITHUB_TOKEN}
 }
 
 helm_delete_branch() {
@@ -90,7 +89,7 @@ if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
 
   setup_k8s
 
-  helm_deploy_branch ${BRANCH}
+  helm_deploy_branch ${BRANCH} 1
   update_github_pr_status
 fi
 
@@ -107,7 +106,7 @@ if [[ "$TRAVIS_PULL_REQUEST" == "false" ]]; then
   install_helm
   setup_k8s
 
-  helm_deploy_branch ${BRANCH}
+  helm_deploy_branch ${BRANCH} 3
   helm_delete_branch ${PR_BRANCH}
 fi
 

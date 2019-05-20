@@ -32,7 +32,7 @@ spec:
               port: http
           env:
             - name: GITHUB_TOKEN
-              value: "{{ .Values.env.GITHUB_TOKEN }}"
+              value: "{{ .Values.GITHUB_TOKEN }}"
             - name: SITE_URL
               {{- if eq .Release.Name "master" }}
               value: nicedoc.io
