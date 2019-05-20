@@ -1,11 +1,12 @@
-language: node_js
-
-node_js:
-  - node
+language: 'generic'
 
 services:
   - docker
 
-after_success:
+script:
   - ./scripts/travis/docker-login.sh
   - ./scripts/travis/docker-build.sh
+
+branches:
+  only:
+    - master

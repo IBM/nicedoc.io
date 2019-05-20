@@ -1,43 +1,42 @@
 #!/usr/bin/env sh
 
-set -x
-set -e
+set -xeo pipefail
 
-dir=$(dirname "$0")
+TAG=us.icr.io/nicedoc/nicedoc:${TRAVIS_BRANCH}
+root=$(dirname "$0")/../../
 
-if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
-  if [ "$TRAVIS_BRANCH" = "master" ]; then
-    # Build docker image
-    docker build --tag registry.ng.bluemix.net/nicedoc/nicedoc .
+if [[ "$TRAVIS_PULL_REQUEST" = "true" ]]; then
+  # Install IBM Cloud Cli
+  curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
+  ibmcloud config --check-version=false
+  ibmcloud plugin install container-registry
 
-    # Push to registry
-    docker push registry.ng.bluemix.net/nicedoc/nicedoc:latest
+  # Log in into IBM Cloud Container Service
+  ibmcloud login --apikey ${IBMCLOUD_API_KEY} -g 'IBM RESEARCH PRO' -r 'us-south'
+  ibmcloud cr login
 
-    # Decrypt encrypted files
-    openssl aes-256-cbc -k "$TRAVIS_ENCRYPT_PASSWORD" -in "${dir}/../helm/values.yaml.enc" -out "${dir}/../helm/values.yaml" -d
+  # Build docker image
+  docker pull "${TAG}" || true
+  docker build --cache-from ${TAG} --tag ${TAG} ${root}
 
-    # Installing ibmcloud-cli
-    curl -sL https://ibm.biz/idt-installer | bash
+  # Push image to registry
+  docker push ${TAG}
 
-    # Stop version validation
-    ibmcloud config --check-version=false
+  # Deploy to preview
 
-    # Log in into IBM Cloud Container Service
-    ibmcloud login --apikey ${IBMCLOUD_API_KEY} -g 'IBM RESEARCH PRO' -r 'us-south'
+  # Decrypt encrypted files
+  openssl aes-256-cbc -k "$TRAVIS_ENCRYPT_PASSWORD" -in "${dir}/../helm/values.yaml.enc" -out "${dir}/../helm/values.yaml" -d
 
-    # Set Kubernetes cluster
-    STORE_KUBECONFIG=$(ibmcloud ks cluster-config nicedoc.io | grep KUBECONFIG)
-    eval $STORE_KUBECONFIG
+  # Set Kubernetes cluster
+  STORE_KUBECONFIG=$(ibmcloud ks cluster-config nicedoc.io | grep KUBECONFIG)
+  eval $STORE_KUBECONFIG
 
-    # Install helm
-    HELM_URL=https://storage.googleapis.com/kubernetes-helm
-    HELM_TGZ=helm-v2.12.1-linux-amd64.tar.gz
-    wget -q ${HELM_URL}/${HELM_TGZ}
-    tar xzfv ${HELM_TGZ}
-    PATH=`pwd`/linux-amd64/:$PATH
-    helm init --client-only
-
-    # Deploy
-    helm upgrade production ${dir}/../helm --install
-  fi
+  # Deploy
+  helm upgrade ${TRAVIS_BRANCH} ${root}/scripts/helm --install
 fi
+
+get_last_merged_branch() {
+    local OWNER=`echo "${TRAVIS_REPO_SLUG}" | perl -n -e'/(.*)\// && print $1'`
+    local MERGED_BRANCH=`git log --merges -n 1 | perl -n -e"/Merge pull request #\d+ from ${OWNER}\/(.*)/ && print \\$1"`
+    echo ${MERGED_BRANCH}
+}
