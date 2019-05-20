@@ -46,7 +46,7 @@ if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
   helm upgrade ${TRAVIS_PULL_REQUEST_BRANCH} ${root}/scripts/helm --install
 
   # Update github status
-  curl "https://api.github.com/repos/${TRAVIS_REPO_SLUG}/statuses/${TRAVIS_COMMIT}" \
+  curl "https://api.github.com/repos/${TRAVIS_REPO_SLUG}/statuses/${TRAVIS_PULL_REQUEST_SHA}" \
     -H "Authorization: Bearer ${GITHUB_TOKEN}" \
     -H "Content-Type: application/json" \
     -H "Accept: 'application/vnd.github.v3+json'" \
