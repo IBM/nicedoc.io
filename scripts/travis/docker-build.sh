@@ -2,10 +2,12 @@
 
 set -xeo pipefail
 
-TAG=us.icr.io/nicedoc/nicedoc:${TRAVIS_BRANCH}
+
 root=$(dirname "$0")/../../
 
 if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
+  TAG=us.icr.io/nicedoc/nicedoc:${TRAVIS_PULL_REQUEST_BRANCH}
+
   # Install IBM Cloud Cli
   curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
   ibmcloud config --check-version=false
@@ -25,7 +27,7 @@ if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
   # Deploy to preview
 
   # Decrypt encrypted files
-  openssl aes-256-cbc -k "$TRAVIS_ENCRYPT_PASSWORD" -in "${dir}/../helm/values.yaml.enc" -out "${dir}/../helm/values.yaml" -d
+  openssl aes-256-cbc -k "$TRAVIS_ENCRYPT_PASSWORD" -in "${root}/scripts/helm/values.yaml.enc" -out "${root}/scripts/helm/values.yaml" -d
 
   # Set Kubernetes cluster
   STORE_KUBECONFIG=$(ibmcloud ks cluster-config nicedoc.io | grep KUBECONFIG)
