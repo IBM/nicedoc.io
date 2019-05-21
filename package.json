@@ -93,7 +93,7 @@
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
     "ava": "latest",
-    "ava-nock": "~1.0.0",
+    "ava-nock": "latest",
     "babel-eslint": "latest",
     "conventional-github-releaser": "latest",
     "finepack": "latest",
