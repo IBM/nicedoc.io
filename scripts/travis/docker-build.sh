@@ -56,7 +56,7 @@ helm_deploy_branch() {
 }
 
 helm_delete_branch() {
-  helm upgrade ${1} ${root}/scripts/helm --install
+  helm del --purge ${1}
 }
 
 docker_build_and_push() {
