@@ -100,12 +100,12 @@ if [[ "$TRAVIS_PULL_REQUEST" == "false" ]]; then
   PR_TAG=us.icr.io/nicedoc/nicedoc:${PR_BRANCH}
   DEPLOY_TAG=us.icr.io/nicedoc/nicedoc:${BRANCH}
 
-  docker_registry_tag ${PR_TAG} ${DEPLOY_TAG}
-
   install_ibm_cli
   install_helm
-  setup_k8s
 
+  docker_registry_tag ${PR_TAG} ${DEPLOY_TAG}
+
+  setup_k8s
   helm_deploy_branch ${BRANCH} 3
   helm_delete_branch ${PR_BRANCH}
 fi
