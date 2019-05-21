@@ -94,6 +94,7 @@
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
     "ava": "latest",
+    "ava-nock": "latest",
     "babel-eslint": "latest",
     "conventional-github-releaser": "latest",
     "finepack": "latest",
@@ -127,7 +128,7 @@
     "release:github": "conventional-github-releaser -p angular",
     "release:tags": "git push --follow-tags origin HEAD:master",
     "start": "NODE_ENV=production node server.js",
-    "test": "NODE_ENV=test ava",
+    "test": "GITHUB_TOKEN=FAKE_GITHUB_TOKEN NODE_ENV=test ava",
     "update": "ncu -u",
     "update:check": "ncu -- --error-level 2"
   },

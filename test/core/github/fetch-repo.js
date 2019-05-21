@@ -1,8 +1,9 @@
 'use strict'
-
 const test = require('ava')
-
+const { setupTests } = require('ava-nock')
 const { fetchRepo } = require('../../../core/github')
+
+setupTests()
 
 test('infer master branch by default', async t => {
   const { source } = await fetchRepo({ owner: 'CKGrafico', repo: 'Frontend-Boilerplates' })
