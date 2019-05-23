@@ -1,6 +1,67 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [1.4.0](https://github.com/Kikobeats/nicedoc.io/compare/v1.3.0...v1.4.0) (2019-05-23)
+
+
+### Bug Fixes
+
+* add the accidentally deleted comment ([bc076e5](https://github.com/Kikobeats/nicedoc.io/commit/bc076e5))
+* avoid important ([e77c866](https://github.com/Kikobeats/nicedoc.io/commit/e77c866))
+* handle no match result ([77b666a](https://github.com/Kikobeats/nicedoc.io/commit/77b666a))
+
+
+### Build System
+
+* add responsive height for navbar ([583e263](https://github.com/Kikobeats/nicedoc.io/commit/583e263))
+* add scroll to hash ([1490cfb](https://github.com/Kikobeats/nicedoc.io/commit/1490cfb))
+* allow subdomain deploy based on branch ([b3d319e](https://github.com/Kikobeats/nicedoc.io/commit/b3d319e))
+* avoid http calls on tests ([3ab9a61](https://github.com/Kikobeats/nicedoc.io/commit/3ab9a61))
+* delete merged sandbox ([57d0261](https://github.com/Kikobeats/nicedoc.io/commit/57d0261))
+* deploy fix ([f55feae](https://github.com/Kikobeats/nicedoc.io/commit/f55feae))
+* deploy to preview on pull request ([5d11fdb](https://github.com/Kikobeats/nicedoc.io/commit/5d11fdb))
+* fix helm deploy name ([7b8b2bf](https://github.com/Kikobeats/nicedoc.io/commit/7b8b2bf))
+* fix pr branch ([8ebbf04](https://github.com/Kikobeats/nicedoc.io/commit/8ebbf04))
+* fix pr condition ([c463d22](https://github.com/Kikobeats/nicedoc.io/commit/c463d22))
+* fix the helm version ([27453e7](https://github.com/Kikobeats/nicedoc.io/commit/27453e7))
+* force ci ([64ea491](https://github.com/Kikobeats/nicedoc.io/commit/64ea491))
+* force ci ([f760a70](https://github.com/Kikobeats/nicedoc.io/commit/f760a70))
+* install kubernetes service plugin ([eee1d1b](https://github.com/Kikobeats/nicedoc.io/commit/eee1d1b))
+* install kubernetes service plugin ([c297fee](https://github.com/Kikobeats/nicedoc.io/commit/c297fee))
+* prefix sanetized urls ([76470f3](https://github.com/Kikobeats/nicedoc.io/commit/76470f3))
+* refactor ([9151dc1](https://github.com/Kikobeats/nicedoc.io/commit/9151dc1))
+* remove remark-preset-lint-recommended ([112dafd](https://github.com/Kikobeats/nicedoc.io/commit/112dafd))
+* run tests ([ea54cc1](https://github.com/Kikobeats/nicedoc.io/commit/ea54cc1))
+* sanitize html ([ed362ee](https://github.com/Kikobeats/nicedoc.io/commit/ed362ee))
+* setup replica count ([c0c79e7](https://github.com/Kikobeats/nicedoc.io/commit/c0c79e7))
+* unify layout ([42ad8d5](https://github.com/Kikobeats/nicedoc.io/commit/42ad8d5))
+* update dependencies ([9fdbe83](https://github.com/Kikobeats/nicedoc.io/commit/9fdbe83))
+* update dependencies ([58e49af](https://github.com/Kikobeats/nicedoc.io/commit/58e49af))
+* update dependencies ([d7aeb6a](https://github.com/Kikobeats/nicedoc.io/commit/d7aeb6a))
+* update dependencies ([#72](https://github.com/Kikobeats/nicedoc.io/issues/72)) ([9b8ee7a](https://github.com/Kikobeats/nicedoc.io/commit/9b8ee7a))
+* update github status ([4aefa34](https://github.com/Kikobeats/nicedoc.io/commit/4aefa34))
+* update github status ([3b14adf](https://github.com/Kikobeats/nicedoc.io/commit/3b14adf))
+* update github status ([348f6e0](https://github.com/Kikobeats/nicedoc.io/commit/348f6e0))
+* update github status ([3ed8683](https://github.com/Kikobeats/nicedoc.io/commit/3ed8683))
+* update github status ([ac52d5b](https://github.com/Kikobeats/nicedoc.io/commit/ac52d5b))
+* use a different max-width on index ([25d7cd2](https://github.com/Kikobeats/nicedoc.io/commit/25d7cd2))
+* use bash ([669cd41](https://github.com/Kikobeats/nicedoc.io/commit/669cd41))
+* use latest node version ([dcfd2d3](https://github.com/Kikobeats/nicedoc.io/commit/dcfd2d3))
+* use latest node version ([#73](https://github.com/Kikobeats/nicedoc.io/issues/73)) ([40037df](https://github.com/Kikobeats/nicedoc.io/commit/40037df))
+
+
+### Features
+
+* add toc UI ([302c290](https://github.com/Kikobeats/nicedoc.io/commit/302c290))
+
+
+### Tests
+
+* update interface ([7b05007](https://github.com/Kikobeats/nicedoc.io/commit/7b05007))
+* update snapshot ([edaaa33](https://github.com/Kikobeats/nicedoc.io/commit/edaaa33))
+
+
 
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/Kikobeats/nicedoc.io/compare/v1.2.0...v1.3.0) (2019-04-17)
