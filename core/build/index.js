@@ -32,6 +32,5 @@ export default async data => {
   const { contents: markdown } = await toMarkdown.process(data)
   const { contents: toc } = await toHTML.process(await toTOC.process(markdown))
   const { contents: html } = await toHTML.process(markdown)
-
   return { html: String(html), toc: String(toc) }
 }

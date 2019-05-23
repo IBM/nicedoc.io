@@ -31,7 +31,7 @@ const ThemeToggle = () => {
 export default class Index extends Component {
   render () {
     return (
-      <Container>
+      <Container maxWidth={700}>
         <Flex flexDirection='column'>
           <Flex
             flexDirection='column'

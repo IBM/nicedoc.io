@@ -1,4 +1,5 @@
 import { IssueOpen, Pulse, Home, Nicedoc, Star, License, GitHub } from 'components/icons'
+import { height } from 'styled-system'
 import styled from 'styled-components'
 import Flex from './flex'
 import Hide from './hide'
@@ -47,12 +48,12 @@ const Nav = styled(Flex)`
   line-height: 100%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   content: '';
-  height: ${navbar}px;
   left: 0;
   position: fixed;
   right: 0;
   top: 0;
   z-index: 2;
+  ${height};
 `
 
 const NavLink = styled(Link)([])
@@ -76,7 +77,7 @@ export default function NavBar ({ meta }) {
   }, [])
 
   return (
-    <Nav as='nav' justifyContent={['space-evenly', 'center']} px={3} py={0}>
+    <Nav as='nav' height={navbar} justifyContent={['space-evenly', 'center']} px={3} py={0}>
       <NavLink href={'/'}>
         <Nicedoc size={16} mr={1} />
       </NavLink>
