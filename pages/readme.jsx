@@ -23,7 +23,10 @@ if (global.window) {
 }
 
 function Readme (props) {
-  useReadProgress()
+  useEffect(() => {
+    addProgressBar()
+    scrollToHash()
+  }, [])
 
   const { toc, query, meta, readme } = props
 
@@ -78,25 +81,33 @@ Readme.getInitialProps = async ({ query }) => {
   }
 }
 
-function useReadProgress () {
-  useEffect(() => {
-    NProgress.configure({
-      trickle: false,
-      trickleSpeed: 0,
-      minimum: 0.001,
-      speed: 0,
-      showSpinner: false
-    }).start()
+function addProgressBar () {
+  NProgress.configure({
+    trickle: false,
+    trickleSpeed: 0,
+    minimum: 0.001,
+    speed: 0,
+    showSpinner: false
+  }).start()
 
-    const progressObserver = new ScrollProgress((x, y) => {
-      y >= 0.999 ? NProgress.set(0.999) : NProgress.set(y)
-    })
+  const progressObserver = new ScrollProgress((x, y) => {
+    y >= 0.999 ? NProgress.set(0.999) : NProgress.set(y)
+  })
 
-    return () => {
-      NProgress.done()
-      progressObserver.destroy()
+  return () => {
+    NProgress.done()
+    progressObserver.destroy()
+  }
+}
+
+function scrollToHash () {
+  const { hash } = window.location
+  if (hash) {
+    const node = document.querySelector(hash)
+    if (node) {
+      setTimeout(() => window.scroll.animateScroll(node))
     }
-  }, [])
+  }
 }
 
 export default Readme
