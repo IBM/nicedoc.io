@@ -41,13 +41,11 @@ function findExistingToc (root) {
 }
 
 function generateTocFromContent (node) {
-  const maxDepth = 6
-  const tight = true
-  const result = mdastToc(node, {
-    maxDepth: maxDepth,
-    tight: tight
+  return mdastToc(node, {
+    maxDepth: 6,
+    tight: true,
+    prefix: 'user-content-'
   })
-  return result
 }
 
 export default unified()

@@ -25,8 +25,7 @@ const toHTML = unified()
   .use(rehypeRaw)
   .use(rehypeSlug)
   .use(rehypePrism, { ignoreMissing: true, preLangClass: false })
-  // TODO: Need to determinate a way to pass `preprend` to `mdast-util-toc`
-  // .use(rehypeSanitize, sanitizeGithubPreset)
+  .use(rehypeSanitize, sanitizeGithubPreset)
   .use(rehypeStringify)
 
 export default async data => {
