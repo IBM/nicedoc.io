@@ -1,4 +1,4 @@
-const ASIDE = [300, 300, 300]
+const ASIDE = [0, 300, 300]
 
 export const layout = [1200, 1200, 1200]
 

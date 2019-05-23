@@ -1,15 +1,22 @@
 import { Aside, Hide, ExternalLink, Nav, Container, Head, Flex, Box } from 'components'
-
+import { display } from 'styled-system'
 import { fetchRepo, fetchMeta, buildReadme } from 'core'
 import React, { useEffect, Fragment } from 'react'
+import { speed, aside, navbar } from 'styles'
 import ScrollProgress from 'scrollprogress'
 import styled from 'styled-components'
-import { top } from 'styled-system'
 import NProgress from 'nprogress'
-
 import Error from './_error'
 
-import { speed, aside, navbar, transition, fontSizes } from 'styles'
+const Article = styled(Flex)`
+${display}
+`
+
+Article.defaultProps = {
+  ...Flex.displayProps,
+  as: 'article',
+  display: ['block', 'flex', 'flex']
+}
 
 if (global.window) {
   window.scroll = require('smooth-scroll')('a[href*="#"]', { speed: speed.normal })
@@ -40,15 +47,12 @@ function Readme (props) {
       <Head {...meta} />
       <Nav meta={meta} />
       <Container as='main' mx='auto'>
-        <Hide breakpoints={[1, 2]}>
-          <Box as='section' dangerouslySetInnerHTML={{ __html: readme }} />
-        </Hide>
-        <Hide breakpoints={[0]}>
-          <Flex as='article' pt={navbar}>
+        <Article pt={navbar}>
+          <Hide breakpoints={[0]}>
             <Aside pr={pr} width={aside} pt={navbar} top={navbar} dangerouslySetInnerHTML={{ __html: toc }} />
-            <Box as='section' pl={pl} dangerouslySetInnerHTML={{ __html: readme }} />
-          </Flex>
-        </Hide>
+          </Hide>
+          <Box as='section' pl={pl} dangerouslySetInnerHTML={{ __html: readme }} />
+        </Article>
       </Container>
     </Fragment>
   )
