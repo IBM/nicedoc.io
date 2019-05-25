@@ -1,4 +1,13 @@
-import { Aside, Hide, ExternalLink, Nav, Container, Head, Flex, Box } from 'components'
+import {
+  Aside,
+  Hide,
+  ExternalLink,
+  Nav,
+  Container,
+  Head,
+  Flex,
+  Box
+} from 'components'
 import { display } from 'styled-system'
 import { fetchRepo, fetchMeta, buildReadme } from 'core'
 import React, { useEffect, Fragment } from 'react'
@@ -9,7 +18,7 @@ import NProgress from 'nprogress'
 import Error from './_error'
 
 const Article = styled(Flex)`
-${display}
+  ${display}
 `
 
 Article.defaultProps = {
@@ -19,7 +28,9 @@ Article.defaultProps = {
 }
 
 if (global.window) {
-  window.scroll = require('smooth-scroll')('a[href*="#"]', { speed: speed.normal })
+  window.scroll = require('smooth-scroll')('a[href*="#"]', {
+    speed: speed.normal
+  })
 }
 
 function Readme (props) {
@@ -31,13 +42,18 @@ function Readme (props) {
   const { toc, query, meta, readme } = props
 
   if (!readme) {
+    const slug = `${query.owner}/${query.repo}`
     return (
       <Error
         title='Readme Not Found'
         explanation='Readme Not Found'
         statusCode={404}
       >
-        Looks like <ExternalLink href={`https://github.com/${query.repo}/${query.owner}`}>github.com/{query.repo}/{query.owner}</ExternalLink> doesn't exist.
+        Looks like{' '}
+        <ExternalLink href={`https://github.com/${slug}`}>
+          github.com/{slug}
+        </ExternalLink>{' '}
+        doesn't exist.
       </Error>
     )
   }
@@ -52,9 +68,19 @@ function Readme (props) {
       <Container as='main' mx='auto'>
         <Article pt={navbar}>
           <Hide breakpoints={[0]}>
-            <Aside pr={pr} width={aside} pt={navbar} top={navbar} dangerouslySetInnerHTML={{ __html: toc }} />
+            <Aside
+              pr={pr}
+              width={aside}
+              pt={navbar}
+              top={navbar}
+              dangerouslySetInnerHTML={{ __html: toc }}
+            />
           </Hide>
-          <Box as='section' pl={pl} dangerouslySetInnerHTML={{ __html: readme }} />
+          <Box
+            as='section'
+            pl={pl}
+            dangerouslySetInnerHTML={{ __html: readme }}
+          />
         </Article>
       </Container>
     </Fragment>
