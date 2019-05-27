@@ -5,13 +5,13 @@ import {
   Nav,
   Container,
   Head,
-  Flex,
-  Box
+  Flex
 } from 'components'
+
 import { display } from 'styled-system'
 import { fetchRepo, fetchMeta, buildReadme } from 'core'
 import React, { useEffect, Fragment } from 'react'
-import { speed, aside, navbar } from 'styles'
+import { layout, speed, aside, navbar } from 'styles'
 import ScrollProgress from 'scrollprogress'
 import styled from 'styled-components'
 import NProgress from 'nprogress'
@@ -55,6 +55,7 @@ function Readme (props) {
 
   const pr = navbar.map((s, index) => s * (index / navbar.length))
   const pl = pr.map((s, index) => s + aside[index])
+  const maxWidth = layout.map((layout, index) => layout - pl[index])
 
   return (
     <Fragment>
@@ -71,8 +72,9 @@ function Readme (props) {
               dangerouslySetInnerHTML={{ __html: toc }}
             />
           </Hide>
-          <Box
+          <Container
             as='section'
+            maxWidth={maxWidth}
             pl={pl}
             dangerouslySetInnerHTML={{ __html: readme }}
           />
