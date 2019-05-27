@@ -27,14 +27,9 @@ Article.defaultProps = {
   display: ['block', 'flex', 'flex']
 }
 
-if (global.window) {
-  window.scroll = require('smooth-scroll')('a[href*="#"]', {
-    speed: speed.normal
-  })
-}
-
 function Readme (props) {
   useEffect(() => {
+    window.scroll = require('smooth-scroll')('a[href*="#"]', { speed: speed.normal })
     addProgressBar()
     scrollToHash()
   }, [])
