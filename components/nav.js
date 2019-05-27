@@ -1,20 +1,21 @@
 import { IssueOpen, Pulse, Home, Nicedoc, Star, License, GitHub } from 'components/icons'
+import { hashChange } from 'components/hook'
+import React, { useState, useEffect } from 'react'
 import { height } from 'styled-system'
 import styled from 'styled-components'
-import Flex from './flex'
-import Hide from './hide'
+import CountUp from 'react-countup'
+import TimeAgo from 'react-timeago'
+import Bounty from 'react-bounty'
+
+import { navbar } from 'styles'
+import Tooltip from './tooltip'
 import { Link } from './link'
 import Toggle from './toggle'
 import Small from './small'
 import Text from './text'
 import Box from './box'
-import Tooltip from './tooltip'
-
-import { navbar } from 'styles'
-import Bounty from 'react-bounty'
-import CountUp from 'react-countup'
-import TimeAgo from 'react-timeago'
-import React, { useState, useEffect } from 'react'
+import Flex from './flex'
+import Hide from './hide'
 
 const URLParser = typeof URL === 'undefined' ? require('url').URL : URL
 
@@ -68,12 +69,13 @@ NavLink.defaultProps = {
 
 export default function NavBar ({ meta }) {
   const [theme, setTheme] = useState(null)
+  const [githubUrl, setGithubUrl] = useState(meta.githubUrl)
+
+  hashChange(hash => setGithubUrl(meta.githubUrl + hash))
 
   useEffect(() => {
     setTheme(window.__theme)
-    window.__onThemeChange = () => {
-      setTheme(window.__theme)
-    }
+    window.__onThemeChange = () => setTheme(window.__theme)
   }, [])
 
   return (
@@ -81,7 +83,7 @@ export default function NavBar ({ meta }) {
       <NavLink href={'/'}>
         <Nicedoc size={16} mr={1} />
       </NavLink>
-      <NavLink href={meta.githubUrl}>
+      <NavLink href={githubUrl}>
         <GitHub size={16} mr={1} />
         <Hide breakpoints={[0]}>
           <Small>{meta.repo}</Small>
