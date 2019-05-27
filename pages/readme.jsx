@@ -1,3 +1,8 @@
+import React, { useState, useEffect, Fragment } from 'react'
+import ScrollProgress from 'scrollprogress'
+import { display } from 'styled-system'
+import NProgress from 'nprogress'
+
 import {
   Aside,
   Hide,
@@ -8,13 +13,10 @@ import {
   Flex
 } from 'components'
 
-import { display } from 'styled-system'
 import { fetchRepo, fetchMeta, buildReadme } from 'core'
-import React, { useEffect, Fragment } from 'react'
 import { layout, speed, aside, navbar } from 'styles'
-import ScrollProgress from 'scrollprogress'
+import { hashChange } from 'components/hook'
 import styled from 'styled-components'
-import NProgress from 'nprogress'
 import Error from './_error'
 
 const Article = styled(Flex)`
@@ -28,6 +30,9 @@ Article.defaultProps = {
 }
 
 function Readme (props) {
+  const [hash, setHash] = useState('')
+  hashChange(setHash)
+
   useEffect(() => {
     window.scroll = require('smooth-scroll')('a[href*="#"]', { speed: speed.normal })
     addProgressBar()
@@ -60,11 +65,12 @@ function Readme (props) {
   return (
     <Fragment>
       <Head {...meta} />
-      <Nav meta={meta} />
+      <Nav hash={hash} meta={meta} />
       <Container as='main' mx='auto'>
         <Article pt={navbar}>
           <Hide breakpoints={[0]}>
             <Aside
+              hash={hash}
               pr={pr}
               width={aside}
               pt={navbar}

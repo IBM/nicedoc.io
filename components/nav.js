@@ -1,5 +1,4 @@
 import { IssueOpen, Pulse, Home, Nicedoc, Star, License, GitHub } from 'components/icons'
-import { hashChange } from 'components/hook'
 import React, { useState, useEffect } from 'react'
 import { height } from 'styled-system'
 import styled from 'styled-components'
@@ -67,11 +66,8 @@ NavLink.defaultProps = {
   icon: false
 }
 
-export default function NavBar ({ meta }) {
+export default function NavBar ({ hash, meta }) {
   const [theme, setTheme] = useState(null)
-  const [githubUrl, setGithubUrl] = useState(meta.githubUrl)
-
-  hashChange(hash => setGithubUrl(meta.githubUrl + hash))
 
   useEffect(() => {
     setTheme(window.__theme)
@@ -83,7 +79,7 @@ export default function NavBar ({ meta }) {
       <NavLink href={'/'}>
         <Nicedoc size={16} mr={1} />
       </NavLink>
-      <NavLink href={githubUrl}>
+      <NavLink href={meta.githubUrl + hash}>
         <GitHub size={16} mr={1} />
         <Hide breakpoints={[0]}>
           <Small>{meta.repo}</Small>

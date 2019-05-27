@@ -23,6 +23,14 @@ const Aside = styled(Box)`
     text-overflow: ellipsis;
   }
 
+  ${props =>
+    props.hash &&
+    `
+  a[href="${props.hash}"] {
+    font-weight: bold;
+  }
+  `}
+
   ${top};
 `
 
