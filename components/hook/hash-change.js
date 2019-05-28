@@ -6,16 +6,15 @@ let currentHash
 
 export default fn => {
   useEffect(() => {
-    window.document.addEventListener(
-      'scrollStart',
-      () => {
-        const hash = getHash()
-        if (hash !== currentHash) {
-          currentHash = hash
-          fn(hash)
-        }
-      },
-      false
-    )
+    const hasChange = () => {
+      const hash = getHash()
+      if (hash !== currentHash) {
+        currentHash = hash
+        fn(hash)
+      }
+    }
+
+    window.document.addEventListener('scrollStart', hasChange)
+    return () => window.document.removeEventListener('scrollStart', hasChange)
   }, [])
 }
