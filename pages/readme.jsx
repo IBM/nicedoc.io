@@ -15,7 +15,7 @@ import {
 
 import { fetchRepo, fetchMeta, buildReadme } from 'core'
 import { layout, speed, aside, navbar } from 'styles'
-import { hashChange } from 'components/hook'
+import { hashChange } from 'lib'
 import styled from 'styled-components'
 import Error from './_error'
 
