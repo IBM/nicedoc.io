@@ -1,4 +1,4 @@
-import createBuildReadme from './build-readme'
+import createBuildReadme from './github/build-readme'
 
 import { fetchMeta, fetchRepo, isMarkdownPath } from './github'
 

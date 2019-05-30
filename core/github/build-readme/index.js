@@ -1,7 +1,6 @@
 import { Permalink, ExternalLink } from 'components/icons'
 import imageExtensions from 'image-extensions'
 import ReactDOMServer from 'react-dom/server'
-import fileExtension from 'file-extension'
 import { isEmpty, forEach } from 'lodash'
 import { InternalLink } from 'components'
 import regexParam from 'regexparam'
@@ -11,23 +10,17 @@ import cheerio from 'cheerio'
 import url from 'url'
 import qsm from 'qsm'
 
-import build from './build'
+import build from '../../build'
+import { extension, resolveUrl, resolveAssetUrl } from './util'
 
 const {
   REGEX_HTTP_PROTOCOL,
   SITE_URL,
   REGEX_LOCAL_URL,
   REGEX_START_WITH_LETTER_OR_NUMBER
-} = require('../constants')
+} = require('../../../constants')
 
 const { URL } = url
-
-const extension = (str = '') => {
-  const urlObj = url.parse(str)
-  urlObj.hash = ''
-  urlObj.search = ''
-  return fileExtension(url.format(urlObj))
-}
 
 const { pattern: githubRegexParam } = regexParam('/:owner/:repo')
 
@@ -38,11 +31,6 @@ const loadHTML = html =>
     decodeEntities: true,
     lowerCaseAttributeNames: true
   })
-
-const resolveUrl = (from, to) => {
-  if (to[0] === '/') to = to.substr(1)
-  return url.resolve(from, to)
-}
 
 const withAnchorLinks = $ => {
   $('h1, h2, h3, h4, h5, h6').each(function () {
@@ -118,7 +106,7 @@ const externalLink = (el, { appendIcon = true } = {}) => {
   }
 }
 
-const withZoomImages = ($, { owner, repo, ref }) => {
+const withZoomImages = ($, opts) => {
   $('img').each(function () {
     const el = $(this)
     const parentLink = el.closest('a')[0]
@@ -126,8 +114,7 @@ const withZoomImages = ($, { owner, repo, ref }) => {
       const src = el.attr('src')
       const extname = extension(src)
       if (imageExtensions.includes(extname)) {
-        const newSrc = resolveUrl(`https://raw.githubusercontent.com/${owner}/${repo}/${ref}/`, src)
-        el.attr('src', qsm.add(newSrc, { sanitize: extname === 'svg' }))
+        el.attr('src', qsm.add(resolveAssetUrl(src, opts), { sanitize: extname === 'svg' }))
       }
       el.attr('data-action', 'zoom')
     } else {
