@@ -15,7 +15,7 @@ import {
 
 import { fetchRepo, fetchMeta, buildReadme } from 'core'
 import { layout, speed, aside, navbar } from 'styles'
-import { hashChange } from 'lib'
+import { useHashChange } from 'components/hook'
 import styled from 'styled-components'
 import Error from './_error'
 
@@ -31,10 +31,12 @@ Article.defaultProps = {
 
 function Readme (props) {
   const [hash, setHash] = useState('')
-  hashChange(setHash)
+  useHashChange(setHash)
 
   useEffect(() => {
-    window.scroll = require('smooth-scroll')('a[href*="#"]', { speed: speed.normal })
+    window.scroll = require('smooth-scroll')('a[href*="#"]', {
+      speed: speed.normal
+    })
     addProgressBar()
     scrollToHash()
   }, [])
