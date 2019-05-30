@@ -1,3 +1,8 @@
+import React, { useState, useEffect, Fragment } from 'react'
+import ScrollProgress from 'scrollprogress'
+import { display } from 'styled-system'
+import NProgress from 'nprogress'
+
 import {
   Aside,
   Hide,
@@ -5,16 +10,13 @@ import {
   Nav,
   Container,
   Head,
-  Flex,
-  Box
+  Flex
 } from 'components'
-import { display } from 'styled-system'
+
 import { fetchRepo, fetchMeta, buildReadme } from 'core'
-import React, { useEffect, Fragment } from 'react'
-import { speed, aside, navbar } from 'styles'
-import ScrollProgress from 'scrollprogress'
+import { layout, speed, aside, navbar } from 'styles'
+import { useHashChange } from 'components/hook'
 import styled from 'styled-components'
-import NProgress from 'nprogress'
 import Error from './_error'
 
 const Article = styled(Flex)`
@@ -27,14 +29,14 @@ Article.defaultProps = {
   display: ['block', 'flex', 'flex']
 }
 
-if (global.window) {
-  window.scroll = require('smooth-scroll')('a[href*="#"]', {
-    speed: speed.normal
-  })
-}
-
 function Readme (props) {
+  const [hash, setHash] = useState('')
+  useHashChange(setHash)
+
   useEffect(() => {
+    window.scroll = require('smooth-scroll')('a[href*="#"]', {
+      speed: speed.normal
+    })
     addProgressBar()
     scrollToHash()
   }, [])
@@ -60,15 +62,17 @@ function Readme (props) {
 
   const pr = navbar.map((s, index) => s * (index / navbar.length))
   const pl = pr.map((s, index) => s + aside[index])
+  const maxWidth = layout.map((layout, index) => layout - pl[index])
 
   return (
     <Fragment>
       <Head {...meta} />
-      <Nav meta={meta} />
+      <Nav hash={hash} meta={meta} />
       <Container as='main' mx='auto'>
         <Article pt={navbar}>
           <Hide breakpoints={[0]}>
             <Aside
+              hash={hash}
               pr={pr}
               width={aside}
               pt={navbar}
@@ -76,8 +80,9 @@ function Readme (props) {
               dangerouslySetInnerHTML={{ __html: toc }}
             />
           </Hide>
-          <Box
+          <Container
             as='section'
+            maxWidth={maxWidth}
             pl={pl}
             dangerouslySetInnerHTML={{ __html: readme }}
           />
