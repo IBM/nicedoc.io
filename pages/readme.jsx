@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react'
+import React, { useEffect, Fragment } from 'react'
 import ScrollProgress from 'scrollprogress'
 import { display } from 'styled-system'
 import NProgress from 'nprogress'
@@ -13,9 +13,10 @@ import {
   Flex
 } from 'components'
 
+import { useCurrentHash } from 'components/hook'
+
 import { fetchRepo, fetchMeta, buildReadme } from 'core'
 import { layout, speed, aside, navbar } from 'styles'
-import { useHashChange } from 'components/hook'
 import styled from 'styled-components'
 import Error from './_error'
 
@@ -30,16 +31,14 @@ Article.defaultProps = {
 }
 
 function Readme (props) {
-  const [hash, setHash] = useState('')
-  useHashChange(setHash)
+  const hash = useCurrentHash()
 
   useEffect(() => {
-    window.scroll = require('smooth-scroll')('a[href*="#"]', {
-      speed: speed.normal
-    })
+    window.scroll = require('smooth-scroll')('a[href*="#"]', { speed: speed.normal })
     addProgressBar()
-    scrollToHash()
   }, [])
+
+  useEffect(() => scrollToHash(hash), [hash])
 
   const { toc, query, meta, readme } = props
 
@@ -131,8 +130,7 @@ function addProgressBar () {
   }
 }
 
-function scrollToHash () {
-  const { hash } = window.location
+function scrollToHash (hash) {
   if (hash) {
     const node = document.querySelector(hash)
     if (node) {

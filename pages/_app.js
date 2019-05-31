@@ -1,7 +1,9 @@
-import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import App, { Container } from 'next/app'
 import codecopy from 'codecopy'
+import React from 'react'
+
+import { HashContextProvider } from 'components/hook'
 import theme from 'styles'
 
 import 'styles/index.scss'
@@ -25,11 +27,13 @@ export default class MyApp extends App {
   render () {
     const { Component, pageProps } = this.props
     return (
-      <ThemeProvider theme={theme}>
-        <Container>
-          <Component {...pageProps} />
-        </Container>
-      </ThemeProvider>
+      <HashContextProvider>
+        <ThemeProvider theme={theme}>
+          <Container>
+            <Component {...pageProps} />
+          </Container>
+        </ThemeProvider>
+      </HashContextProvider>
     )
   }
 }

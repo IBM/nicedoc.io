@@ -1,3 +1,1 @@
-import useHashChange from './hash-change'
-
-export { useHashChange }
+export * from './hash'
