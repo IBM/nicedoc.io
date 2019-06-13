@@ -1,4 +1,5 @@
 import { IssueOpen, Pulse, Home, Nicedoc, Star, License, GitHub } from 'components/icons'
+import { useQueryState } from 'components/hook'
 import React, { useState, useEffect } from 'react'
 import { height } from 'styled-system'
 import styled from 'styled-components'
@@ -68,11 +69,16 @@ NavLink.defaultProps = {
 
 export default function NavBar ({ hash, meta }) {
   const [theme, setTheme] = useState(null)
+  const [query, setQuery] = useQueryState()
 
-  useEffect(() => {
-    setTheme(window.__theme)
-    window.__onThemeChange = () => setTheme(window.__theme)
-  }, [])
+  const getTheme = () => query.theme || window.__theme || window.__preferredTheme
+
+  const updateTheme = newTheme => {
+    setTheme(newTheme)
+    window.__setPreferredTheme(newTheme)
+  }
+
+  useEffect(() => updateTheme(getTheme()), [])
 
   return (
     <Nav as='nav' height={navbar} justifyContent={['space-evenly', 'center']} px={3} py={0}>
@@ -190,7 +196,12 @@ export default function NavBar ({ hash, meta }) {
             )
           }}
           checked={theme === 'dark'}
-          onChange={e => window.__setPreferredTheme(e.target.checked ? 'dark' : 'light')}
+          onChange={event => {
+            event.preventDefault()
+            const theme = event.target.checked ? 'dark' : 'light'
+            setQuery({ theme })
+            updateTheme(theme)
+          }}
         />
       </Flex>
     </Nav>
