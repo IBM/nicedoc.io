@@ -3,9 +3,7 @@ import { useQueryState } from 'components/hook'
 import React, { useState, useEffect } from 'react'
 import { height } from 'styled-system'
 import styled from 'styled-components'
-import CountUp from 'react-countup'
 import TimeAgo from 'react-timeago'
-import Bounty from 'react-bounty'
 
 import { navbar } from 'styles'
 import Tooltip from './tooltip'
@@ -18,13 +16,6 @@ import Flex from './flex'
 import Hide from './hide'
 
 const URLParser = typeof URL === 'undefined' ? require('url').URL : URL
-
-const CustomBounty = styled(Bounty)`
-  div {
-    position: relative;
-    top: 3px;
-  }
-`
 
 const REGEX_STRIP_WWW = /^www\./
 
@@ -127,50 +118,33 @@ export default function NavBar ({ hash, meta }) {
 
         <NavLink href={meta.starsUrl}>
           <Star size={16} mr={1} />
-          <Small
-            style={{
-              // TODO: bug https://github.com/piecioshka/react-bounty/issues/1
-              position: 'relative',
-              top: '3px'
-            }}
-          >
-            <CustomBounty animationDelay={0} value={meta.stars} />
-          </Small>
+          <Small>{meta.stars}</Small>
         </NavLink>
 
         <NavLink href={meta.issuesUrl}>
           <IssueOpen size={16} mr={1} />
-          <Small
-            style={{
-              // TODO: bug https://github.com/piecioshka/react-bounty/issues/1
-              position: 'relative',
-              top: '3px'
-            }}
-          >
-            <CustomBounty initialDelay={0} value={meta.issues} />
-          </Small>
+          <Small>{meta.issues}</Small>
         </NavLink>
       </Hide>
 
       <Flex justifyContent='center' alignItems='center' pr={[0, 4]}>
-        <CountUp start={0} delay={0} duration={3} end={meta.score} decimals={2}>
-          {({ countUpRef }) => (
-            <Tooltip
-              title={
-                <Box width={'128px'}>
-                  <Text fontSize={0} mb={0}>
-                    Score index is calculated in proportion of issues and compensating with the
-                    stars.
-                  </Text>
-                </Box>
-              }
-            >
-              <Small className={getScoreClassName(meta.score)}>
-                <strong ref={countUpRef} />
-              </Small>
-            </Tooltip>
-          )}
-        </CountUp>
+        <Tooltip
+          title={
+            <Box width={'128px'}>
+              <Text fontSize={0} mb={0}>
+                Score index is calculated in proportion of issues and compensating with the stars.
+              </Text>
+            </Box>
+          }
+        >
+          <Small
+            css={`
+              color: var(${'--' + getScoreClassName(meta.score)});
+            `}
+          >
+            <strong>{meta.score === 1 ? '1.00' : meta.score.toFixed(2)}</strong>
+          </Small>
+        </Tooltip>
       </Flex>
 
       <Flex justifyContent='center' alignItems='center'>

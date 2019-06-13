@@ -94,8 +94,6 @@
     "process-stats": "~3.0.4",
     "qsm": "~2.1.0",
     "react": "16.8.6",
-    "react-bounty": "~1.0.4",
-    "react-countup": "~4.1.3",
     "react-dom": "16.8.6",
     "react-timeago": "~4.4.0",
     "react-tippy": "~1.2.3",
