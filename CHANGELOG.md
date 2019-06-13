@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/Kikobeats/nicedoc.io/compare/v1.4.0...v1.5.0) (2019-06-13)
+
+
+### Bug Fixes
+
+* inherit color ([9f7436f](https://github.com/Kikobeats/nicedoc.io/commit/9f7436f)), closes [#52](https://github.com/Kikobeats/nicedoc.io/issues/52)
+* resolve relative image urls with dots ([1e3ff8e](https://github.com/Kikobeats/nicedoc.io/commit/1e3ff8e))
+* sort ([50672e3](https://github.com/Kikobeats/nicedoc.io/commit/50672e3))
+
+
+### Build System
+
+* ensure content has a max width ([5b6e1ee](https://github.com/Kikobeats/nicedoc.io/commit/5b6e1ee))
+* ensure unmount properly ([0be82fb](https://github.com/Kikobeats/nicedoc.io/commit/0be82fb))
+* force rebuild ([54db806](https://github.com/Kikobeats/nicedoc.io/commit/54db806))
+* force rebuild ([58b08a0](https://github.com/Kikobeats/nicedoc.io/commit/58b08a0))
+* force rebuild ([88ffa43](https://github.com/Kikobeats/nicedoc.io/commit/88ffa43))
+* force rebuild ([#81](https://github.com/Kikobeats/nicedoc.io/issues/81)) ([c055f2b](https://github.com/Kikobeats/nicedoc.io/commit/c055f2b))
+* move from hook to lib ([71fd517](https://github.com/Kikobeats/nicedoc.io/commit/71fd517))
+* reflect active hash on aside ([5bb9839](https://github.com/Kikobeats/nicedoc.io/commit/5bb9839))
+* reflect hash into github url ([affb442](https://github.com/Kikobeats/nicedoc.io/commit/affb442))
+* remove animations ([2a13ea1](https://github.com/Kikobeats/nicedoc.io/commit/2a13ea1))
+* update dependencies ([f725b6d](https://github.com/Kikobeats/nicedoc.io/commit/f725b6d))
+* update dependencies ([f49723d](https://github.com/Kikobeats/nicedoc.io/commit/f49723d))
+* update dependencies ([186d12c](https://github.com/Kikobeats/nicedoc.io/commit/186d12c))
+
+
+### Features
+
+* reflect theme on query string ([5202b8a](https://github.com/Kikobeats/nicedoc.io/commit/5202b8a)), closes [#68](https://github.com/Kikobeats/nicedoc.io/issues/68)
+
+
+
 ## [1.4.0](https://github.com/Kikobeats/nicedoc.io/compare/v1.3.0...v1.4.0) (2019-05-23)
 
 
