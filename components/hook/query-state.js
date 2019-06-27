@@ -5,7 +5,7 @@ export const useQueryState = () => {
   const [urlSearchParams, setUrlSearchParams] = useState(new URLSearchParams())
   useEffect(() => {
     setUrlSearchParams(new URLSearchParams(window.location.search))
-  }, [])
+  }, [global.window ? window.location.search : undefined])
 
   const query = fromEntries(urlSearchParams.entries())
 

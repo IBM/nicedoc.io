@@ -22,3 +22,26 @@ test('resolve relative with dots into absolute', t => {
   })
   t.is(url, 'https://raw.githubusercontent.com/hsgw/plaid/master/doc/img/assembly/1.JPG')
 })
+
+test('resolve absolute github urls', t => {
+  const url = resolveAssetUrl(
+    'https://github.com/omkbd/picture/blob/master/ergodash-rev1.2-PCB.png',
+    {
+      path: '/Doc/build-en.md',
+      owner: 'omkbd',
+      repo: 'ErgoDash',
+      ref: 'master'
+    }
+  )
+  t.is(url, 'https://raw.githubusercontent.com/omkbd/picture/master/ergodash-rev1.2-PCB.png')
+})
+
+test("don't resolve external urls", t => {
+  const url = resolveAssetUrl('https://i.imgur.com/NVRZLHv.png', {
+    path: '/README.md',
+    owner: 'GoogleChromeLabs',
+    repo: 'quicklink',
+    ref: '1.0.0'
+  })
+  t.is(url, 'https://i.imgur.com/NVRZLHv.png')
+})
