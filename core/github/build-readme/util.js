@@ -12,9 +12,10 @@ export const isGithubUrl = url => {
 
 export const resolveAssetUrl = (src, { path, owner, repo, ref }) => {
   const slug = `${owner}/${repo}`
+  if (!path.startsWith('/')) path = `/${path}`
 
   if (isRelativeUrl(src)) {
-    const base = `https://raw.githubusercontent.com/${slug}/${ref}/${path}`
+    const base = `https://raw.githubusercontent.com/${slug}/${ref}${path}`
     if (src.startsWith('/')) src = src.substring(1)
     return url.resolve(base, src)
   }
