@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment, Component } from 'react'
+import React, { useState, useEffect, Component } from 'react'
 import { Li, Text, Container, Box, Flex, Link } from 'components'
 
 const ThemeToggle = () => {
@@ -12,19 +12,21 @@ const ThemeToggle = () => {
   const isLight = !isDark
 
   return (
-    <Fragment>
+    <>
       <span
         className={isDark ? 'blue' : undefined}
         style={{ cursor: isDark ? 'pointer' : 'inherit' }}
         onClick={() => window.__setPreferredTheme('light')}
-      >Light</span>
+      >Light
+      </span>
       <span> / </span>
       <span
         className={isLight ? 'blue' : undefined}
         onClick={() => window.__setPreferredTheme('dark')}
         style={{ cursor: isLight ? 'pointer' : 'inherit' }}
-      >Dark</span>
-    </Fragment>
+      >Dark
+      </span>
+    </>
   )
 }
 
@@ -43,7 +45,7 @@ export default class Index extends Component {
           </Flex>
 
           <Box style={{ textAlign: 'center' }}>
-            <Text style={{ margin: 'auto' }} maxWidth={'24em'} pt={3}>
+            <Text style={{ margin: 'auto' }} maxWidth='24em' pt={3}>
               pretty README as service (<Text fontSize='16px' as='span'><Link icon={false} href='https://github.com/IBM/nicedoc.io'>source code</Link></Text>).
             </Text>
             <Box py={3}>

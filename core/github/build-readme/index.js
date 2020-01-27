@@ -5,7 +5,6 @@ import { isEmpty, forEach } from 'lodash'
 import { InternalLink } from 'components'
 import regexParam from 'regexparam'
 import { TAGS } from 'html-urls'
-import { Fragment } from 'react'
 import cheerio from 'cheerio'
 import url from 'url'
 import qsm from 'qsm'
@@ -40,13 +39,13 @@ const withAnchorLinks = $ => {
     el.removeAttr('id')
     el.html(
       ReactDOMServer.renderToString(
-        <Fragment>
+        <>
           <span className='permalink-target' id={slug} />
           <InternalLink href={`#${slug}`} children={text} />
           <span className='permalink'>
             <Permalink width={12} ml={2} />
           </span>
-        </Fragment>
+        </>
       )
     )
   })

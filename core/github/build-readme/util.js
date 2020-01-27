@@ -22,7 +22,7 @@ export const resolveAssetUrl = (src, { path, owner, repo, ref }) => {
 
   if (!isGithubUrl(src)) return src
 
-  return src.replace('github.com', 'raw.githubusercontent.com').replace(`blob/`, '')
+  return src.replace('github.com', 'raw.githubusercontent.com').replace('blob/', '')
 }
 
 export const resolveUrl = (from, to) => {

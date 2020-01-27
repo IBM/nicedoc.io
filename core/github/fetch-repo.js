@@ -8,8 +8,8 @@ const githubBlobUrl = regexParam('blob/:ref/*')
 
 const exec = (path, result) => {
   let i = 0
-  let out = {}
-  let matches = result.pattern.exec(path) || {}
+  const out = {}
+  const matches = result.pattern.exec(path) || {}
   while (i < result.keys.length) out[result.keys[i]] = matches[++i] || null
   return out
 }

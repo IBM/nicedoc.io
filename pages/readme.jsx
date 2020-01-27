@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from 'react'
+import React, { useEffect } from 'react'
 import ScrollProgress from 'scrollprogress'
 import { display } from 'styled-system'
 import NProgress from 'nprogress'
@@ -64,7 +64,7 @@ function Readme (props) {
   const maxWidth = layout.map((layout, index) => layout - pl[index])
 
   return (
-    <Fragment>
+    <>
       <Head {...meta} />
       <Nav hash={hash} meta={meta} />
       <Container as='main' mx='auto'>
@@ -87,7 +87,7 @@ function Readme (props) {
           />
         </Article>
       </Container>
-    </Fragment>
+    </>
   )
 }
 

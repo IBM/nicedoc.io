@@ -254,7 +254,7 @@ export default () => (
               className='u-full-width'
               placeholder='Hi Dave …'
               id='exampleMessage'
-              defaultValue={''}
+              defaultValue=''
             />
           </p>
           <p>

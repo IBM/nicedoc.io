@@ -21,7 +21,7 @@ export default class MyApp extends App {
 
   componentDidMount () {
     codecopy('pre')
-    import('zoom-vanilla.js')
+    require('zoom-vanilla.js')
   }
 
   render () {

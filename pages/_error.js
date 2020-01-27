@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Head, Flex } from 'components'
 
 export default class Error extends React.Component {
@@ -15,7 +15,7 @@ export default class Error extends React.Component {
       statusCode = 500
     } = this.props
     return (
-      <Fragment>
+      <>
         <Head title={title} />
         <Flex flexDirection='column' alignItems='center' justifyContent='center'>
           <h1
@@ -38,7 +38,7 @@ export default class Error extends React.Component {
           </p>
           <p style={{ fontWeight: 'normal', margin: 0 }}>{children}</p>
         </Flex>
-      </Fragment>
+      </>
     )
   }
 }

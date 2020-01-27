@@ -75,7 +75,7 @@ export default class Toggle extends PureComponent {
     this.touchMoved = true
 
     if (this.startX != null) {
-      let currentX = pointerCoord(event).x
+      const currentX = pointerCoord(event).x
       if (this.state.checked && currentX + 15 < this.startX) {
         this.setState({ checked: false })
         this.startX = currentX
