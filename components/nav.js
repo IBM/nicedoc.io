@@ -73,7 +73,7 @@ export default function NavBar ({ hash, meta }) {
 
   return (
     <Nav as='nav' height={navbar} justifyContent={['space-evenly', 'center']} px={3} py={0}>
-      <NavLink href={'/'}>
+      <NavLink href='/'>
         <Nicedoc size={16} mr={1} />
       </NavLink>
       <NavLink href={meta.githubUrl + hash}>
@@ -130,7 +130,7 @@ export default function NavBar ({ hash, meta }) {
       <Flex justifyContent='center' alignItems='center' pr={[0, 4]}>
         <Tooltip
           title={
-            <Box width={'128px'}>
+            <Box width='128px'>
               <Text fontSize={0} mb={0}>
                 Score index is calculated in proportion of issues and compensating with the stars.
               </Text>
